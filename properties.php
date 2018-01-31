@@ -30,8 +30,8 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="index.php">Home</a></li>
-								<li><a href="properties.php">Properties</a></li>
+								<li><a href="index.php">Home</a></li>
+								<li class="current"><a href="properties.php">Properties</a></li>
                                 <li>
                                     <!-- if the user is logged in, it will show the profile -->
                                     <?php
