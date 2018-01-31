@@ -30,18 +30,8 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.php">Home</a></li>
-								<li class="current"><a href="properties.php">Properties</a></li>
-								<li>
-                                    <!-- if the user is logged in, it will give them the option to log out -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='logout.php'>Log Out</a>";
-                                        } else {
-                                            echo "<a href='loginsignup.html'>Login/Sign Up</a>";
-                                        }
-                                     ?>
-                                </li>
+								<li class="current"><a href="index.php">Home</a></li>
+								<li><a href="properties.php">Properties</a></li>
                                 <li>
                                     <!-- if the user is logged in, it will show the profile -->
                                     <?php
@@ -50,6 +40,18 @@
                                         }
                                      ?>
                                 </li>
+								<li>
+                                    <!-- if the user is logged in, it will give them the option to log out -->
+                                    <?php
+                                        if(isset($_SESSION['email'])) {
+                                            echo "<a href='logout.php'>Log Out</a>";                                    
+                                            
+                                        } else {
+                                            echo "<a href='loginsignup.html'>Login/Sign Up</a>";
+                                        }
+                                     ?>
+                                </li>
+                                
 							</ul>
 						</nav>
 

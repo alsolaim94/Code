@@ -47,10 +47,8 @@ else {
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li><a href="properties.php">Properties</a></li>
-								<li><a href="logout.php">Log Out</a></li>
                                 <li class="current"><a href="profile.php">Profile</a></li>
-                                
- 
+								<li><a href="logout.php">Log Out</a></li>
 							</ul>
 						</nav>
 
