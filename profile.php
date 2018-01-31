@@ -45,7 +45,7 @@ else {
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li href="index.php"><a >Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li><a href="properties.php">Properties</a></li>
 								<li><a href="logout.php">Log Out</a></li>
                                 <li class="current"><a href="profile.php">Profile</a></li>
