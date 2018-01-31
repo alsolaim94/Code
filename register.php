@@ -20,7 +20,7 @@ if($userExists -> num_rows === 0) {
     $firstName = mysqli_real_escape_string($connection, $_POST['firstName']);
     $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
     $email = mysqli_real_escape_string($connection, $_POST['email']);
-    $password = mysqli_real_escape_string(password_hash($_POST['password'], PASSWORD_BCRYPT));
+    $password = mysqli_real_escape_string($connection, (password_hash($_POST['password'], PASSWORD_BCRYPT)));
     
     $sql = "INSERT INTO users (firstName, lastName, email, password) "
           ."VALUES ('$firstName','$lastName','$email','$password')";
