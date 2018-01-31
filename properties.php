@@ -42,6 +42,14 @@
                                         }
                                      ?>
                                 </li>
+                                <li>
+                                    <!-- if the user is logged in, it will show the profile -->
+                                    <?php
+                                        if(isset($_SESSION['email'])) {
+                                            echo "<a href='profile.php'>Profile</a>";                     
+                                        }
+                                     ?>
+                                </li>
 							</ul>
 						</nav>
 
