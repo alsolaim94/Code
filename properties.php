@@ -32,6 +32,16 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="current"><a href="properties.php">Properties</a></li>
+								<li>
+                                    <!-- if the user is logged in, it will give them the option to log out -->
+                                    <?php
+                                        if(isset($_SESSION['email'])) {
+                                            echo "<a href='logout.php'>Log Out</a>";
+                                        } else {
+                                            echo "<a href='loginsignup.html'>Login/Sign Up</a>";
+                                        }
+                                     ?>
+                                </li>
                                 <li>
                                     <!-- if the user is logged in, it will show the profile -->
                                     <?php
@@ -40,100 +50,192 @@
                                         }
                                      ?>
                                 </li>
-								<li>
-                                    <!-- if the user is logged in, it will give them the option to log out -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='logout.php'>Log Out</a>";                                    
-                                            
-                                        } else {
-                                            echo "<a href='loginsignup.html'>Login/Sign Up</a>";
-                                        }
-                                     ?>
-                                </li>
-                                
 							</ul>
 						</nav>
 
 				</div>
 
+
+                            
+                            
+                            
 			<!-- Main -->
 				<section class="wrapper style1">
 					<div class="container">
-						<div class="row 200%">
-							<div class="4u 12u(narrower)">
-								<div id="sidebar">
+						<div id="content">
 
-									<!-- Sidebar -->
+							<!-- Content -->
 
-										<section>
-											<h3>Just a Subheading</h3>
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
-											<footer>
-												<a href="#" class="button">Continue Reading</a>
-											</footer>
-										</section>
+								<section class="12u 12u(narrower)">
+								<h3>Adding Your Prooerty</h3>
+								<form action='login.php' method='post'>
+									<div class="row 50%">
+										
+                                        <br>Name<br>
+                                        <div class="9u 12u(mobilep)">
+                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Prooerty" />
+										</div>
+                                        
 
-										<section>
-											<h3>Another Subheading</h3>
-											<ul class="links">
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quis eget mi dolore</a></li>
-												<li><a href="#">Consequat etiam lorem phasellus</a></li>
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Semper mod quisturpis nisi</a></li>
+										
+                                        </div>
+                                    
+                                    <div class="row 50%">
+                                              <br>Address<br>
+                                        
+                                        
+                                        <div class="9u 12u(mobilep)">
+											<input type="text" name="country" id="name" placeholder="Country" />
+ 
+                                            
+										</div>
+                                        
+                                        
+                                            <div class="9u 12u(mobilep)">
+                                            <input type="text" name="address" id="name" placeholder="Street address" />
+										</div>
+                                        
+                                        
+                                            <div class="4u 12u(mobilep)">
+											<input type="text" name="city" id="name" placeholder="City" />
+                                        </div>
+                                        
+                                        
+                                           <div class="4u 12u(mobilep)">
+											<input type="text" name="state" id="name" placeholder="State / Province / Region" />
+										</div>
+                                        
+
+                                        <div class="4u 12u(mobilep)">
+											<input type="text" name="zipcode" id="name" placeholder="Zip Code" />
+										</div>
+                                        
+                                        
+                                        <div class="9u 12u(mobilep)">
+											<input type="text" name="phone" id="name" placeholder="Phone number" />
+										</div>
+                                        
+                                    </div>
+                                    
+                             <div class="row 50%">
+                                              <br>Type<br>
+                                           
+                                                                     <div class="9u 12u(mobilep)">
+                                    <input type="radio" name="type" value="residential" checked> Residential<br>
+                                                                     </div>
+                                       
+                                                                     <div class="9u 12u(mobilep)">
+                                    <input type="radio" name="type" value="commercial"> Commercial<br>
+                                                                     </div>
+                                                                     <div class="9u 12u(mobilep)">
+                                    <input type="radio" name="type" value="other"> Other<br><br>   
+                                                                     </div>
+                                    </div>
+                                    
+                                    
+                                    
+                             <div class="row 50%">
+                                 
+                                              <br>Features<br>               
+                                        
+                                        <div class="10u 12u(mobilep)">
+											<input type="number" name="size" id="name" placeholder="Size" />
+                      
+										</div>
+                                        
+                                            <div class="10u 12u(mobilep)">
+                                            <input type="number" name="bedroom" id="name" placeholder="Number of Bedrooms" />
+										</div>
+                                        
+                                        
+                                            <div class="10u 12u(mobilep)">
+											<input type="number" name="bathroom" id="name" placeholder="Number of Bathrooms" />
+                                        </div>
+                                    
+                                 
+            
+										<div class="12u">
+											<textarea name="message" id="description" placeholder="Extra Description" rows="5"></textarea>
+										</div>
+
+                                    </div>
+                                    
+                                    
+                           <div class="row 50%">
+                                              <br>Lease Term<br>
+                                           
+                                      <div class="9u 12u(mobilep)">
+                                    <input type="radio" name="lease" value="monthly" checked> Monthly<br>
+                                                                     </div>
+                                       
+                                                                     <div class="9u 12u(mobilep)">
+                                    <input type="radio" name="lease" value="annually"> Annually<br>
+                                                                     </div>
+                                    </div>
+                                    
+                            <div class="row 50%">
+                                 
+                                              <br>Price<br>               
+                                        
+                                        <div class="10u 12u(mobilep)">
+											<input type="number" name="price" id="name" placeholder="Price Per Month" />
+                      
+										</div>
+                                        
+                                           </div>
+
+                                            
+                            <div class="row 50%">
+                                              <br>Availability<br>               
+                                        
+                                        <div class="10u 12u(mobilep)">
+											<input type="data" name="availability" id="name" placeholder="Availability Data" />
+                      
+										</div>
+                                        
+                                           </div>
+                                    
+                <div class="row 50%">
+                                 
+                                              <br>Contraction<br>               
+                                        
+                                        <div class="10u 12u(mobilep)">
+											<input type="data" name="contraction" id="name" placeholder="Contraction Data" />
+										</div>
+                                        
+                    										<div class="12u">
+											<textarea name="message" id="problem" placeholder="Problems if there is any" rows="2"></textarea>
+										</div>
+                    
+                    
+                                           </div>
+                                    
+                                    
+                                    
+                                    
+                                        
+									
+									<div class="row 50%">
+										<div class="12u">
+											<ul class="actions">
+												<li><input type="submit" class="button" value="submit" /></li>
 											</ul>
-											<footer>
-												<a href="#" class="button">More Random Links</a>
-											</footer>
-										</section>
+										</div>
+									</div>
+								</form>
+							</section>
+                            
+                            
+                            
+                            <br><br>
 
-								</div>
-							</div>
-							<div class="8u  12u(narrower) important(narrower)">
-								<div id="content">
-
-									<!-- Content -->
-
-										<article>
-											<header>
-												<h2>Left Sidebar</h2>
-												<p>Sidebar on the left, content on the right.</p>
-											</header>
-
-											<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
-
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-											consequat etiam lorem ipsum dolor sit amet nullam.</p>
-
-											<h3>And Yet Another Subheading</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-											justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-											ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-											vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-											Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-											rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-											Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-											Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
-
-											<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-											quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
-										</article>
-
-								</div>
-							</div>
 						</div>
 					</div>
 				</section>
+                            
+   
+                            
+
 
 			<!-- Footer -->
 				<div id="footer">
