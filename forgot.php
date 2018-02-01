@@ -66,6 +66,7 @@ $connection = getMySQLConnection();
                                     } else {
                                         $user = $userExists -> fetch_assoc();
                                         $email = $user['email'];
+                                        $hashValue = $user['hashValue'];
                                         $firstName = $user['firstName'];
                                         
                                         // email
@@ -78,7 +79,7 @@ It seems you have forgotten your password.
                                                 
 Please follow this link to reset your password: 
                                                 
-http://localhost/code/reset.php?email=".$email;
+http://localhost/code/reset.php?email=".$email."&hashValue=".$hashValue;
                                         
                                         
                                         // provide the required information to send the email
@@ -98,7 +99,7 @@ http://localhost/code/reset.php?email=".$email;
                                         } else {
                                             echo "
                                                 <header>
-                                                    <h2>An Email Has Been Sent To the Provided Address</h2>
+                                                    <h2>An Email Has Been Sent To ". $email ."</h2>
                                                     <p>Please Follow the Instructions to Reset Your Passsord</p>
                                                     <a href='loginsignup.html'>Return to Login</a>
                                                 </header>";

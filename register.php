@@ -21,9 +21,11 @@ if($userExists -> num_rows === 0) {
     $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = mysqli_real_escape_string($connection, (password_hash($_POST['password'], PASSWORD_BCRYPT)));
+    // hash value is unique and will be used to reset password
+    $hashValue = mysqli_real_escape_string($connection, md5(rand(0,1000)));
     
-    $sql = "INSERT INTO users (firstName, lastName, email, password) "
-          ."VALUES ('$firstName','$lastName','$email','$password')";
+    $sql = "INSERT INTO users (firstName, lastName, email, password, hashValue) "
+          ."VALUES ('$firstName','$lastName','$email','$password', '$hashValue')";
     
     //add to the database
     $connection -> query($sql);
