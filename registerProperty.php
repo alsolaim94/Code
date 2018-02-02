@@ -1,0 +1,86 @@
+<?php
+
+include 'MySQL_Functions.php';
+
+$connection = getMySQLConnection();
+
+//if a connection cannot be established, dies
+if($connection->connect_error){
+	$connection->close;
+	die( "No MySQL server" );
+}
+
+
+
+    
+   // $userID =  we \\ should use user ID
+  //  $email = $_SESSION['email'];
+    
+    $prooertyName = mysqli_real_escape_string($connection, $_POST['prooertyName']);
+    $country = mysqli_real_escape_string($connection, $_POST['country']);
+    $address = mysqli_real_escape_string($connection, $_POST['address']);
+    $city = mysqli_real_escape_string($connection, $_POST['city']);
+    $state = mysqli_real_escape_string($connection, $_POST['state']);
+    $zipcode = mysqli_real_escape_string($connection, $_POST['zipcode']);
+    $phone = mysqli_real_escape_string($connection, $_POST['phone']);
+    $type = mysqli_real_escape_string($connection, $_POST['type']);
+    $size = mysqli_real_escape_string($connection, $_POST['size']);
+    $bedroom = mysqli_real_escape_string($connection, $_POST['bedroom']);
+    $bathroom = mysqli_real_escape_string($connection, $_POST['bathroom']);
+    $extra = mysqli_real_escape_string($connection, $_POST['extra']); // not sure if this one will work(type="message" in the form)
+    $lease = mysqli_real_escape_string($connection, $_POST['lease']);
+    $price = mysqli_real_escape_string($connection, $_POST['price']);
+    $availability = mysqli_real_escape_string($connection, $_POST['availability']);
+    $contraction = mysqli_real_escape_string($connection, $_POST['contraction']);
+    $problem = mysqli_real_escape_string($connection, $_POST['problem']); // not sure if this one will work(type="message" in the form)
+
+    $stringg = 'fidkdkdkdkras';
+    
+
+
+
+
+
+    
+   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`, `note`) VALUES (11,11,22222,1,1,1,1,1,1,$size,$bedroom,$bathroom,$extra,1,$price,$availability,$contraction, 1,1)";
+    
+    
+    
+//    $sql = "INSERT INTO property (firstName, lastName, email, password) "
+//          ."VALUES ('$firstName','$lastName','$email','$password')";
+    
+    //add to the database
+    $connection -> query($sql);
+   
+
+
+
+//print "Hello world!"; 
+//print $prooertyName, $country;
+
+print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . " " .$zipcode. " " . $phone . " " .$type . " " .$size . " " .$bedroom. " " . $bathroom. " " . $extra . " " .$lease . " " .$price . " " .$availability. " " .$contraction . " " .$problem ;
+
+
+
+
+
+
+//    session_start();
+//    $_SESSION['email'] = $email;
+//    $_SESSION['firstName'] = $firstName;
+//    $_SESSION['lastName'] = $lastName;
+//    //0 until user activates their account with verify.php
+//    $_SESSION['active'] = 0; 
+//    // So we know the user has logged in
+//    $_SESSION['logged_in'] = true; 
+//    header("Location: profile.php");	
+    
+    
+
+
+
+
+
+
+
+?>

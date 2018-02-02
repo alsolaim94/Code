@@ -68,7 +68,7 @@
 
 								<section class="12u 12u(narrower)">
 								<h3>Adding Your Prooerty</h3>
-								<form action='login.php' method='post'>
+								<form action='registerProperty.php' method='post'>
 									<div class="row 50%">
 										
                                         <br>Name<br>
@@ -155,7 +155,7 @@
                                  
             
 										<div class="12u">
-											<textarea name="message" id="description" placeholder="Extra Description" rows="5"></textarea>
+											<textarea type= "text" name="extra" id="name" placeholder="Extra Description" rows="5"></textarea>
 										</div>
 
                                     </div>
@@ -189,7 +189,7 @@
                                               <br>Availability<br>               
                                         
                                         <div class="10u 12u(mobilep)">
-											<input type="data" name="availability" id="name" placeholder="Availability Data" />
+											<input type="text" name="availability" id="name" placeholder="Availability Data" />
                       
 										</div>
                                         
@@ -200,11 +200,11 @@
                                               <br>Contraction<br>               
                                         
                                         <div class="10u 12u(mobilep)">
-											<input type="data" name="contraction" id="name" placeholder="Contraction Data" />
+											<input type="data" name="contraction" id="name" placeholder="Contraction Data" required />
 										</div>
                                         
                     										<div class="12u">
-											<textarea name="message" id="problem" placeholder="Problems if there is any" rows="2"></textarea>
+											<textarea type="text" name="problem" id="name" placeholder="Problems if there is any" rows="2"></textarea>
 										</div>
                     
                     
@@ -212,13 +212,13 @@
                                     
                                     
                                     
-                                    
+                     
                                         
 									
 									<div class="row 50%">
 										<div class="12u">
 											<ul class="actions">
-												<li><input type="submit" class="button" value="submit" /></li>
+												<li><input type="submit" class="button" value="Register" /></li>
 											</ul>
 										</div>
 									</div>
