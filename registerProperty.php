@@ -42,7 +42,7 @@ if($connection->connect_error){
 
 
     
-   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`, `note`) VALUES (11,11,22222,1,1,1,1,1,1,$size,$bedroom,$bathroom,$extra,1,$price,$availability,$contraction, 1,1)";
+   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`, `note`) VALUES (11,'$prooertyName','$country','$address',1,1,1,1,1,$size,$bedroom,$bathroom,$extra,1,$price,$availability,$contraction, 1,1)";
     
     
     
