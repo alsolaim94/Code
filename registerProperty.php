@@ -27,36 +27,27 @@ if($connection->connect_error){
     $size = mysqli_real_escape_string($connection, $_POST['size']);
     $bedroom = mysqli_real_escape_string($connection, $_POST['bedroom']);
     $bathroom = mysqli_real_escape_string($connection, $_POST['bathroom']);
-    $extra = mysqli_real_escape_string($connection, $_POST['extra']); // not sure if this one will work(type="message" in the form)
+    $extra = mysqli_real_escape_string($connection, $_POST['extra']); 
     $lease = mysqli_real_escape_string($connection, $_POST['lease']);
     $price = mysqli_real_escape_string($connection, $_POST['price']);
     $availability = mysqli_real_escape_string($connection, $_POST['availability']);
     $contraction = mysqli_real_escape_string($connection, $_POST['contraction']);
-    $problem = mysqli_real_escape_string($connection, $_POST['problem']); // not sure if this one will work(type="message" in the form)
+    $problem = mysqli_real_escape_string($connection, $_POST['problem']);
 
-    $stringg = 'fidkdkdkdkras';
     
-
 
 
 
 
+
     
-   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`, `note`) VALUES (11,'$prooertyName','$country','$address',1,1,1,1,1,$size,$bedroom,$bathroom,$extra,1,$price,$availability,$contraction, 1,1)";
+   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`) VALUES (11,'$prooertyName','$country','$address','$city','$state','$zipcode','$phone','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem')";
     
     
-    
-//    $sql = "INSERT INTO property (firstName, lastName, email, password) "
-//          ."VALUES ('$firstName','$lastName','$email','$password')";
-    
+
     //add to the database
     $connection -> query($sql);
    
-
-
-
-//print "Hello world!"; 
-//print $prooertyName, $country;
 
 print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . " " .$zipcode. " " . $phone . " " .$type . " " .$size . " " .$bedroom. " " . $bathroom. " " . $extra . " " .$lease . " " .$price . " " .$availability. " " .$contraction . " " .$problem ;
 

@@ -1,5 +1,6 @@
 <?php
     session_start();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -73,46 +74,36 @@
 										
                                         <br>Name<br>
                                         <div class="9u 12u(mobilep)">
-                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Prooerty" />
+                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Prooerty" required/>
 										</div>
-                                        
 
-										
                                         </div>
                                     
                                     <div class="row 50%">
                                               <br>Address<br>
-                                        
-                                        
+
                                         <div class="9u 12u(mobilep)">
-											<input type="text" name="country" id="name" placeholder="Country" />
- 
-                                            
+											<input type="text" name="country" id="name" placeholder="Country" required/>
 										</div>
-                                        
                                         
                                             <div class="9u 12u(mobilep)">
-                                            <input type="text" name="address" id="name" placeholder="Street address" />
+                                            <input type="text" name="address" id="name" placeholder="Street address" required/>
 										</div>
-                                        
                                         
                                             <div class="4u 12u(mobilep)">
-											<input type="text" name="city" id="name" placeholder="City" />
+											<input type="text" name="city" id="name" placeholder="City" required/>
                                         </div>
                                         
-                                        
                                            <div class="4u 12u(mobilep)">
-											<input type="text" name="state" id="name" placeholder="State / Province / Region" />
+											<input type="text" name="state" id="name" placeholder="State / Province / Region" required/>
 										</div>
-                                        
-
+                                    
                                         <div class="4u 12u(mobilep)">
-											<input type="text" name="zipcode" id="name" placeholder="Zip Code" />
+											<input type="text" name="zipcode" id="name" placeholder="Zip Code" required/>
 										</div>
-                                        
                                         
                                         <div class="9u 12u(mobilep)">
-											<input type="text" name="phone" id="name" placeholder="Phone number" />
+											<input type="tel" name="phone"  placeholder="Phone number" required/>
 										</div>
                                         
                                     </div>
@@ -139,23 +130,19 @@
                                               <br>Features<br>               
                                         
                                         <div class="10u 12u(mobilep)">
-											<input type="number" name="size" id="name" placeholder="Size" />
-                      
+											<input type="number" name="size" id="name" placeholder="Size" required/>
 										</div>
                                         
                                             <div class="10u 12u(mobilep)">
-                                            <input type="number" name="bedroom" id="name" placeholder="Number of Bedrooms" />
+                                            <input type="number" name="bedroom" id="name" placeholder="Number of Bedrooms" required/>
 										</div>
-                                        
-                                        
+                             
                                             <div class="10u 12u(mobilep)">
-											<input type="number" name="bathroom" id="name" placeholder="Number of Bathrooms" />
+											<input type="number" name="bathroom" id="name" placeholder="Number of Bathrooms" required/>
                                         </div>
-                                    
-                                 
-            
+
 										<div class="12u">
-											<textarea type= "text" name="extra" id="name" placeholder="Extra Description" rows="5"></textarea>
+											<textarea type="text" name="extra" id="name" placeholder="Extra Description" rows="5"></textarea>
 										</div>
 
                                     </div>
@@ -167,7 +154,7 @@
                                       <div class="9u 12u(mobilep)">
                                     <input type="radio" name="lease" value="monthly" checked> Monthly<br>
                                                                      </div>
-                                       
+                               
                                                                      <div class="9u 12u(mobilep)">
                                     <input type="radio" name="lease" value="annually"> Annually<br>
                                                                      </div>
@@ -178,7 +165,7 @@
                                               <br>Price<br>               
                                         
                                         <div class="10u 12u(mobilep)">
-											<input type="number" name="price" id="name" placeholder="Price Per Month" />
+											<input type="number" name="price" id="name" placeholder="Price Per Month" required/>
                       
 										</div>
                                         
@@ -186,11 +173,13 @@
 
                                             
                             <div class="row 50%">
-                                              <br>Availability<br>               
+                                              <br>Availability<br>   
+ 
+                                
                                         
                                         <div class="10u 12u(mobilep)">
-											<input type="text" name="availability" id="name" placeholder="Availability Data" />
-                      
+											<input type="data" name="availability" id="date" placeholder="YYYYMMDD"/>                                            
+                                            
 										</div>
                                         
                                            </div>
@@ -200,7 +189,7 @@
                                               <br>Contraction<br>               
                                         
                                         <div class="10u 12u(mobilep)">
-											<input type="data" name="contraction" id="name" placeholder="Contraction Data" required />
+											<input type="data" name="contraction" id="date" placeholder="YYYY"  />
 										</div>
                                         
                     										<div class="12u">
