@@ -21,7 +21,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Akari</a></h1>
+						<h1><a href="index.php" id="logo">Akari</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -34,13 +34,14 @@
 				</div>
 
 			<!-- Main -->
+            
 				<section class="wrapper style1">
 					<div class="container">
 						<div id="content">
 
 							<!-- Content -->
 
-								<section class="6u 12u(narrower)">
+				            <section class="6u 12u(narrower)">
 								<h3>Log In</h3>
 								<form action='login.php' method='post'>
 									<div class="row 50%">
@@ -57,10 +58,14 @@
 												<li><input type="submit" class="button" value="Log In" /></li>
 											</ul>
 										</div>
+                                        <div class="12u">
+											<a href="forgot.php"> Forgot Password</a>
+										</div>
 									</div>
 								</form>
 							</section>
                             <br><br>
+                            
                             <section class="6u 12u(narrower)">
 								<h3>Create a New Account</h3>
 								<form action='register.php' method='post'>
@@ -83,6 +88,8 @@
 											<input type="password" name="passwordConfirm" id="passConfirm" placeholder="Confirm Password" required/>
 
 										</div>
+                                        
+                                        <!-- Script to make sure the confirm password is the same as the password -->
                                         <script> 
                                             var password = document.getElementById('password')
                                             , confirm_password = document.getElementById('passConfirm');
@@ -97,6 +104,7 @@
                                             password.onchange = validatePassword;
                                             confirm_password.onkeyup = validatePassword;
                                         </script>
+                                        
                                     </div>
 									<div class="row 50%">
 										<div class="12u">

@@ -40,7 +40,7 @@ else {
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Akari</a></h1>
+						<h1><a href="index.php" id="logo">Akari</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">

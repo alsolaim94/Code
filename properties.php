@@ -26,7 +26,7 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Akari</a></h1>
+						<h1><a href="index.php" id="logo">Akari</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -182,11 +182,53 @@
 											<ul class="actions">
 												<li><input type="submit" class="button" value="Register" name="submit"/></li>
 											</ul>
+<<<<<<< HEAD
 										</div>
 									</div>
 								</form>
 							</section>
                             <br><br>
+=======
+											<footer>
+												<a href="#" class="button">More Random Links</a>
+											</footer>
+										</section>
+
+								</div>
+							</div>
+							<div class="8u  12u(narrower) important(narrower)">
+								<div id="content">
+
+									<!-- Content -->
+
+										<article>
+											<header>
+												<h2>Search Through Listed Properites</h2>
+											     <p>Filter</p>
+											</header>
+
+											
+
+											<section class="wrapper style1">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <section class="6u 12u(narrower)">
+                                                            <div class="box post">
+                                                                <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
+                                                                <div class="inner">
+                                                                    <h3>Address of the Property</h3>
+                                                                    <p>Brief description to let the potential renter know what they are about to click on</p>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </section>
+										</article>
+
+								</div>
+							</div>
+>>>>>>> ResetPassword
 						</div>
 					</div>
 				</section>
