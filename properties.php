@@ -104,17 +104,17 @@
 											     <p>Filter</p>
 											</header>
 
-											<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
+											
 
 											<section class="wrapper style1">
                                                 <div class="container">
                                                     <div class="row">
                                                         <section class="6u 12u(narrower)">
                                                             <div class="box post">
-                                                                <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
+                                                                <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
                                                                 <div class="inner">
-                                                                    <h3>The First Thing</h3>
-                                                                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                                                    <h3>Address of the Property</h3>
+                                                                    <p>Brief description to let the potential renter know what they are about to click on</p>
                                                                 </div>
                                                             </div>
                                                         </section>
