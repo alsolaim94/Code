@@ -33,21 +33,22 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="current"><a href="properties.php">Properties</a></li>
-								<li>
+
+                                <li>
+                                    <!-- if the user is logged in, it will show the profile -->
+                                    <?php
+                                        if(isset($_SESSION['email'])) {
+                                            echo "<a href='profile.php'>Profile</a>";                     
+                                        }
+                                     ?>
+                                </li>
+                                <li>
                                     <!-- if the user is logged in, it will give them the option to log out -->
                                     <?php
                                         if(isset($_SESSION['email'])) {
                                             echo "<a href='logout.php'>Log Out</a>";
                                         } else {
                                             echo "<a href='loginsignup.html'>Login/Sign Up</a>";
-                                        }
-                                     ?>
-                                </li>
-                                <li>
-                                    <!-- if the user is logged in, it will show the profile -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='profile.php'>Profile</a>";                     
                                         }
                                      ?>
                                 </li>
@@ -67,13 +68,19 @@
 
 							<!-- Content -->
 
+
+								<section class="12u 12u(narrower)">
+								<h3>Adding Your Property</h3>
+								<form action='registerProperty.php' method='post'>
+
 				            <section class="12u 12u(narrower)">
 								<h3>Adding Your Prooerty</h3>
 								<form action='registerProperty.php' method='post' enctype="multipart/form-data">
+
 									<div class="row 50%">
                                         <br>Name<br>
                                         <div class="9u 12u(mobilep)">
-                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Prooerty" required/>
+                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Property" required/>
 										</div>
                                     </div>
                                     
