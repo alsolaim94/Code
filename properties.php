@@ -68,15 +68,15 @@
 
 							<!-- Content -->
 
-<<<<<<< HEAD
+
 								<section class="12u 12u(narrower)">
 								<h3>Adding Your Property</h3>
 								<form action='registerProperty.php' method='post'>
-=======
+
 				            <section class="12u 12u(narrower)">
 								<h3>Adding Your Prooerty</h3>
 								<form action='registerProperty.php' method='post' enctype="multipart/form-data">
->>>>>>> df64ec8f5aa9e8559aa04b8ca4610550b826c854
+
 									<div class="row 50%">
                                         <br>Name<br>
                                         <div class="9u 12u(mobilep)">
