@@ -106,7 +106,7 @@
                                                     </div>
                                                 </section>";
                                             } else {
-                                                $propertyList += "
+                                                $propertyList .= "
                                                 <section class='wrapper style1'>
                                                     <div class='container'>
                                                         <div class='row'>
