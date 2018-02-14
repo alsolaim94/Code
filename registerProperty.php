@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include 'MySQL_Functions.php';
 
 $connection = getMySQLConnection();
@@ -14,7 +15,7 @@ if($connection->connect_error){
 
     
    // $userID =  we \\ should use user ID
-  //  $email = $_SESSION['email'];
+    $email = $_SESSION['email'];
     
     $prooertyName = mysqli_real_escape_string($connection, $_POST['prooertyName']);
     $country = mysqli_real_escape_string($connection, $_POST['country']);
@@ -64,29 +65,13 @@ if($connection->connect_error){
 
 
     
-   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`) VALUES (11,'$prooertyName','$country','$address','$city','$state','$zipcode','$phone','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem')";
+   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`) VALUES ('$email','$prooertyName','$country','$address','$city','$state','$zipcode','$phone','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem')";
     
     
 
     //add to the database
     $connection -> query($sql);
-   
 
-print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . " " .$zipcode. " " . $phone . " " .$type . " " .$size . " " .$bedroom. " " . $bathroom. " " . $extra . " " .$lease . " " .$price . " " .$availability. " " .$contraction . " " .$problem ;
-
-
-
-
-
-
-//    session_start();
-//    $_SESSION['email'] = $email;
-//    $_SESSION['firstName'] = $firstName;
-//    $_SESSION['lastName'] = $lastName;
-//    //0 until user activates their account with verify.php
-//    $_SESSION['active'] = 0; 
-//    // So we know the user has logged in
-//    $_SESSION['logged_in'] = true; 
     header("Location: profile.php");	
     
     
