@@ -87,7 +87,7 @@ print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . 
 //    $_SESSION['active'] = 0; 
 //    // So we know the user has logged in
 //    $_SESSION['logged_in'] = true; 
-//    header("Location: profile.php");	
+    header("Location: profile.php");	
     
     
 
