@@ -69,7 +69,10 @@ else {
                                             ?>
                                         
                                         </h2>
+                                        
 										<p>All content, all the time.</p>
+                                        
+                                        <li><a href="addProperty.php">Add Propert</a></li>
 									</header>
 
 									<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
