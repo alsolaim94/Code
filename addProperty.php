@@ -32,9 +32,9 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="index.php">Home</a></li>
-								<li class="current"><a href="properties.php">Properties</a></li>
+								<li ><a href="properties.php">Properties</a></li>
 
-                                <li>
+                                <li class="current">
                                     <!-- if the user is logged in, it will show the profile -->
                                     <?php
                                         if(isset($_SESSION['email'])) {
