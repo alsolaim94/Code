@@ -69,31 +69,29 @@
 							<!-- Content -->
 							<div class="8u  12u(narrower) important(narrower)">
 								<div id="content">
-
+                                    
 									<!-- Content -->
-
-										<article>
-											<header>
-												<h2>Search Through Listed Properites</h2>
-											     <p>Filter</p>
-											</header>
-											<section class="wrapper style1">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <section class="6u 12u(narrower)">
-                                                            <div class="box post">
-                                                                <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
-                                                                <div class="inner">
-                                                                    <h3>Address of the Property</h3>
-                                                                    <p>Brief description to let the potential renter know what they are about to click on</p>
-                                                                </div>
+                                    <article>
+                                        <header>
+                                            <h2>Search Through Listed Properites</h2>
+                                             <p>Filter</p>
+                                        </header>
+                                        <section class="wrapper style1">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <section class="6u 12u(narrower)">
+                                                        <div class="box post">
+                                                            <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
+                                                            <div class="inner">
+                                                                <h3>Address of the Property</h3>
+                                                                <p>Brief description to let the potential renter know what they are about to click on</p>
                                                             </div>
-                                                        </section>
-                                                    </div>
+                                                        </div>
+                                                    </section>
                                                 </div>
-                                            </section>
-										</article>
-
+                                            </div>
+                                        </section>
+                                    </article>
 								</div>
 							</div>
 
