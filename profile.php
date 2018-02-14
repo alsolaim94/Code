@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include 'MySQL_Functions.php';
 
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
@@ -61,7 +62,7 @@ else {
 
 							<!-- Content -->
 
-								<article>
+								
 									<header>
 										<h2>
                                             <?php
@@ -69,36 +70,87 @@ else {
                                             ?>
                                         
                                         </h2>
-                                        
-										<p>All content, all the time.</p>
-                                        
+
                                         <li><a href="addProperty.php">Add Propert</a></li>
 									</header>
 
-									<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
+                            
+                            							<!-- Content -->
+							<div class="8u  12u(narrower) important(narrower)">
+								<div id="content">
 
-									<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-									Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-									Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-									consequat etiam lorem ipsum dolor sit amet nullam.</p>
+								
+                                    
+                                    
+                                    <!-- Content -->
 
-									<h3>And Yet Another Subheading</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-									justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-									ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-									vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-									Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-									rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-									Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-									Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
+										<article>
+											<header>
+												<h2>Your Listed of Properites</h2>
+											</header>
+											<section class="wrapper style1">
 
-									<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-									quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-									Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-									fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-									Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-									Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
-								</article>
+                                                
+                                                 <!-- PHP to generate the viewing of properties posted-->
+                                        <?php
+                                            
+                                            $connection = getMySQLConnection();
+                                            $sql = "SELECT * FROM property WHERE email = '$email'";
+                                            $propertyInfo = $connection -> query($sql);
+                                            $propertyList = "
+                                                        <section class='wrapper style1'>
+                                                            <div class='container'>
+                                                                <div class='row'>";
+                                            if($propertyInfo -> num_rows > 0) {
+                                                while($row = $propertyInfo -> fetch_assoc()) {
+                                                    $propertyList .= "
+                                                                <section class='6u 12u(narrower)'>
+                                                                    <div class='box post'>
+                                                                        <a href='#' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                                        <div class='inner'>
+                                                                            <strong>$".$row['price'] . "</strong></br>
+                                                                            ".$row['bedroom']." Bedrooms</br>
+                                                                            ".$row['address']."</br>
+                                                                            ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>";
+                                                            
+                                                }
+//                                                $propertyList .= "
+//                                                        </div>
+//                                                    </div>
+//                                                </section>";
+                                            } else {
+                                                $propertyList .= "
+                                            <h3>There are no properties to be seen</h3>
+                                                ";
+                                            }
+                                            // show the generated list
+                                            echo $propertyList;
+                                        ?>
+
+
+                                                
+                                            </section>
+										</article>
+
+								</div>
+							</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+	
 
 						</div>
 					</div>

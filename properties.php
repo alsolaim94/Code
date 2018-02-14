@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    include "MySQL_Functions.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -76,21 +76,54 @@
                                             <h2>Search Through Listed Properites</h2>
                                              <p>Filter</p>
                                         </header>
-                                        <section class="wrapper style1">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <section class="6u 12u(narrower)">
-                                                        <div class="box post">
-                                                            <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
-                                                            <div class="inner">
-                                                                <h3>Address of the Property</h3>
-                                                                <p>Brief description to let the potential renter know what they are about to click on</p>
-                                                            </div>
+                                        <!-- PHP to generate the viewing of properties posted-->
+                                        <?php
+                                            $connection = getMySQLConnection();
+                                            $sql = "SELECT * FROM property";
+                                            $propertyInfo = $connection -> query($sql);
+                                            $propertyList = "
+                                                        <section class='wrapper style1'>
+                                                            <div class='container'>
+                                                                <div class='row'>";
+                                            if($propertyInfo -> num_rows > 0) {
+                                                while($row = $propertyInfo -> fetch_assoc()) {
+                                                    $propertyList .= "
+                                                                <section class='6u 12u(narrower)'>
+                                                                    <div class='box post'>
+                                                                        <a href='#' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                                        <div class='inner'>
+                                                                            <strong>$".$row['price'] . "</strong></br>
+                                                                            ".$row['bedroom']." Bedrooms</br>
+                                                                            ".$row['address']."</br>
+                                                                            ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>";
+                                                            
+                                                }
+                                                $propertyList .= "
                                                         </div>
-                                                    </section>
-                                                </div>
-                                            </div>
-                                        </section>
+                                                    </div>
+                                                </section>";
+                                            } else {
+                                                $propertyList .= "
+                                                <section class='wrapper style1'>
+                                                    <div class='container'>
+                                                        <div class='row'>
+                                                            <section class='6u 12u(narrower)'>
+                                                                <div class='box post'>
+                                                                    <div class ='inner'>
+                                                                        <h3>There are no properties to be seen</h3>
+                                                                     </div>
+                                                                </div>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </section>";
+                                            }
+                                            // show the generated list
+                                            echo $propertyList;
+                                        ?>
                                     </article>
 								</div>
 							</div>
