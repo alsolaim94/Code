@@ -67,142 +67,6 @@
 						<div id="content">
 
 							<!-- Content -->
-
-
-								<section class="12u 12u(narrower)">
-								<h3>Adding Your Property</h3>
-								<form action='registerProperty.php' method='post'>
-
-				            <section class="12u 12u(narrower)">
-								<h3>Adding Your Prooerty</h3>
-								<form action='registerProperty.php' method='post' enctype="multipart/form-data">
-
-									<div class="row 50%">
-                                        <br>Name<br>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Property" required/>
-										</div>
-                                    </div>
-                                    
-                                    <div class="row 50%">
-                                        <br>Address<br>
-
-                                        <div class="9u 12u(mobilep)">
-											<input type="text" name="country" id="name" placeholder="Country" required/>
-										</div>
-                                        
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="text" name="address" id="name" placeholder="Street address" required/>
-										</div>
-                                        
-                                        <div class="4u 12u(mobilep)">
-											<input type="text" name="city" id="name" placeholder="City" required/>
-                                        </div>
-                                        
-                                        <div class="4u 12u(mobilep)">
-											<input type="text" name="state" id="name" placeholder="State / Province / Region" required/>
-										</div>
-                                    
-                                        <div class="4u 12u(mobilep)">
-											<input type="text" name="zipcode" id="name" placeholder="Zip Code" required/>
-										</div>
-                                        
-                                        <div class="9u 12u(mobilep)">
-											<input type="tel" name="phone"  placeholder="Phone number" required/>
-										</div>
-                                    </div>
-                                    
-                                    <div class="row 50%">
-                                        <br>Type<br>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="radio" name="type" value="residential" checked> Residential<br>
-                                        </div>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="radio" name="type" value="commercial"> Commercial<br>
-                                        </div>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="radio" name="type" value="other"> Other<br><br>   
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row 50%">
-                                        <br>Features<br>  
-                                        <div class="10u 12u(mobilep)">
-											<input type="number" name="size" id="name" placeholder="Size" required/>
-										</div>
-                                        <div class="10u 12u(mobilep)">
-                                            <input type="number" name="bedroom" id="name" placeholder="Number of Bedrooms" required/>
-										</div>
-                                        <div class="10u 12u(mobilep)">
-											<input type="number" name="bathroom" id="name" placeholder="Number of Bathrooms" required/>
-                                        </div>
-										<div class="12u">
-											<textarea type="text" name="extra" id="name" placeholder="Extra Description" rows="5"></textarea>
-										</div>
-                                    </div>
-                                    
-                                    
-                                    <div class="row 50%">
-                                        <br>Lease Term<br>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="radio" name="lease" value="monthly" checked> Monthly<br>
-                                        </div>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="radio" name="lease" value="annually"> Annually<br>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row 50%">
-                                        <br>Price<br>  
-                                        <div class="10u 12u(mobilep)">
-											<input type="number" name="price" id="name" placeholder="Price Per Month" required/>
-										</div>
-                                    </div>
-
-                                            
-                                    <div class="row 50%">
-                                        <br>Availability<br>
-                                        <div class="10u 12u(mobilep)">
-											<input type="data" name="availability" id="date" placeholder="YYYYMMDD"/>
-										</div>
-                                    </div>
-                                    
-                                    <div class="row 50%">
-                                        <br>Contraction<br>    
-                                        <div class="10u 12u(mobilep)">
-                                            <input type="data" name="contraction" id="date" placeholder="YYYY"  />
-                                        </div>
-                                        <div class="12u">
-                                            <textarea type="text" name="problem" id="name" placeholder="Problems if there is any" rows="2"></textarea>
-                                        </div>
-                                    </div>
-                
-                                    <div class="row 50%">
-                                        <br>Upload A Picture<br>    
-                                        <div class="10u 12u(mobilep)">
-                                            <input type="file" name="uploadPic" id="date" multiple/>
-                                        </div>
-                                    </div>
-                                    
-									<div class="row 50%">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" class="button" value="Register" name="submit"/></li>
-											</ul>
-<<<<<<< HEAD
-										</div>
-									</div>
-								</form>
-							</section>
-                            <br><br>
-=======
-											<footer>
-												<a href="#" class="button">More Random Links</a>
-											</footer>
-										</section>
-
-								</div>
-							</div>
 							<div class="8u  12u(narrower) important(narrower)">
 								<div id="content">
 
@@ -213,9 +77,6 @@
 												<h2>Search Through Listed Properites</h2>
 											     <p>Filter</p>
 											</header>
-
-											
-
 											<section class="wrapper style1">
                                                 <div class="container">
                                                     <div class="row">
@@ -235,7 +96,7 @@
 
 								</div>
 							</div>
->>>>>>> ResetPassword
+
 						</div>
 					</div>
 				</section>
