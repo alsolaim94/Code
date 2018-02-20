@@ -41,96 +41,98 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="current"><a href="properties.php">Properties</a></li>
-
-                                <li>
                                     <!-- if the user is logged in, it will show the profile -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='profile.php'>Profile</a>";                     
-                                        }
-                                     ?>
-                                </li>
-                                <li>
-                                    <!-- if the user is logged in, it will give them the option to log out -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='logout.php'>Log Out</a>";
-                                        } else {
-                                            echo "<a href='loginsignup.html'>Login/Sign Up</a>";
-                                        }
-                                     ?>
-                                </li>
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li><a href='profile.php'>Profile</a></li>";                     
+                                    }
+                                 ?>
+                                <!-- if the user is logged in, it will give them the option to log out -->
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li><a href='logout.php'>Log Out</a></li>";
+                                    } else {
+                                        echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
+                                    }
+                                 ?>
 							</ul>
 						</nav>
 
 				</div>    
 			<!-- Main -->
-				<section class="wrapper style1">
+	           <section class="wrapper style1">
 					<div class="container">
-						<div id="content">
-
-							<!-- Content -->
-							<div class="8u  12u(narrower) important(narrower)">
+						<div class="row 200%">
+							<div class="8u 12u(narrower)">
 								<div id="content">
-                                    
+
 									<!-- Content -->
-                                    <article>
-                                        <header>
-                                            <h2><?php echo $row['address'] ?></h2>
-                                             <p><?php echo "$".$row['price'] ?></p>
-                                        </header>
-                                        <!-- PHP to generate the viewing of properties posted-->
-                                        <?php
-                                            $connection = getMySQLConnection();
-                                            $sql = "SELECT * FROM property";
-                                            $propertyInfo = $connection -> query($sql);
-                                            $propertyList = "
-                                                        <section class='wrapper style1'>
-                                                            <div class='container'>
-                                                                <div class='row'>";
-                                            if($propertyInfo -> num_rows > 0) {
-                                                while($row = $propertyInfo -> fetch_assoc()) {
-                                                    $propertyList .= "
-                                                                <section class='6u 12u(narrower)'>
-                                                                    <div class='box post'>
-                                                                        <a href='listing.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
-                                                                        <div class='inner'>
-                                                                            <strong>$".$row['price'] . "</strong></br>
-                                                                            ".$row['bedroom']." Bedrooms</br>
-                                                                            ".$row['address']."</br>
-                                                                            ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
-                                                                        </div>
-                                                                    </div>
-                                                                </section>";
-                                                            
-                                                }
-                                                $propertyList .= "
-                                                        </div>
-                                                    </div>
-                                                </section>";
-                                            } else {
-                                                $propertyList .= "
-                                                <section class='wrapper style1'>
-                                                    <div class='container'>
-                                                        <div class='row'>
-                                                            <section class='6u 12u(narrower)'>
-                                                                <div class='box post'>
-                                                                    <div class ='inner'>
-                                                                        <h3>There are no properties to be seen</h3>
-                                                                     </div>
-                                                                </div>
-                                                            </section>
-                                                        </div>
-                                                    </div>
-                                                </section>";
-                                            }
-                                            // show the generated list
-                                            echo $propertyList;
-                                        ?>
-                                    </article>
+
+										<article>
+											<header>
+												<h2><?php echo $row['address']; ?></h2>
+												<p> <?php echo $row['price']; ?></p>
+											</header>
+
+											<span class="image featured"><img src="images/house.jpg" alt="" /></span>
+
+											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
+											consequat etiam lorem ipsum dolor sit amet nullam.</p>
+
+											<h3>And Yet Another Subheading</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
+											justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
+											ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
+											vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
+											Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
+											rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
+											Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
+											Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
+
+											<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
+											quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
+											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
+											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
+											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
+											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+										</article>
+
 								</div>
 							</div>
+							<div class="4u 12u(narrower)">
+								<div id="sidebar">
 
+									<!-- Sidebar -->
+
+										<section>
+											<h3>Just a Subheading</h3>
+											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
+											<footer>
+												<a href="#" class="button">Continue Reading</a>
+											</footer>
+										</section>
+
+										<section>
+											<h3>Another Subheading</h3>
+											<ul class="links">
+												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
+												<li><a href="#">Ornare in hendrerit in lectus</a></li>
+												<li><a href="#">Semper mod quis eget mi dolore</a></li>
+												<li><a href="#">Consequat etiam lorem phasellus</a></li>
+												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
+												<li><a href="#">Semper mod quisturpis nisi</a></li>
+											</ul>
+											<footer>
+												<a href="#" class="button">More Random Links</a>
+											</footer>
+										</section>
+
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
