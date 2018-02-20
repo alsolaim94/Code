@@ -71,66 +71,114 @@
 										<article>
 											<header>
 												<h2><?php echo $row['address']; ?></h2>
-												<p> <?php echo $row['price']; ?></p>
+												<p> <?php echo "$".$row['price']; ?></p>
 											</header>
+                                            <!-- Need to dynamically add pictures once we know how they will be stored for each property -->
+                                            <div style="font-size:14px;">
+                                                <span class="image featured">
+                                                    <!-- This PHP is commented out. This will be used when we figure out how the images are going to be stored
+                                                         Change the query and then change the column name for the $row array
+                                                    <?php 
+                                                        $images = "";
+                                                        $imagesQuery = $connection -> query("SELECT * FROM whatever the table is WHERE however they will be stored");
+                                                        if($imagesQuery -> num_rows > 0) {
+                                                            while($row = $imagesQuery -> fetch_assoc()) {
+                                                                $images .= "<img class='slides' src='" . $row['columnName'] . "' alt='' />";
+                                                            }
+                                                        } else {
+                                                            $images .= "<img class='slides' src'imgaes/noImage.jpg' alt='' />";
+                                                        }
+                                                        echo $images;
+                                                    ?>-->
+                                                    <img class="slides" src="images/house.jpg" alt="" />
+                                                    <img class="slides" src="images/house2.jpg" alt=""/>
+                                                    <img class="slides" src="images/house3.jpg" alt=""/>
+                                                    <img class="slides" src="images/house4.jpg" alt=""/>
+                                                </span>
+                                                <em>Click arrows to cycle through the pictures</em><br>
+                                                <button onclick="plusDivs(-1)">&#10094;</button>
+                                                <button onclick="plusDivs(1)">&#10095;</button>
+                                            </div>
+                                            <!-- method used at w3 schools -->
+                                            <script>
+                                                var slideIndex = 1;
+                                                showDivs(slideIndex);
 
-											<span class="image featured"><img src="images/house.jpg" alt="" /></span>
+                                                function plusDivs(n) {
+                                                  showDivs(slideIndex += n);
+                                                }
 
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-											consequat etiam lorem ipsum dolor sit amet nullam.</p>
+                                                function showDivs(n) {
+                                                  var i;
+                                                  var x = document.getElementsByClassName("slides");
+                                                  if (n > x.length) {slideIndex = 1}    
+                                                  if (n < 1) {slideIndex = x.length}
+                                                  for (i = 0; i < x.length; i++) {
+                                                     x[i].style.display = "none";  
+                                                  }
+                                                  x[slideIndex-1].style.display = "block";  
+                                                }
+                                            </script>
 
-											<h3>And Yet Another Subheading</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-											justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-											ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-											vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-											Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-											rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-											Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-											Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
-
-											<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-											quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+											<h3>Description</h3>
+											<p>
+                                                <?php 
+                                                    if($row['extra'] == "") {
+                                                        echo "The seller has not yet entered a description for this property.";
+                                                    } else {
+                                                        echo $row['extra'];
+                                                    }
+                                                ?>
+                                            </p>
+                                            <h3>More Information</h3>
+											<p>
+                                                <?php
+                                                    $finalInfo = "Property Type: " . $row['type'] . "<br>" . 
+                                                                 "Price: $" . $row['price'] . " / " . $row['lease'] . "<br>" .
+                                                                 "Date Available: " . $row['availability'] . "<br>" .
+                                                                 "Contraction: " . $row['contraction'] . "<br>" . 
+                                                                 "Problems: " . $row['problem'];
+                                                    echo $finalInfo;
+                                                ?>
+                                            </p>
 										</article>
-
 								</div>
 							</div>
+                            
 							<div class="4u 12u(narrower)">
 								<div id="sidebar">
-
 									<!-- Sidebar -->
-
 										<section>
-											<h3>Just a Subheading</h3>
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
-											<footer>
-												<a href="#" class="button">Continue Reading</a>
-											</footer>
+											<h3>Location</h3>
+											<p>
+                                                <?php
+                                                    $location = $row['address'] . "<br>".
+                                                                $row['city'] .", ".$row['state'] . " " . $row['zipcode'] . "<br>" .
+                                                                $row['country'];
+                                                    echo $location;
+                                                ?>
+                                            </p>
 										</section>
 
 										<section>
-											<h3>Another Subheading</h3>
-											<ul class="links">
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quis eget mi dolore</a></li>
-												<li><a href="#">Consequat etiam lorem phasellus</a></li>
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Semper mod quisturpis nisi</a></li>
-											</ul>
-											<footer>
-												<a href="#" class="button">More Random Links</a>
-											</footer>
+											<h3>Details</h3>
+											<p>
+                                                <?php 
+                                                    $details = "Size: " . $row['size'] . " sqft. <br> " . 
+                                                               "Number of Bedrooms: " . $row['bedroom'] . "<br>" . 
+                                                               "Number of Bathrooms: " . $row['bathroom'];
+                                                    echo $details;
+                                                
+                                                ?>
+                                            </p>
+                                            <h3>Contact the Owner</h3>
+                                            <p>
+                                                <?php
+                                                    echo "You May Email the Property Owner Here: <br><a href='mailto:".$row['email']."'>".$row['email']."</a><br><br>
+                                                          You May Also Call the Property Owner Here: <br><a href='tel:+1".$row['phone']."'>".$row['phone']."</a>";
+                                                ?>
+                                            </p>
 										</section>
-
 								</div>
 							</div>
 						</div>
