@@ -168,16 +168,23 @@
                                                                "Number of Bedrooms: " . $row['bedroom'] . "<br>" . 
                                                                "Number of Bathrooms: " . $row['bathroom'];
                                                     echo $details;
-                                                
                                                 ?>
                                             </p>
+                                        </section>
+                                        <section>
                                             <h3>Contact the Owner</h3>
-                                            <p>
-                                                <?php
+                                            <?php
+                                                if(!isset($_SESSION['logged_in'])) {
+                                                    echo "<p>You Must Be Logged In to Contact the Property Owner<br></p>".
+                                                         "<footer>
+                                                            <a href='loginsignup.html' class='button'>Log In</a>
+                                                        </footer>";
+                                                }
+                                                else {
                                                     echo "You May Email the Property Owner Here: <br><a href='mailto:".$row['email']."'>".$row['email']."</a><br><br>
                                                           You May Also Call the Property Owner Here: <br><a href='tel:+1".$row['phone']."'>".$row['phone']."</a>";
-                                                ?>
-                                            </p>
+                                                }
+                                            ?>
 										</section>
 								</div>
 							</div>
