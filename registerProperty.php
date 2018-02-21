@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+session_start();
 include 'MySQL_Functions.php';
 $connection = getMySQLConnection();
 
@@ -15,7 +16,15 @@ if($connection->connect_error){
 else{
 
 
+<<<<<<< HEAD
     $email = $_SESSION['email'];
+=======
+
+    
+   // $userID =  we \\ should use user ID
+    $email = $_SESSION['email'];
+    
+>>>>>>> DisplayProperties
     $prooertyName = mysqli_real_escape_string($connection, $_POST['prooertyName']);
     $country = mysqli_real_escape_string($connection, $_POST['country']);
     $address = mysqli_real_escape_string($connection, $_POST['address']);
@@ -70,8 +79,8 @@ else{
 
     //add to the database
     $connection -> query($sql);
-   
 
+<<<<<<< HEAD
 print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . " " .$zipcode. " " . $phone . " " .$type . " " .$size . " " .$bedroom. " " . $bathroom. " " . $extra . " " .$lease . " " .$price . " " .$availability. " " .$contraction . " " .$problem ;
 //
 //print $email;
@@ -82,6 +91,10 @@ print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . 
 
 
  header("Location: profile.php");	
+=======
+    header("Location: profile.php");	
+    
+>>>>>>> DisplayProperties
     
 }
 
