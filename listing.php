@@ -174,6 +174,7 @@
                                         <section>
                                             <h3>Contact the Owner</h3>
                                             <?php
+                                                //if the user is logged in, give contact. If not, prompt to log in
                                                 if(!isset($_SESSION['logged_in'])) {
                                                     echo "<p>You Must Be Logged In to Contact the Property Owner<br></p>".
                                                          "<footer>
