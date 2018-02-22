@@ -12,21 +12,15 @@
 ?>
 
 <!DOCTYPE HTML>
-<!--
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Search Properties</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	</head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="assets/js/notification.js"></script>
+    </head>
 	<body>
 		<div id="page-wrapper">
 
@@ -46,7 +40,16 @@
                                     if(isset($_SESSION['email'])) {
                                         echo "<li><a href='profile.php'>Profile</a></li>";                     
                                     }
-                                 ?>
+                                ?>
+                                <!-- If the user is logged in, show the notifications tab-->
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li class='dropdown'>
+                                                <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='label label-pill label-danger count' style='border-radius:10px;'></span>Notifications</a>
+                                                <ul class='dropdown-menu'></ul>
+                                              </li>";
+                                    }
+                                ?>
                                 <!-- if the user is logged in, it will give them the option to log out -->
                                 <?php
                                     if(isset($_SESSION['email'])) {
@@ -54,7 +57,7 @@
                                     } else {
                                         echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
                                     }
-                                 ?>
+                                ?>
 							</ul>
 						</nav>
 
@@ -182,8 +185,21 @@
                                                         </footer>";
                                                 }
                                                 else {
-                                                    echo "You May Email the Property Owner Here: <br><a href='mailto:".$row['email']."'>".$row['email']."</a><br><br>
-                                                          You May Also Call the Property Owner Here: <br><a href='tel:+1".$row['phone']."'>".$row['phone']."</a>";
+                                                    $notiForm = "
+                                                                <form method='post' id='comment_form'>
+                                                                    <div class='form-group'>
+                                                                        <label>Enter Subject</label>
+                                                                        <input type='text' name='subject' id='subject' class='form-control'>
+                                                                    </div>
+                                                                    <div class='form-group'>
+                                                                        <label>Enter Comment</label>
+                                                                        <textarea name='comment' id='comment' class='form-control' rows='5'></textarea>
+                                                                    </div>
+                                                                    <div class='form-group'>
+                                                                        <input type='submit' name='post' id='post' class='btn btn-info' value='Send' />
+                                                                    </div>
+                                                                </form>";
+                                                    echo $notiForm;
                                                 }
                                             ?>
 										</section>
