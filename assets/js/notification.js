@@ -32,6 +32,7 @@ $('#comment_form').on('submit', function(event){
             success:function(data) {
                 $('#comment_form')[0].reset();
                 load_unseen_notification();
+                document.getElementById("notiSuccess").innerHTML = "Your message has been sent to the property owner.";
             }
         });
      } else {

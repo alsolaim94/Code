@@ -22,6 +22,7 @@ if($userExists -> num_rows == 0) {
     //if the password is correct
     if(password_verify($_POST['password'], $user['password'])) {
         session_start();
+        $_SESSION['id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['firstName'] = $user['firstName'];
         $_SESSION['lastName'] = $user['lastName'];
