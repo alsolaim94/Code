@@ -25,7 +25,7 @@ else{
     $email = $_SESSION['email'];
     
 >>>>>>> DisplayProperties
-    $prooertyName = mysqli_real_escape_string($connection, $_POST['prooertyName']);
+    $propertyName = mysqli_real_escape_string($connection, $_POST['propertyName']);
     $country = mysqli_real_escape_string($connection, $_POST['country']);
     $address = mysqli_real_escape_string($connection, $_POST['address']);
     $city = mysqli_real_escape_string($connection, $_POST['city']);
@@ -73,7 +73,7 @@ else{
 
 
     
-   $sql = "INSERT INTO `property`(`email`, `prooertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`) VALUES ('$email','$prooertyName','$country','$address','$city','$state','$zipcode','$phone','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem')";
+   $sql = "INSERT INTO `property`(`email`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`) VALUES ('$email','$propertyName','$country','$address','$city','$state','$zipcode','$phone','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem')";
     
     
 
@@ -81,7 +81,7 @@ else{
     $connection -> query($sql);
 
 <<<<<<< HEAD
-print $prooertyName . " " . $country. " " .$address. " " .$city . " " .$state . " " .$zipcode. " " . $phone . " " .$type . " " .$size . " " .$bedroom. " " . $bathroom. " " . $extra . " " .$lease . " " .$price . " " .$availability. " " .$contraction . " " .$problem ;
+print $propertyName . " " . $country. " " .$address. " " .$city . " " .$state . " " .$zipcode. " " . $phone . " " .$type . " " .$size . " " .$bedroom. " " . $bathroom. " " . $extra . " " .$lease . " " .$price . " " .$availability. " " .$contraction . " " .$problem ;
 //
 //print $email;
     

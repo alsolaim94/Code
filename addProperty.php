@@ -69,13 +69,13 @@
 							<!-- Content -->
 
 								<section class="12u 12u(narrower)">
-								<h3>Adding Your Prooerty</h3>
+								<h3>Adding Your property</h3>
 								<form action='registerProperty.php' method='post'>
 									<div class="row 50%">
 										
                                         <br>Name<br>
                                         <div class="9u 12u(mobilep)">
-                                            <input type="text" name="prooertyName" id="name" placeholder="Name your Prooerty" required/>
+                                            <input type="text" name="propertyName" id="name" placeholder="Name your property" required/>
 										</div>
 
                                         </div>
