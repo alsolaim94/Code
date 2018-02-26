@@ -8,7 +8,7 @@ $connection = getMySQLConnection();
 if(isset($_POST['view'])){
     
     if($_POST["view"] != '') {
-        $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_status=0 AND comment_to=".$_SESSION['email'];
+        $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_status=0 AND comment_to='".$_SESSION['email']."'";
         $connection -> query($updateSQL);
     }
 
@@ -18,15 +18,23 @@ if(isset($_POST['view'])){
 
     if($result -> num_rows > 0) {
         while($row = $result -> fetch_assoc()) {
-          $output .= "
-          <li style='border: 1px solid black; margin-bottom: 1em;' class='notiElement'>
-              From: ".$row['comment_from']."<br/>
-              <a href='#'>
-                  <strong>".$row['comment_subject']."</strong><br />
-                  <small><em>".$row['comment_text']."</em></small>
-              </a>
-          </li>
-          ";
+            if($row['comment_status'] == 0) {
+                $output .= "
+                  <li style='border: 1px solid black; margin-bottom: 1em; background-color: #e6e6e6' class='notiElement dropdown-toggle'>
+                      From: ".$row['comment_from']."<br/>
+                      <strong>Subject: ".$row['comment_subject']."</strong><br />
+                      <small>Body: <em>".$row['comment_text']."</em></small>
+                  </li>
+                ";
+            } else {
+                $output .= "
+                  <li style='border: 1px solid black; margin-bottom: 1em;' class='notiElement dropdown-toggle'>
+                      From: ".$row['comment_from']."<br/>
+                      <strong>Subject: ".$row['comment_subject']."</strong><br />
+                      <small>Body: <em>".$row['comment_text']."</em></small>
+                  </li>
+                ";
+            }
         }
     } else {
         $output .= "<li><a href='#' class='text-bold text-italic'>No New Notifications</a></li>";

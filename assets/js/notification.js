@@ -11,9 +11,7 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data) {
                $('.dropdown-menu').html(data.notification);
-               if(data.unseen_notification > 0) {
-                   $('.count').html(data.unseen_notification);
-               }
+               $('.count').html(data.unseen_notification);
             }
         });
     }
@@ -42,7 +40,7 @@ $(document).ready(function(){
 
     // load new notifications
     $(document).on('click', '.dropdown-toggle', function(){
-        $('.count').html('');
+        $('.count').html("'" + parseInt($('.count').html(), 10)-1 + "'");
         load_unseen_notification('yes');
     });
 
