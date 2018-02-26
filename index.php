@@ -33,14 +33,12 @@
 							<ul>
 								<li class="current"><a href="index.php">Home</a></li>
 								<li><a href="properties.php">Properties</a></li>
-                                <li>
-                                    <!-- if the user is logged in, it will show the profile -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='profile.php'>Profile</a>";                     
-                                        }
-                                     ?>
-                                </li>
+                                  <!-- if the user is logged in, it will show the profile -->
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li><a href='profile.php'>Profile</a></li>";                     
+                                    }
+                                 ?>
 								<li>
                                     <!-- if the user is logged in, it will give them the option to log out -->
                                     <?php

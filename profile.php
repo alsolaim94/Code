@@ -31,8 +31,8 @@ else {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="assets/js/notification.js"></script>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -61,97 +61,72 @@ else {
 						<div id="content">
 
 							<!-- Content -->
-
-								
-									<header>
-										<h2>
-                                            <?php
-                                                echo "Welcome " . $firstName . " " . $lastName;
-                                            ?>
-                                        
-                                        </h2>
-
-                                        <li><a href="addProperty.php">Add Propert</a></li>
-									</header>
-
-                            
-                            							<!-- Content -->
-							<div class="8u  12u(narrower) important(narrower)">
-								<div id="content">
-
-								
-                                    
-                                    
-                                    <!-- Content -->
-
-										<article>
-											<header>
-												<h2>Your Listed of Properites</h2>
-											</header>
-											<section class="wrapper style1">
-
-                                                
-                                                 <!-- PHP to generate the viewing of properties posted-->
+                                <header>
+                                    <h2 style="text-align: center;">
                                         <?php
-                                            
-                                            $connection = getMySQLConnection();
-                                            $sql = "SELECT * FROM property WHERE email = '$email'";
-                                            $propertyInfo = $connection -> query($sql);
-                                            $propertyList = "
-                                                        <section class='wrapper style1'>
-                                                            <div class='container'>
-                                                                <div class='row'>";
-                                            if($propertyInfo -> num_rows > 0) {
-                                                while($row = $propertyInfo -> fetch_assoc()) {
-                                                    $propertyList .= "
-                                                                <section class='6u 12u(narrower)'>
-                                                                    <div class='box post'>
-                                                                        <a href='#' class='image left'><img src='images/house.jpg' alt='' /></a>
-                                                                        <div class='inner'>
-                                                                            <strong>$".$row['price'] . "</strong></br>
-                                                                            ".$row['bedroom']." Bedrooms</br>
-                                                                            ".$row['address']."</br>
-                                                                            ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                            echo "Welcome " . $firstName . " " . $lastName."!";
+                                        ?>
+
+                                    </h2><br>
+                                </header>
+                            	<!-- Content -->
+                                <div class="8u  12u(narrower) important(narrower)">
+                                    <div id="content">
+                                        <!-- Content -->
+                                            <article>
+                                                <header>
+                                                    <div>
+                                                        <h2 style="display: inline; margin-right: 2em;">Your Listed of Properites</h2>
+                                                        <a href="addProperty.php" class="button" style="display: inline; padding: 8px;">Add new Property</a>
+                                                    </div>
+                                                </header>
+                                                <!-- PHP to generate the viewing of properties posted-->
+                                                <?php
+                                                    $connection = getMySQLConnection();
+                                                    $sql = "SELECT * FROM property WHERE email = '$email'";
+                                                    $propertyInfo = $connection -> query($sql);
+                                                    $propertyList = "
+                                                                <section class='wrapper style1'>
+                                                                    <div class='container'>
+                                                                        <div class='row'>";
+                                                    if($propertyInfo -> num_rows > 0) {
+                                                        while($row = $propertyInfo -> fetch_assoc()) {
+                                                            $propertyList .= "
+                                                                        <section class='6u 12u(narrower)'>
+                                                                            <div class='box post'>
+                                                                                <a href='#' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                                                <div class='inner'>
+                                                                                    <strong>$".$row['price'] . "</strong></br>
+                                                                                    ".$row['bedroom']." Bedrooms</br>
+                                                                                    ".$row['address']."</br>
+                                                                                    ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                                                </div>
+                                                                            </div>
+                                                                        </section>";
+
+                                                        }
+                                                        $propertyList .= "
                                                                         </div>
                                                                     </div>
                                                                 </section>";
-                                                            
-                                                }
-//                                                $propertyList .= "
-//                                                        </div>
-//                                                    </div>
-//                                                </section>";
-                                            } else {
-                                                $propertyList .= "
-                                            <h3>There are no properties to be seen</h3>
-                                                ";
-                                            }
-                                            // show the generated list
-                                            echo $propertyList;
-                                        ?>
-
-
-                                                
-                                            </section>
-										</article>
-
-								</div>
-							</div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-	
-
+                                                    } else {
+                                                        $propertyList .= "<h3>There are no properties to be seen</h3>";
+                                                    }
+                                                    // show the generated list
+                                                    echo $propertyList;
+                                                ?>
+                                            </article>
+                                        <!-- Show User's Notifications -->
+                                        <article>
+                                            <header>
+                                                <h2 style="display: inline; margin-right: 2em;">Your Notifications (<span class='count'></span> Unread)</h2>
+                                            </header>
+                                            <div>
+                                                <ul class='dropdown-menu'></ul>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
 						</div>
 					</div>
 				</section>

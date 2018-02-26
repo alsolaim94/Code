@@ -13,9 +13,9 @@ if(isset($_POST["subject"])) {
     $comment = mysqli_real_escape_string($connection, $_POST["comment"]);
     
     $toEmail = $_POST['toEmail'];
-    $fromID = $_SESSION['id'];
+    $fromEmail = $_SESSION['email'];
 
-    $sql = "INSERT INTO comments(comment_subject, comment_text, comment_to, comment_from)VALUES ('$subject', '$comment', '$toEmail', '$fromID')";
+    $sql = "INSERT INTO comments(comment_subject, comment_text, comment_to, comment_from)VALUES ('$subject', '$comment', '$toEmail', '$fromEmail')";
 
     $connection -> query($sql);
  

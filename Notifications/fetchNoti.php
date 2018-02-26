@@ -19,8 +19,9 @@ if(isset($_POST['view'])){
     if($result -> num_rows > 0) {
         while($row = $result -> fetch_assoc()) {
           $output .= "
-          <li style='border: 1px solid white; border-radius: 10px;'>
-              <a href='#' style='color: white;'>
+          <li style='border: 1px solid black; margin-bottom: 1em;' class='notiElement'>
+              From: ".$row['comment_from']."<br/>
+              <a href='#'>
                   <strong>".$row['comment_subject']."</strong><br />
                   <small><em>".$row['comment_text']."</em></small>
               </a>
@@ -28,7 +29,7 @@ if(isset($_POST['view'])){
           ";
         }
     } else {
-        $output .= "<li><a href='#' class='text-bold text-italic'>No Noti Found</a></li>";
+        $output .= "<li><a href='#' class='text-bold text-italic'>No New Notifications</a></li>";
     }
 
     $status_query = "SELECT * FROM comments WHERE comment_status=0 AND comment_to='".$_SESSION['email']."'";
