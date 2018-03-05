@@ -1,6 +1,4 @@
-<?php
-session_start();
-
+<?
 session_start();
 include 'MySQL_Functions.php';
 $connection = getMySQLConnection();
@@ -9,7 +7,7 @@ $connection = getMySQLConnection();
 //if a connection cannot be established, dies
 if($connection->connect_error){
 	$connection->close;
-	die( "No MySQL server" );
+	die( "Server is Unavailable" );
     header("Location: profile.php");
     
 }
