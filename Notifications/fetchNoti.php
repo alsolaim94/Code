@@ -18,26 +18,44 @@ if(isset($_POST['view'])){
 
     if($result -> num_rows > 0) {
         while($row = $result -> fetch_assoc()) {
+            $timeFromDB = $row['time'];
+            $time = date('M d Y, h:m A', strtotime($timeFromDB));
+            $contactInfoQuery = $connection -> query("SELECT * FROM users WHERE email='".$row['comment_from']."'");
+            $contactRow = $contactInfoQuery -> fetch_assoc();
             if($row['comment_status'] == 0) {
                 $output .= "
-                  <li style='border: 1px solid black; margin-bottom: 1em; background-color: #e6e6e6' class='notiElement dropdown-toggle'>
-                      From: ".$row['comment_from']."<br/>
-                      <strong>Subject: ".$row['comment_subject']."</strong><br />
-                      <small>Body: <em>".$row['comment_text']."</em></small>
-                  </li>
-                ";
+                      <li class='notiElement dropdown-toggle' style='background-color: #e6e6e6; overflow: hidden'>
+                          <div style='width: 50%; float: left'>
+                              <strong>Subject: ".$row['comment_subject']."</strong><br />
+                              <small>Body: <em>".$row['comment_text']."</em></small><br />
+                              <small>".$time."</small>   
+                          </div>
+                          <div style='width: 50%; float: right; text-align: right'>
+                              <strong>Contact Info: </strong><br />
+                              <small>Name: ".$contactRow['firstName']." ".$contactRow['lastName']."</small><br />
+                              <small>Email: ".$row['comment_from']."</small><br />
+                          </div>    
+                      </li>
+                "; 
             } else {
                 $output .= "
-                  <li style='border: 1px solid black; margin-bottom: 1em;' class='notiElement dropdown-toggle'>
-                      From: ".$row['comment_from']."<br/>
-                      <strong>Subject: ".$row['comment_subject']."</strong><br />
-                      <small>Body: <em>".$row['comment_text']."</em></small>
-                  </li>
-                ";
+                      <li class='notiElement dropdown-toggle' style='overflow: hidden'>
+                          <div style='width: 50%; float: left'>
+                              <strong>Subject: ".$row['comment_subject']."</strong><br />
+                              <small>Body: <em>".$row['comment_text']."</em></small><br />
+                              <small>".$time."</small>   
+                          </div>
+                          <div style='width: 50%; float: right; text-align: right'>
+                              <strong>Contact Info: </strong><br />
+                              <small>Name: ".$contactRow['firstName']." ".$contactRow['lastName']."</small><br />
+                              <small>Email: ".$row['comment_from']."</small><br />
+                          </div> 
+                      </li>
+                ";    
             }
         }
     } else {
-        $output .= "<li><a href='#' class='text-bold text-italic'>No New Notifications</a></li>";
+        $output .= "<li style='color:rgb(70, 193, 249)'><strong>No New Notifications</strong></li>";
     }
 
     $status_query = "SELECT * FROM comments WHERE comment_status=0 AND comment_to='".$_SESSION['email']."'";

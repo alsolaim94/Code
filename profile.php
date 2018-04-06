@@ -33,6 +33,18 @@ else {
 		<link rel="stylesheet" href="assets/css/main.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="assets/js/notification.js"></script>
+        <style>
+            .notiElement {
+                border: 4px solid rgb(70, 193, 249);
+                border-radius: 25px;
+                margin-bottom: 1em; 
+                padding: 5px;
+                width: 75%;
+            }
+            .notiElement:hover {
+                cursor: pointer;
+            }
+        </style>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -94,7 +106,7 @@ else {
                                                             $propertyList .= "
                                                                         <section class='6u 12u(narrower)'>
                                                                             <div class='box post'>
-                                                                                <a href='#' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                                                <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
                                                                                 <div class='inner'>
                                                                                     <strong>$".$row['price'] . "</strong></br>
                                                                                     ".$row['bedroom']." Bedrooms</br>
