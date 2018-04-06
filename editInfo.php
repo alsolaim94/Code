@@ -1,3 +1,20 @@
+<?php
+    session_start();
+    include "MySQL_Functions.php";
+
+    $connection = getMySQLConnection();
+    $sql = "SELECT * FROM users WHERE id = ".$_GET["id"];
+    $results = $connection -> query($sql);
+
+    $id = $_GET["id"];
+    $_SESSION['id'] = $id;
+
+
+    // array that holds query results
+    $row = $results -> fetch_assoc();
+    
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
@@ -5,15 +22,18 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+    
+    
 	<head>
-		<title>No Sidebar - Arcana by HTML5 UP</title>
+		<title>Search Properties</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
+    
 	<body>
 		<div id="page-wrapper">
 
@@ -21,82 +41,101 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
+						<h1><a href="index.php" id="logo">Akari</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li>
-									<a href="#">Dropdown</a>
-									<ul>
-										<li><a href="#">Lorem dolor</a></li>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam sed tempus</a></li>
-										<li>
-											<a href="#">Submenu</a>
-											<ul>
-												<li><a href="#">Lorem dolor</a></li>
-												<li><a href="#">Phasellus magna</a></li>
-												<li><a href="#">Magna phasellus</a></li>
-												<li><a href="#">Etiam nisl</a></li>
-												<li><a href="#">Veroeros feugiat</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
-									</ul>
-								</li>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="two-sidebar.html">Two Sidebar</a></li>
-								<li class="current"><a href="no-sidebar.html">No Sidebar</a></li>
+								<li><a href="index.php">Home</a></li>
+								<li class="current"><a href="properties.php">Properties</a></li>
+                                    <!-- if the user is logged in, it will show the profile -->
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li><a href='profile.php'>Profile</a></li>";                     
+                                    }
+                                 ?>
+                                <!-- if the user is logged in, it will give them the option to log out -->
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li><a href='logout.php'>Log Out</a></li>";
+                                    } else {
+                                        echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
+                                    }
+                                 ?>
 							</ul>
 						</nav>
+				</div>    
 
-				</div>
-
-			<!-- Main -->
+            
+            			<!-- Main -->
 				<section class="wrapper style1">
 					<div class="container">
 						<div id="content">
 
 							<!-- Content -->
 
-								<article>
-									<header>
-										<h2>No Sidebar</h2>
-										<p>All content, all the time.</p>
-									</header>
 
-									<span class="image featured"><img src="../images/pic01.jpg" alt="" /></span>
+								
 
-									<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-									Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-									Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-									consequat etiam lorem ipsum dolor sit amet nullam.</p>
+                   
+                     
+                                        
+                                        
+                                        
+                 <section class="12u 12u(narrower)">
+								<h3>Edit Info</h3>
+								<form action="updataInfo.php" method='post'>
+                                        
+                                        	<div class="row 50%">
+                                         <br>First Name<br>
+                                        <div class="9u 12u(mobilep)">
+                                            <input type="text" name="firstName" id="name" value="<?php echo $row['firstName']; ?>" placeholder="first Name" required/>
+										</div>
 
-									<h3>And Yet Another Subheading</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-									justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-									ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-									vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-									Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-									rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-									Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-									Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
+                                        </div>
+                                    
+                                    
+                               <div class="row 50%">
+                                         <br>Last Name<br>
+                                        <div class="9u 12u(mobilep)">
+                                            <input type="text" name="lastName" id="name" value="<?php echo $row['lastName']; ?>" placeholder="last Name" required/>
+										</div>
 
-									<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-									quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-									Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-									fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-									Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-									Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
-								</article>
+                                        </div>
+                                    
+                                    
+                                    
+                                                                   <div class="row 50%">
+                                         <br>Email<br>
+                                        <div class="9u 12u(mobilep)">
+                                            <input type="text" name="email" id="name" value="<?php echo $row['email']; ?>" placeholder="email" required/>
+										</div>
+
+                                        </div>
+                                    
+                                    
+                                    
+									<div class="row 50%">
+										<div class="12u">
+											<ul class="actions">
+												<li><input type="submit" class="button" value="Update" /></li>
+											</ul>
+										</div>
+									</div>
+                                    
+								</form>
+							</section>
+
+                            
+                            
+                            <br><br>
 
 						</div>
 					</div>
 				</section>
-
+            
+            
+            
 			<!-- Footer -->
 				<div id="footer">
 					<div class="container">

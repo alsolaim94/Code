@@ -13,6 +13,7 @@ else {
     $firstName = $_SESSION['firstName'];
     $lastName = $_SESSION['lastName'];
     $active = $_SESSION['active'];
+    $id = $_SESSION['id'];
 }
 
 
@@ -66,12 +67,26 @@ else {
 									<header>
 										<h2>
                                             <?php
-                                                echo "Welcome " . $firstName . " " . $lastName;
+                                                echo "Welcome Back " . $firstName . " " . $lastName. "!";
                                             ?>
                                         
                                         </h2>
 
-                                        <li><a href="addProperty.php">Add Propert</a></li>
+                                        			<ul class="actions">
+                                                        
+                                                        		    	<li>
+		      		<a href="editInfo.php?id=4" class="button"> Updata Your Info</a>
+		    	</li>
+		    	<li>
+		      		 <a href="addProperty.php" class="button">Add New Property</a>
+		    	</li>
+
+		  	</ul>
+                                       
+                                        
+                                        
+
+
 									</header>
 
                             
@@ -85,10 +100,11 @@ else {
                                     <!-- Content -->
 
 										<article>
-											<header>
+	
+											<section class="wrapper style1">
+                                                										<header>
 												<h2>Your Listed of Properites</h2>
 											</header>
-											<section class="wrapper style1">
 
                                                 
                                                  <!-- PHP to generate the viewing of properties posted-->
@@ -98,29 +114,34 @@ else {
                                             $sql = "SELECT * FROM property WHERE email = '$email'";
                                             $propertyInfo = $connection -> query($sql);
                                             $propertyList = "
-                                                        <section class='wrapper style1'>
+                                                        
                                                             <div class='container'>
                                                                 <div class='row'>";
                                             if($propertyInfo -> num_rows > 0) {
                                                 while($row = $propertyInfo -> fetch_assoc()) {
                                                     $propertyList .= "
                                                                 <section class='6u 12u(narrower)'>
-                                                                    <div class='box post'>
-                                                                        <a href='#' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                       <!--              <div class='box post'> -->
+                                                                    
+                                                                    
+                    <a href='listing.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                               
+            
+                <a href='editProperties.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."'class='button alt' >Edit </a>
+                                                                        
                                                                         <div class='inner'>
                                                                             <strong>$".$row['price'] . "</strong></br>
                                                                             ".$row['bedroom']." Bedrooms</br>
                                                                             ".$row['address']."</br>
                                                                             ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                                            
+                                                                            </section>
                                                                         </div>
                                                                     </div>
-                                                                </section>";
+                                                                ";
                                                             
                                                 }
-//                                                $propertyList .= "
-//                                                        </div>
-//                                                    </div>
-//                                                </section>";
+
                                             } else {
                                                 $propertyList .= "
                                             <h3>There are no properties to be seen</h3>
