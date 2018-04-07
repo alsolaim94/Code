@@ -45,6 +45,7 @@ else {
 		<div id="page-wrapper">
 
 			<!-- Header -->
+			<!-- Header -->
 				<div id="header">
 
 					<!-- Logo -->
