@@ -3,7 +3,7 @@
     include "MySQL_Functions.php";
 
     $connection = getMySQLConnection();
-    $sql = "SELECT * FROM property WHERE proprtyID = ".$_GET["proprtyID"]." AND address = '".$_GET["address"]."'";
+    $sql = "SELECT * FROM property WHERE propertyID = ".$_GET["propertyID"]." AND address = '".$_GET["address"]."'";
     $results = $connection -> query($sql);
 
     // array that holds query results

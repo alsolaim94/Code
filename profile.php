@@ -75,7 +75,7 @@ else {
                                         			<ul class="actions">
                                                         
                                                         		    	<li>
-		      		<a href="editInfo.php?id=4" class="button"> Updata Your Info</a>
+		      		<a href="editInfo.php?id=<?php echo $id; ?>" class="button"> Updata Your Info</a>
 		    	</li>
 		    	<li>
 		      		 <a href="addProperty.php" class="button">Add New Property</a>
@@ -124,10 +124,10 @@ else {
                                                        <!--              <div class='box post'> -->
                                                                     
                                                                     
-                    <a href='listing.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+                    <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
                                                                
             
-                <a href='editProperties.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."'class='button alt' >Edit </a>
+                <a href='editProperties.php?address=".$row['address']."&propertyID=".$row['propertyID']."'class='button alt' >Edit </a>
                                                                         
                                                                         <div class='inner'>
                                                                             <strong>$".$row['price'] . "</strong></br>

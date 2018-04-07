@@ -1,7 +1,13 @@
 <?php
     session_start();
     include "MySQL_Functions.php";
+// Check if user is logged in using the session variable
+if ( $_SESSION['logged_in'] != 1 ) {
+  echo "You must log in before viewing your profile page!";
+  header("location: loginsignup.html");    
+}
 
+else {
     $connection = getMySQLConnection();
     $sql = "SELECT * FROM users WHERE id = ".$_GET["id"];
     $results = $connection -> query($sql);
@@ -12,6 +18,7 @@
 
     // array that holds query results
     $row = $results -> fetch_assoc();
+    }
     
 ?>
 
@@ -47,24 +54,13 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="index.php">Home</a></li>
-								<li class="current"><a href="properties.php">Properties</a></li>
-                                    <!-- if the user is logged in, it will show the profile -->
-                                <?php
-                                    if(isset($_SESSION['email'])) {
-                                        echo "<li><a href='profile.php'>Profile</a></li>";                     
-                                    }
-                                 ?>
-                                <!-- if the user is logged in, it will give them the option to log out -->
-                                <?php
-                                    if(isset($_SESSION['email'])) {
-                                        echo "<li><a href='logout.php'>Log Out</a></li>";
-                                    } else {
-                                        echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
-                                    }
-                                 ?>
+								<li><a href="properties.php">Properties</a></li>
+                                <li class="current"><a href="profile.php">Profile</a></li>
+								<li><a href="logout.php">Log Out</a></li>
 							</ul>
 						</nav>
-				</div>    
+
+				</div>
 
             
             			<!-- Main -->
@@ -75,20 +71,14 @@
 							<!-- Content -->
 
 
-								
-
-                   
-                     
-                                        
-                                        
-                                        
+       
                  <section class="12u 12u(narrower)">
 								<h3>Edit Info</h3>
 								<form action="updataInfo.php" method='post'>
                                         
                                         	<div class="row 50%">
-                                         <br>First Name<br>
                                         <div class="9u 12u(mobilep)">
+                                            <br>First Name<br>
                                             <input type="text" name="firstName" id="name" value="<?php echo $row['firstName']; ?>" placeholder="first Name" required/>
 										</div>
 
@@ -96,8 +86,9 @@
                                     
                                     
                                <div class="row 50%">
-                                         <br>Last Name<br>
+                                         
                                         <div class="9u 12u(mobilep)">
+                                            <br>Last Name<br>
                                             <input type="text" name="lastName" id="name" value="<?php echo $row['lastName']; ?>" placeholder="last Name" required/>
 										</div>
 
@@ -106,8 +97,10 @@
                                     
                                     
                                                                    <div class="row 50%">
-                                         <br>Email<br>
+                                         
                                         <div class="9u 12u(mobilep)">
+                                            //property would not change the email
+                                            <br>Email<br>
                                             <input type="text" name="email" id="name" value="<?php echo $row['email']; ?>" placeholder="email" required/>
 										</div>
 

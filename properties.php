@@ -90,7 +90,7 @@
                                                     $propertyList .= "
                                                                 <section class='6u 12u(narrower)'>
                                                                     <div class='box post'>
-                                                                        <a href='listing.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+            <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
                                                                         <div class='inner'>
                                                                             <strong>$".$row['price'] . "</strong></br>
                                                                             ".$row['bedroom']." Bedrooms</br>

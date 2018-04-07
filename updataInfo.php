@@ -12,6 +12,11 @@ if($connection->connect_error){
     header("Location: profile.php");
     
 }
+
+if ( $_SESSION['logged_in'] != 1 ) {
+  echo "You must log in before editing your Info!";
+  header("location: loginsignup.html");    
+}
 else{
 
 
@@ -32,7 +37,7 @@ else{
     
 
     
-    $sql = "UPDATE `users` SET `firstName`='".$firstName."',`lastName`='".$lastName."' WHERE `id` = $id ";
+    $sql = "UPDATE `users` SET `firstName`='".$firstName."',`lastName`='".$lastName."',`email`='".$email."' WHERE `id` = $id ";
     
 
     //add to the database
@@ -40,11 +45,12 @@ else{
 
     $_SESSION["firstName"] = $firstName;
     $_SESSION["lastName"] = $lastName;
+    $_SESSION["email"] = $email;
     
 
     
     
-    echo $firstName . " ".$lastName ." ".$email ." with id ". $id  ;
+   // echo $firstName . " ".$lastName ." ".$email ." with id ". $id  ;
 
 header("Location: profile.php");	
 
