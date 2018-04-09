@@ -1,6 +1,4 @@
-<?php
-session_start();
-
+<?
 session_start();
 include 'MySQL_Functions.php';
 $connection = getMySQLConnection();
@@ -9,25 +7,19 @@ $connection = getMySQLConnection();
 //if a connection cannot be established, dies
 if($connection->connect_error){
 	$connection->close;
-	die( "No MySQL server" );
+	die( "Server is Unavailable" );
     header("Location: profile.php");
     
 }
 else{
-
-
     
-   // $userID =  we should use user ID
-    $email = $_SESSION['email'];
-    
-    
+    $userID = $_SESSION['id'];
     $propertyName = mysqli_real_escape_string($connection, $_POST['propertyName']);
     $country = mysqli_real_escape_string($connection, $_POST['country']);
     $address = mysqli_real_escape_string($connection, $_POST['address']);
     $city = mysqli_real_escape_string($connection, $_POST['city']);
     $state = mysqli_real_escape_string($connection, $_POST['state']);
     $zipcode = mysqli_real_escape_string($connection, $_POST['zipcode']);
-    $phone = mysqli_real_escape_string($connection, $_POST['phone']);
     $type = mysqli_real_escape_string($connection, $_POST['type']);
     $size = mysqli_real_escape_string($connection, $_POST['size']);
     $bedroom = mysqli_real_escape_string($connection, $_POST['bedroom']);
@@ -40,6 +32,7 @@ else{
     $problem = mysqli_real_escape_string($connection, $_POST['problem']);
 
 
+    
     //use to check type $type = $_FILES ['file']['type'];
 
 /*
@@ -64,22 +57,15 @@ else{
     }
 
 */
-
-
-
-
-    
-   $sql = "INSERT INTO `property`(`email`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `phone`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `contraction`, `problem`) VALUES ('$email','$propertyName','$country','$address','$city','$state','$zipcode','$phone','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem')";
-    
+   $sql = "INSERT INTO `property`(`userID`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `construction`, `problem`, `rented`, `flagCount`) VALUES ('$userID','$propertyName','$country','$address','$city','$state','$zipcode','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem', 0, 0)";
+>>>>>>> Notifications
     
 
     //add to the database
     $connection -> query($sql);
 
 
-
-header("Location: profile.php");	
-
+header("Location: profile.php");
     
 }
 

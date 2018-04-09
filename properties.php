@@ -18,6 +18,19 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+
+    <style>
+        #submitFilter, #resetFilter{
+            width: 5em;
+            height: 2em;
+            margin-top: 8px;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
+    </style>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -33,15 +46,12 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="current"><a href="properties.php">Properties</a></li>
-
-                                <li>
-                                    <!-- if the user is logged in, it will show the profile -->
-                                    <?php
-                                        if(isset($_SESSION['email'])) {
-                                            echo "<a href='profile.php'>Profile</a>";                     
-                                        }
-                                     ?>
-                                </li>
+                                <!-- if the user is logged in, it will show the profile -->
+                                <?php
+                                    if(isset($_SESSION['email'])) {
+                                        echo "<li><a href='profile.php'>Profile</a></li>";
+                                    }
+                                 ?>
                                 <li>
                                     <!-- if the user is logged in, it will give them the option to log out -->
                                     <?php
@@ -57,10 +67,6 @@
 
 				</div>
 
-
-                            
-                            
-                            
 			<!-- Main -->
 				<section class="wrapper style1">
 					<div class="container">
@@ -69,71 +75,100 @@
 							<!-- Content -->
 							<div class="8u  12u(narrower) important(narrower)">
 								<div id="content">
-                                    
+
 									<!-- Content -->
-                                    <article>
-                                        <header>
-                                            <h2>Search Through Listed Properites</h2>
-                                             <p>Filter</p>
-                                        </header>
-                                        <!-- PHP to generate the viewing of properties posted-->
-                                        <?php
-                                            $connection = getMySQLConnection();
-                                            $sql = "SELECT * FROM property";
-                                            $propertyInfo = $connection -> query($sql);
-                                            $propertyList = "
-                                                        <section class='wrapper style1'>
-                                                            <div class='container'>
-                                                                <div class='row'>";
-                                            if($propertyInfo -> num_rows > 0) {
-                                                while($row = $propertyInfo -> fetch_assoc()) {
-                                                    $propertyList .= "
-                                                                <section class='6u 12u(narrower)'>
-                                                                    <div class='box post'>
-                                                                        <a href='listing.php?address=".$row['address']."&proprtyID=".$row['proprtyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
-                                                                        <div class='inner'>
-                                                                            <strong>$".$row['price'] . "</strong></br>
-                                                                            ".$row['bedroom']." Bedrooms</br>
-                                                                            ".$row['address']."</br>
-                                                                            ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
-                                                                        </div>
-                                                                    </div>
-                                                                </section>";
-                                                            
-                                                }
-                                                $propertyList .= "
-                                                        </div>
-                                                    </div>
-                                                </section>";
-                                            } else {
-                                                $propertyList .= "
-                                                <section class='wrapper style1'>
-                                                    <div class='container'>
-                                                        <div class='row'>
-                                                            <section class='6u 12u(narrower)'>
-                                                                <div class='box post'>
-                                                                    <div class ='inner'>
-                                                                        <h3>There are no properties to be seen</h3>
-                                                                     </div>
-                                                                </div>
-                                                            </section>
-                                                        </div>
-                                                    </div>
-                                                </section>";
-                                            }
-                                            // show the generated list
-                                            echo $propertyList;
-                                        ?>
-                                    </article>
+                                  <article>
+                                      <header>
+                                          <h2>Search Through Listed Properites</h2>
+                                          <form action="#" method="get" id="filterForm">
+                                              <div id = "inputContainer">
+                                                  Min Price:
+                                                  <input type="number" name="minPrice" style= "width: 10%;" value="">
+                                                  Max Price:
+                                                  <input type="number" name="maxPrice" style= "width: 10%;" value="">
+                                                  <br>
+                                                  <input type="submit" name="submitFilter" value="Filter" id = "submitFilter">
+                                                  <input type="submit" name="resetFilter" value = "Reset" id = "resetFilter">
+                                              </div>
+                                          </form>
+                                      </header>
+                                      <!-- PHP to generate the viewing of properties posted-->
+                                      <?php
+                                          $connection = getMySQLConnection();
+
+                                          if(isset($_GET["submitFilter"])) {
+                                              if($_GET["minPrice"] != "") {
+                                                  $min = $_GET["minPrice"];
+                                              } else {
+                                                  $min = 0;
+                                              }
+                                              
+                                              if($_GET["maxPrice"] != "") {
+                                                  $max = $_GET["maxPrice"];
+                                              } else {
+                                                  $max = 100000000;
+                                              }
+                                              
+                                              $sql = "SELECT * FROM property WHERE price >= '$min' AND price <= '$max'";
+                                              $propertyInfo = $connection -> query($sql);
+                                              
+                                          } elseif(isset($_GET["resetFilter"]) || !isset($_GET['resetFilter'])) {
+                                              $sql = "SELECT * FROM property";
+                                              $propertyInfo = $connection -> query($sql);
+                                          }
+                                         $propertyList = "
+                                                      <section class='wrapper style1'>
+                                                          <div class='container'>
+                                                              <div class='row'>";
+                                          if($propertyInfo -> num_rows > 0) {
+                                              while($row = $propertyInfo -> fetch_assoc()) {
+                                                  $propertyList .= "
+                                                              <section class='6u 12u(narrower)'>
+                                                                  <div class='box post'>
+                                                                      <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                                      <div class='inner'>
+                                                                          <strong>$".$row['price'] . "</strong></br>
+                                                                          ".$row['bedroom']." Bedrooms</br>
+                                                                          ".$row['address']."</br>
+                                                                          ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                                      </div>
+                                                                  </div>
+                                                              </section>";
+
+                                              }
+                                              $propertyList .= "
+                                                      </div>
+                                                  </div>
+                                              </section>";
+                                          } else {
+                                              $propertyList .= "
+                                              <section class='wrapper style1'>
+                                                  <div class='container'>
+                                                      <div class='row'>
+                                                          <section class='6u 12u(narrower)'>
+                                                              <div class='box post'>
+                                                                  <div class ='inner'>
+                                                                      <h3>There are no properties to be seen</h3>
+                                                                   </div>
+                                                              </div>
+                                                          </section>
+                                                      </div>
+                                                  </div>
+                                              </section>";
+                                          }
+                                          // show the generated list
+                                          echo $propertyList;
+                                      ?>
+                                  </article>
 								</div>
 							</div>
 
 						</div>
 					</div>
 				</section>
-                            
-   
-                            
+
+
+
 
 
 			<!-- Footer -->

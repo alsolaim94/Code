@@ -1,14 +1,28 @@
 <?php
 
 session_start();
-include 'MySQL_Functions.php';
+include '../MySQL_Functions.php';
 
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
   echo "You must log in before viewing your profile page!";
-  header("location: loginsignup.html");    
+  header("location: ../loginsignup.html");    
 }
 else {
+    
+    $connection = getMySQLConnection();
+    $sql = "SELECT * FROM users WHERE email = ".$_GET["email"];
+    $results = $connection -> query($sql);
+
+    $renterEmail = $_GET["email"];
+    $_SESSION['renterEmail'] = $renterEmail;
+
+
+    // array that holds query results
+//    $row = $results -> fetch_assoc();
+    
+    
+    
     $email = $_SESSION['email'];
     $firstName = $_SESSION['firstName'];
     $lastName = $_SESSION['lastName'];
@@ -16,7 +30,11 @@ else {
     $id = $_SESSION['id'];
 }
 
-
+echo $renterEmail;
+echo "  ";
+echo $_SESSION['renterEmail'];
+echo "  ";
+echo $_SESSION['email'];
 ?>
 
 <!DOCTYPE HTML>
@@ -31,21 +49,9 @@ else {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="assets/js/notification.js"></script>
-        <style>
-            .notiElement {
-                border: 4px solid rgb(70, 193, 249);
-                border-radius: 25px;
-                margin-bottom: 1em; 
-                padding: 5px;
-                width: 75%;
-            }
-            .notiElement:hover {
-                cursor: pointer;
-            }
-        </style>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -54,15 +60,15 @@ else {
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.php" id="logo">Akari</a></h1>
+						<h1><a href="../index.php" id="logo">Akari</a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.php">Home</a></li>
-								<li><a href="properties.php">Properties</a></li>
-                                <li class="current"><a href="profile.php">Profile</a></li>
-								<li id="logout"><a href="logout.php">Log Out</a></li>
+								<li><a href="../index.php">Home</a></li>
+								<li><a href="../properties.php">Properties</a></li>
+                                <li class="current"><a href="../profile.php">Profile</a></li>
+								<li><a href="../logout.php">Log Out</a></li>
 							</ul>
 						</nav>
 
@@ -74,43 +80,13 @@ else {
 						<div id="content">
 
 							<!-- Content -->
-                                <header>
-										<h2>
-                                            <?php
-                                                echo "Welcome Back " . $firstName . " " . $lastName. "!";
-                                            ?>
-                                        
-                                        </h2>
 
-                                        			<ul class="actions">
-                                                        
-                                                        		    	<li>
-		      		<a href="editInfo.php?id=<?php echo $id; ?>" class="button"> Updata Your Info</a>
-		    	</li>
-		    	<li>
-		      		 <a href="addProperty.php" class="button">Add New Property</a>
-		    	</li>
-                                                        		    	<li>
-		      		 <a href="payment.php" class="button">Payment</a>
-		    	</li>
-                                                        
-                                                                                                                		    	<li>
-		      		 <a href="startTenancy/chooseRenter.php" class="button">Make New Tenancy</a>
-		    	</li>
-                                                        
-                                                      
+								
 
-		  	</ul>
-                                       
-                                        
-                                        
-
-
-									</header>
 
                             
                             							<!-- Content -->
-							<div class="8u  12u(narrower) important(narrower)">
+						
 								<div id="content">
 
 								
@@ -118,19 +94,30 @@ else {
                                     
                                     <!-- Content -->
 
-										<article>
-	
 											<section class="wrapper style1">
+                                                
+
+
+
                                                 										<header>
-												<h2>Your Listed of Properites</h2>
+                                                                                            
+                                               <h2>Second step: Choice the Property you want to rent</h2>                                           
+
+
+
+
+                                                                                            <br>
+                                                                                     
+                                                                                            
 											</header>
+  
 
                                                 
                                                  <!-- PHP to generate the viewing of properties posted-->
                                         <?php
                                             
                                             $connection = getMySQLConnection();
-                                            $sql = "SELECT * FROM property WHERE userID = $id";
+                                            $sql = "SELECT * FROM property WHERE email = '$email'";
                                             $propertyInfo = $connection -> query($sql);
                                             $propertyList = "
                                                         
@@ -140,14 +127,13 @@ else {
                                                 while($row = $propertyInfo -> fetch_assoc()) {
                                                     $propertyList .= "
                                                                 <section class='6u 12u(narrower)'>
-
                                                        <!--              <div class='box post'> -->
                                                                     
                                                                     
-                    <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+ <a href='startTenancy.php?propertyID=".$row['propertyID']."' class='image left'><img src='../images/house.jpg' alt='' /></a>
                                                                
             
-                <a href='editProperties.php?address=".$row['address']."&propertyID=".$row['propertyID']."'class='button alt' >Edit </a>
+                <a href='../editProperties.php?propertyID=".$row['propertyID']."'class='button alt' >Edit </a>
                                                                         
                                                                         <div class='inner'>
                                                                             <strong>$".$row['price'] . "</strong></br>
@@ -164,35 +150,38 @@ else {
 
                                             } else {
                                                 $propertyList .= "
-                                            <h3>There are no properties to be seen</h3>
+                                            <h3 style='color:red;'>There are no properties to be seen</h3>
                                                 ";
                                             }
                                             // show the generated list
                                             echo $propertyList;
+                                            echo '<a href="../addProperty.php" class="button">Add New Property</a>';
+                                            
+                                                
                                         ?>
 
 
                                                 
                                             </section>
-										</article>
-                                        <!-- Show User's Notifications -->
-                                        <article>
-                                            <header>
-                                                <h2 style="display: inline; margin-right: 2em;">Your Notifications (<span class='count'></span> Unread)</h2>
-                                            </header>
-                                            <div>
-                                                <ul class='dropdown-menu'></ul>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-
-								
-									
+							
 
 								</div>
-							</div>
+						
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+	
+
 						</div>
 					</div>
 				</section>

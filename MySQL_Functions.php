@@ -6,13 +6,14 @@
 		$database = "akari";
 
 		$connection = new mysqli($servername, $username, $password, $database);
-		
+
 		return $connection;
-	
-	
+
+
 	}
-	
-	
+
+
+
 
 
 
