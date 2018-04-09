@@ -130,7 +130,7 @@
                                   $finalInfo = "Property Type: " . $row['type'] . "<br>" .
                                                "Price: $" . $row['price'] . " / " . $row['lease'] . "<br>" .
                                                "Date Available: " . $row['availability'] . "<br>" .
-                                               "Contraction: " . $row['contraction'] . "<br>" .
+                                               "Construction: " . $row['construction'] . "<br>" .
                                                "Problems: " . $row['problem'];
                                   echo $finalInfo;
                               ?>
@@ -185,7 +185,7 @@
                                                 <div class='form-group'>
                                                     <label>Enter Comment</label>
                                                     <textarea name='comment' id='comment' class='form-control' rows='5'></textarea>
-                                                    <input type='hidden' name = 'toEmail' value='".$row['email']."'>
+                                                    <input type='hidden' name = 'toID' value='".$row['userID']."'>
                                                 </div>
                                                 <div class='form-group'>
                                                     <input type='submit' name='post' id='post' class='btn btn-info' value='Send' />

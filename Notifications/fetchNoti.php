@@ -8,11 +8,11 @@ $connection = getMySQLConnection();
 if(isset($_POST['view'])){
     
     if($_POST["view"] != '') {
-        $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_status=0 AND comment_to='".$_SESSION['email']."'";
+        $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_status=0 AND comment_to='".$_SESSION['id']."'";
         $connection -> query($updateSQL);
     }
 
-    $sql = "SELECT * FROM comments WHERE comment_to = '".$_SESSION['email']."' ORDER BY comment_id DESC LIMIT 5";
+    $sql = "SELECT * FROM comments WHERE comment_to = '".$_SESSION['id']."' ORDER BY comment_id DESC LIMIT 5";
     $result = $connection -> query($sql);
     $output = "";
 
@@ -58,7 +58,7 @@ if(isset($_POST['view'])){
         $output .= "<li style='color:rgb(70, 193, 249)'><strong>No New Notifications</strong></li>";
     }
 
-    $status_query = "SELECT * FROM comments WHERE comment_status=0 AND comment_to='".$_SESSION['email']."'";
+    $status_query = "SELECT * FROM comments WHERE comment_status=0 AND comment_to='".$_SESSION['id']."'";
     $result_query = $connection -> query($status_query);
     $count = $result_query -> num_rows;
 

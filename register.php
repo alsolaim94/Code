@@ -30,7 +30,11 @@ if($userExists -> num_rows === 0) {
     //add to the database
     $connection -> query($sql);
     
+    $id = mysqli_insert_id($connection);
+    
+    
     session_start();
+    $_SESSION['id'] = $id;
     $_SESSION['email'] = $email;
     $_SESSION['firstName'] = $firstName;
     $_SESSION['lastName'] = $lastName;

@@ -106,10 +106,6 @@
 											<input type="text" name="zipcode" id="name" placeholder="Zip Code" required/>
 										</div>
                                         
-                                        <div class="9u 12u(mobilep)">
-											<input type="tel" name="phone"  placeholder="Phone number" required/>
-										</div>
-                                        
                                     </div>
                                     
                              <div class="row 50%">
@@ -190,7 +186,7 @@
                                     
                 <div class="row 50%">
                                  
-                                              <br>Contraction<br>               
+                                              <br>Construction<br>               
                                         
                                         <div class="10u 12u(mobilep)">
 											<input type="data" name="contraction" id="date" placeholder="YYYY"  />

@@ -13,6 +13,7 @@ else {
     $firstName = $_SESSION['firstName'];
     $lastName = $_SESSION['lastName'];
     $active = $_SESSION['active'];
+    $id = $_SESSION['id'];
 }
 
 
@@ -61,7 +62,7 @@ else {
 								<li><a href="index.php">Home</a></li>
 								<li><a href="properties.php">Properties</a></li>
                                 <li class="current"><a href="profile.php">Profile</a></li>
-								<li><a href="logout.php">Log Out</a></li>
+								<li id="logout"><a href="logout.php">Log Out</a></li>
 							</ul>
 						</nav>
 
@@ -95,7 +96,7 @@ else {
                                                 <!-- PHP to generate the viewing of properties posted-->
                                                 <?php
                                                     $connection = getMySQLConnection();
-                                                    $sql = "SELECT * FROM property WHERE email = '$email'";
+                                                    $sql = "SELECT * FROM property WHERE userID = '$id'";
                                                     $propertyInfo = $connection -> query($sql);
                                                     $propertyList = "
                                                                 <section class='wrapper style1'>
