@@ -1,6 +1,9 @@
 <?php
     session_start();
-
+if ( $_SESSION['logged_in'] != 1 ) {
+  echo "You must log in before viewing your profile page!";
+  header("location: loginsignup.html");    
+}
 ?>
 
 <!DOCTYPE HTML>
