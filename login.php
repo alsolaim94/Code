@@ -26,6 +26,7 @@ if($userExists -> num_rows == 0) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['firstName'] = $user['firstName'];
         $_SESSION['lastName'] = $user['lastName'];
+        $_SESSION['id'] = $user['id'];
         //0 until user activates their account with verify.php
         $_SESSION['active'] = $user['active']; 
         // So we know the user has logged in

@@ -3,7 +3,7 @@
     include "MySQL_Functions.php";
 
     $connection = getMySQLConnection();
-    $sql = "SELECT * FROM property WHERE propertyID = ".$_GET["propertyID"]." AND address = '".$_GET["address"]."'";
+    $sql = "SELECT * FROM property WHERE propertyID = ".$_GET["propertyID"];
     $results = $connection -> query($sql);
 
     // array that holds query results
@@ -174,6 +174,10 @@
                                      "<footer>
                                         <a href='loginsignup.html' class='button'>Log In</a>
                                     </footer>";
+                            }
+                            //if the user view his own property 
+                            else if($row['email'] == $_SESSION['email']) {
+                                 echo "<p>You own this Property<br></p>";  
                             }
                             else {
                                 $notiForm = "

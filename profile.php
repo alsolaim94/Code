@@ -140,6 +140,112 @@ else {
                                         </article>
                                     </div>
                                 </div>
+
+								
+									<header>
+										<h2>
+                                            <?php
+                                                echo "Welcome Back " . $firstName . " " . $lastName. "!";
+                                            ?>
+                                        
+                                        </h2>
+
+                                        			<ul class="actions">
+                                                        
+                                                        		    	<li>
+		      		<a href="editInfo.php?id=<?php echo $id; ?>" class="button"> Updata Your Info</a>
+		    	</li>
+		    	<li>
+		      		 <a href="addProperty.php" class="button">Add New Property</a>
+		    	</li>
+                                                        		    	<li>
+		      		 <a href="payment.php" class="button">Payment</a>
+		    	</li>
+                                                        
+                                                                                                                		    	<li>
+		      		 <a href="startTenancy/chooseRenter.php" class="button">Make New Tenancy</a>
+		    	</li>
+                                                        
+                                                      
+
+		  	</ul>
+                                       
+                                        
+                                        
+
+
+									</header>
+
+                            
+                            							<!-- Content -->
+							<div class="8u  12u(narrower) important(narrower)">
+								<div id="content">
+
+								
+                                    
+                                    
+                                    <!-- Content -->
+
+										<article>
+	
+											<section class="wrapper style1">
+                                                										<header>
+												<h2>Your Listed of Properites</h2>
+											</header>
+
+                                                
+                                                 <!-- PHP to generate the viewing of properties posted-->
+                                        <?php
+                                            
+                                            $connection = getMySQLConnection();
+                                            $sql = "SELECT * FROM property WHERE email = '$email'";
+                                            $propertyInfo = $connection -> query($sql);
+                                            $propertyList = "
+                                                        
+                                                            <div class='container'>
+                                                                <div class='row'>";
+                                            if($propertyInfo -> num_rows > 0) {
+                                                while($row = $propertyInfo -> fetch_assoc()) {
+                                                    $propertyList .= "
+                                                                <section class='6u 12u(narrower)'>
+                                                       <!--              <div class='box post'> -->
+                                                                    
+                                                                    
+                    <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                               
+            
+                <a href='editProperties.php?address=".$row['address']."&propertyID=".$row['propertyID']."'class='button alt' >Edit </a>
+                                                                        
+                                                                        <div class='inner'>
+                                                                            <strong>$".$row['price'] . "</strong></br>
+                                                                            ".$row['bedroom']." Bedrooms</br>
+                                                                            ".$row['address']."</br>
+                                                                            ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                                            
+                                                                            </section>
+                                                                        </div>
+                                                                    </div>
+                                                                ";
+                                                            
+                                                }
+
+                                            } else {
+                                                $propertyList .= "
+                                            <h3>There are no properties to be seen</h3>
+                                                ";
+                                            }
+                                            // show the generated list
+                                            echo $propertyList;
+                                        ?>
+
+
+                                                
+                                            </section>
+										</article>
+
+								</div>
+							</div>
+                            
 						</div>
 					</div>
 				</section>

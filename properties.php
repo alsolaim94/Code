@@ -77,6 +77,7 @@
 								<div id="content">
 
 									<!-- Content -->
+<<<<<<< HEAD
                                   <article>
                                       <header>
                                           <h2>Search Through Listed Properites</h2>
