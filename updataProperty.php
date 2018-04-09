@@ -7,22 +7,22 @@ $connection = getMySQLConnection();
 
 //if a connection cannot be established, dies
 if($connection->connect_error){
-	$connection->close;
-	die( "No MySQL server" );
+    $connection->close;
+    die( "No MySQL server" );
     header("Location: profile.php");
-    
+
 }
 else{
 
 
-    
-   // $userID =  we should use user ID
-//    $proprtyID = $_SESSION['proprtyID'];
-    
-    $proprtyID = $_SESSION['proprtyID'];
-    
-    
-    
+
+    // $userID =  we should use user ID
+    //    $propertyID = $_SESSION['propertyID'];
+
+    $propertyID = $_SESSION['propertyID'];
+
+
+
     $email = $_SESSION['email'];
     $propertyName = mysqli_real_escape_string($connection, $_POST['propertyName']);
     $country = mysqli_real_escape_string($connection, $_POST['country']);
@@ -45,28 +45,28 @@ else{
 
 
 
-    
 
-    
-    $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`phone`='$phone',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`contraction`='$contraction',`problem`='$problem' WHERE `proprtyID` = '$proprtyID'";
-    
+
+
+    $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`phone`='$phone',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`contraction`='$contraction',`problem`='$problem' WHERE `propertyID` = '$propertyID'";
+
 
     //add to the database
     $connection -> query($sql);
 
 
-    
-    
+
+
     print $price;
-    
-    print $proprtyID;
-    
-    
-    
 
-header("Location: profile.php");	
+    print $propertyID;
 
-    
+
+
+
+    header("Location: profile.php");	
+
+
 }
 
 

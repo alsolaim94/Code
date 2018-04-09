@@ -14,11 +14,11 @@ if($userExists -> num_rows == 0) {
             alert('Email is not Registered');
             window.location.href='loginsignup.html';
           </script>";
-    
-  // user does exists, continue log in    
+
+    // user does exists, continue log in    
 } else {
     $user = $userExists -> fetch_assoc();
-    
+
     //if the password is correct
     if(password_verify($_POST['password'], $user['password'])) {
         session_start();
@@ -31,23 +31,23 @@ if($userExists -> num_rows == 0) {
         $_SESSION['active'] = $user['active']; 
         // So we know the user has logged in
         $_SESSION['logged_in'] = true; 
-        
+
         header("location: profile.php");
-        
-      // password is inccorect
+
+        // password is inccorect
     } else {
         echo "<script>
                 alert('Password is Incorrect');
                 window.location.href='loginsignup.html';
              </script>";
     }
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
 }
 
 

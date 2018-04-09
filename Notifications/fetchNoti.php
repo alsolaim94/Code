@@ -4,9 +4,9 @@ session_start();
 
 include "../MySQL_Functions.php";
 $connection = getMySQLConnection();
- 
+
 if(isset($_POST['view'])){
-    
+
     if($_POST["view"] != '') {
         $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_status=0 AND comment_to='".$_SESSION['id']."'";
         $connection -> query($updateSQL);
@@ -34,6 +34,7 @@ if(isset($_POST['view'])){
                               <strong>Contact Info: </strong><br />
                               <small>Name: ".$contactRow['firstName']." ".$contactRow['lastName']."</small><br />
                               <small>Email: ".$row['comment_from']."</small><br />
+                              <small>Phone: ".$contactRow['phone']."</small>
                           </div>    
                       </li>
                 "; 
@@ -49,6 +50,7 @@ if(isset($_POST['view'])){
                               <strong>Contact Info: </strong><br />
                               <small>Name: ".$contactRow['firstName']." ".$contactRow['lastName']."</small><br />
                               <small>Email: ".$row['comment_from']."</small><br />
+                              <small>Phone: ".$contactRow['phone']."</small>
                           </div> 
                       </li>
                 ";    
@@ -63,10 +65,10 @@ if(isset($_POST['view'])){
     $count = $result_query -> num_rows;
 
     $data = array(
-       'notification' => $output,
-       'unseen_notification'  => $count
+        'notification' => $output,
+        'unseen_notification'  => $count
     );
-    
+
     echo json_encode($data);
 } 
 

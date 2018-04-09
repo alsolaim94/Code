@@ -58,7 +58,6 @@ else{
 
 */
    $sql = "INSERT INTO `property`(`userID`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `construction`, `problem`, `rented`, `flagCount`) VALUES ('$userID','$propertyName','$country','$address','$city','$state','$zipcode','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem', 0, 0)";
->>>>>>> Notifications
     
 
     //add to the database

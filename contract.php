@@ -21,7 +21,7 @@ $CLIENT_SIGNATURE = isset($_POST['client_signature']) ? $_POST['client_signature
 if (substr( $CLIENT_SIGNATURE, 0, 22 ) === 'data:image/png;base64,') {
     $CLIENT_SIGNATURE = '<img id="hk" src="' . htmlspecialchars($CLIENT_SIGNATURE) . '" >';
 } else {
-  $CLIENT_SIGNATURE = null;
+    $CLIENT_SIGNATURE = null;
 }
 
 $lines = file(__FILE__);
@@ -232,7 +232,7 @@ if ($CLIENT_SIGNATURE) { $FOOTER_SIGNED_PHP ='
   $fileName = substr($phpName , 0, -4);
   $htmlName = $fileName.".html";
   $pdfName = $fileName.".pdf";
-  ?>
+?>
 
   <div id="date-ip">
     <strong>Signed on:</strong> <?php echo date("j F Y"); ?>
@@ -284,59 +284,59 @@ function generatePdf() {
 
 </body>
 </html>';
-} else $FOOTER_SIGNED_PHP = null;
+                       } else $FOOTER_SIGNED_PHP = null;
 
 
 if($CLIENT_SIGNATURE==null) {
-  if ( $selfDelete && file_exists($htmlName) ) {
-    header('Location: '.$htmlName.'#hk');
-    die();
-  }
-  /** Waiting for Client to sign: include signature elements and javascript **/
-  echo $HEADER;
-  echo $CONTRACT_HTML;
-  echo $DEV_SIGNATURE;
-  eval (' ?>'. $FOOTER_UNSIGNED .'<?php ');
+    if ( $selfDelete && file_exists($htmlName) ) {
+        header('Location: '.$htmlName.'#hk');
+        die();
+    }
+    /** Waiting for Client to sign: include signature elements and javascript **/
+    echo $HEADER;
+    echo $CONTRACT_HTML;
+    echo $DEV_SIGNATURE;
+    eval (' ?>'. $FOOTER_UNSIGNED .'<?php ');
 }
 else {
-  /** Contract was just signed: put $CLIENT_SIGNATURE and the other parts in the .html file **/
-  file_put_contents($htmlName, $HEADER);
-  file_put_contents($htmlName, $CONTRACT_HTML, FILE_APPEND | LOCK_EX);
-  file_put_contents($htmlName, $DEV_SIGNATURE, FILE_APPEND | LOCK_EX);
-  file_put_contents($htmlName, $CLIENT_SIGNATURE, FILE_APPEND | LOCK_EX);
-  ob_start();
-  eval($FOOTER_SIGNED_PHP); // https://cgd.io/2008/how-to-execute-php-code-in-a-php-string/
-  $FOOTER_SIGNED_COMPILED = ob_get_contents();
-  ob_end_clean();
-  file_put_contents($htmlName, $FOOTER_SIGNED_COMPILED, FILE_APPEND | LOCK_EX);
+    /** Contract was just signed: put $CLIENT_SIGNATURE and the other parts in the .html file **/
+    file_put_contents($htmlName, $HEADER);
+    file_put_contents($htmlName, $CONTRACT_HTML, FILE_APPEND | LOCK_EX);
+    file_put_contents($htmlName, $DEV_SIGNATURE, FILE_APPEND | LOCK_EX);
+    file_put_contents($htmlName, $CLIENT_SIGNATURE, FILE_APPEND | LOCK_EX);
+    ob_start();
+    eval($FOOTER_SIGNED_PHP); // https://cgd.io/2008/how-to-execute-php-code-in-a-php-string/
+    $FOOTER_SIGNED_COMPILED = ob_get_contents();
+    ob_end_clean();
+    file_put_contents($htmlName, $FOOTER_SIGNED_COMPILED, FILE_APPEND | LOCK_EX);
 
-  // Email client & dev, delete php, redirect to html
-  if ($clientEmail) {
-    $headers = "From: " . $devEmail . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-    $msg = 'The contract was signed. You can <a href="' .getUrl(). '">view or download this contract from here</a>.';
-    mail($clientEmail,'Contract signed', $msg, $headers);
-  }
-  if ($devEmail) {
-    $headers = "From: " . $clientEmail . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-    $msg = '<p>A new contract was signed. You can <a href="' .getUrl(). '">view or download this contract from here</a>.</p>';
-    $msg.= 'The contract was signed by: ' .$clientEmail;
-    mail($devEmail,'Contract signed!', $msg, $headers);
-  }
-  if ($selfDelete) unlink(__FILE__);
-  header('Location: '.$htmlName.'#hk');
-  die();
+    // Email client & dev, delete php, redirect to html
+    if ($clientEmail) {
+        $headers = "From: " . $devEmail . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $msg = 'The contract was signed. You can <a href="' .getUrl(). '">view or download this contract from here</a>.';
+        mail($clientEmail,'Contract signed', $msg, $headers);
+    }
+    if ($devEmail) {
+        $headers = "From: " . $clientEmail . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $msg = '<p>A new contract was signed. You can <a href="' .getUrl(). '">view or download this contract from here</a>.</p>';
+        $msg.= 'The contract was signed by: ' .$clientEmail;
+        mail($devEmail,'Contract signed!', $msg, $headers);
+    }
+    if ($selfDelete) unlink(__FILE__);
+    header('Location: '.$htmlName.'#hk');
+    die();
 }
 
 // Get the current file URL and replaces the .php extension with .html
 function getUrl() {
-  $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
-  $url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
-  $url .= $_SERVER["REQUEST_URI"];
-  $url = substr($url,0,-4) . '.html';
-  return $url;
+    $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+    $url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
+    $url .= $_SERVER["REQUEST_URI"];
+    $url = substr($url,0,-4) . '.html';
+    return $url;
 }
 ?>

@@ -1,317 +1,313 @@
 <?php
-    session_start();
-    include "MySQL_Functions.php";
+session_start();
+include "MySQL_Functions.php";
 
-    $connection = getMySQLConnection();
-    $sql = "SELECT * FROM property WHERE proprtyID = ".$_GET["proprtyID"]." AND address = '".$_GET["address"]."'";
-    $results = $connection -> query($sql);
+$connection = getMySQLConnection();
+$sql = "SELECT * FROM property WHERE propertyID = ".$_GET["propertyID"]." AND address = '".$_GET["address"]."'";
+$results = $connection -> query($sql);
 
-    $proprtyID = $_GET["proprtyID"];
+$propertyID = $_GET["propertyID"];
 
-    $_SESSION['proprtyID'] = $proprtyID;
+$_SESSION['propertyID'] = $propertyID;
 
 
-    // array that holds query results
-    $row = $results -> fetch_assoc();
-    
+// array that holds query results
+$row = $results -> fetch_assoc();
+
 ?>
 
 <!DOCTYPE HTML>
 <!--
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Arcana by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Search Properties</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	</head>
-	<body>
-		<div id="page-wrapper">
+    <head>
+        <title>Search Properties</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    </head>
+    <body>
+        <div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
+            <!-- Header -->
+            <div id="header">
 
-					<!-- Logo -->
-						<h1><a href="index.php" id="logo">Akari</a></h1>
+                <!-- Logo -->
+                <h1><a href="index.php" id="logo">Akari</a></h1>
 
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.php">Home</a></li>
-								<li class="current"><a href="properties.php">Properties</a></li>
-                                    <!-- if the user is logged in, it will show the profile -->
-                                <?php
-                                    if(isset($_SESSION['email'])) {
-                                        echo "<li><a href='profile.php'>Profile</a></li>";                     
-                                    }
-                                 ?>
-                                <!-- if the user is logged in, it will give them the option to log out -->
-                                <?php
-                                    if(isset($_SESSION['email'])) {
-                                        echo "<li><a href='logout.php'>Log Out</a></li>";
-                                    } else {
-                                        echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
-                                    }
-                                 ?>
-							</ul>
-						</nav>
-				</div>    
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li class="current"><a href="properties.php">Properties</a></li>
+                        <!-- if the user is logged in, it will show the profile -->
+                        <?php
+                        if(isset($_SESSION['email'])) {
+                            echo "<li><a href='profile.php'>Profile</a></li>";                     
+                        }
+                        ?>
+                        <!-- if the user is logged in, it will give them the option to log out -->
+                        <?php
+                        if(isset($_SESSION['email'])) {
+                            echo "<li><a href='logout.php'>Log Out</a></li>";
+                        } else {
+                            echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
+                        }
+                        ?>
+                    </ul>
+                </nav>
+            </div>    
 
-            
-            			<!-- Main -->
-				<section class="wrapper style1">
-					<div class="container">
-						<div id="content">
 
-							<!-- Content -->
+            <!-- Main -->
+            <section class="wrapper style1">
+                <div class="container">
+                    <div id="content">
 
-								<section class="12u 12u(narrower)">
-								<h3>Edit Property</h3>
-								<form action="updataProperty.php" method='post'>
-									<div class="row 50%">
+                        <!-- Content -->
 
-                                        <br>Name<br>
-                                        <div class="9u 12u(mobilep)">
-                                            <input type="text" name="propertyName" id="name" value="<?php echo $row['propertyName']; ?>" placeholder="Name your Property" required/>
-										</div>
+                        <section class="12u 12u(narrower)">
+                            <h3>Edit Property</h3>
+                            <form action="updataProperty.php" method='post'>
+                                <div class="row 50%">
 
-                                        </div>
-                                    
-                                    <div class="row 50%">
-                                              <br>Address<br>
-
-                                        <div class="9u 12u(mobilep)">
-											<input type="text" name="country" id="name" value="<?php echo $row['country']; ?>" placeholder="Country" required/>
-										</div>
-                                        
-                                            <div class="9u 12u(mobilep)">
-                                            <input type="text" name="address" id="name" value="<?php echo $row['address']; ?>" placeholder="Street address" required/>
-										</div>
-                                        
-                                            <div class="4u 12u(mobilep)">
-											<input type="text" name="city" id="name" value="<?php echo $row['city']; ?>" placeholder="City" required/>
-                                        </div>
-                                        
-                                           <div class="4u 12u(mobilep)">
-											<input type="text" name="state" id="name" value="<?php echo $row['state']; ?>" placeholder="State / Province / Region" required/>
-										</div>
-                                    
-                                        <div class="4u 12u(mobilep)">
-											<input type="text" name="zipcode" id="name" value="<?php echo $row['zipcode']; ?>" placeholder="Zip Code" required/>
-										</div>
-                                        
-                                        <div class="9u 12u(mobilep)">
-											<input type="tel" name="phone"  value="<?php echo $row['phone']; ?>" placeholder="Phone number" required/>
-										</div>
-                                        
+                                    <br>Name<br>
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="text" name="propertyName" id="name" value="<?php echo $row['propertyName']; ?>" placeholder="Name your Property" required/>
                                     </div>
-                                    
-                             <div class="row 50%">
-                                              <br>Type<br>
-                                           
-                                                                     <div class="9u 12u(mobilep)">
-                                    <input type="radio" name="type" value="residential" checked> Residential<br>
-                                                                     </div>
-                                       
-                                                                     <div class="9u 12u(mobilep)">
-                                    <input type="radio" name="type" value="commercial"> Commercial<br>
-                                                                     </div>
-                                                                     <div class="9u 12u(mobilep)">
-                                    <input type="radio" name="type" value="other"> Other<br><br>   
-                                                                     </div>
+
+                                </div>
+
+                                <div class="row 50%">
+                                    <br>Address<br>
+
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="text" name="country" id="name" value="<?php echo $row['country']; ?>" placeholder="Country" required/>
                                     </div>
-                                    
-                                    
-                                    
-                             <div class="row 50%">
-                                 
-                                              <br>Features<br>               
-                                        
-                                        <div class="10u 12u(mobilep)">
-											<input type="number" name="size" id="name" value="<?php echo $row['size']; ?>" placeholder="Size" required/>
-										</div>
-                                        
-                                            <div class="10u 12u(mobilep)">
-                                            <input type="number" name="bedroom" id="name" value="<?php echo $row['bedroom']; ?>" placeholder="Number of Bedrooms" required/>
-										</div>
-                             
-                                            <div class="10u 12u(mobilep)">
-											<input type="number" name="bathroom" id="name" value="<?php echo $row['bathroom']; ?>" placeholder="Extra Description" rows="5"/>
-                                        </div>
 
-										<div class="12u">
-											<textarea type="text" name="extra" id="name" value="<?php echo $row['extra']; ?>" rows="5"></textarea>
-										</div>
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="text" name="address" id="name" value="<?php echo $row['address']; ?>" placeholder="Street address" required/>
+                                    </div>
+
+                                    <div class="4u 12u(mobilep)">
+                                        <input type="text" name="city" id="name" value="<?php echo $row['city']; ?>" placeholder="City" required/>
+                                    </div>
+
+                                    <div class="4u 12u(mobilep)">
+                                        <input type="text" name="state" id="name" value="<?php echo $row['state']; ?>" placeholder="State / Province / Region" required/>
+                                    </div>
+
+                                    <div class="4u 12u(mobilep)">
+                                        <input type="text" name="zipcode" id="name" value="<?php echo $row['zipcode']; ?>" placeholder="Zip Code" required/>
+                                    </div>
+
+                                </div>
+
+                                <div class="row 50%">
+                                    <br>Type<br>
+
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="radio" name="type" value="residential" checked> Residential<br>
+                                    </div>
+
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="radio" name="type" value="commercial"> Commercial<br>
+                                    </div>
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="radio" name="type" value="other"> Other<br><br>   
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row 50%">
+
+                                    <br>Features<br>               
+
+                                    <div class="10u 12u(mobilep)">
+                                        <input type="number" name="size" id="name" value="<?php echo $row['size']; ?>" placeholder="Size" required/>
+                                    </div>
+
+                                    <div class="10u 12u(mobilep)">
+                                        <input type="number" name="bedroom" id="name" value="<?php echo $row['bedroom']; ?>" placeholder="Number of Bedrooms" required/>
+                                    </div>
+
+                                    <div class="10u 12u(mobilep)">
+                                        <input type="number" name="bathroom" id="name" value="<?php echo $row['bathroom']; ?>" placeholder="Extra Description" rows="5"/>
+                                    </div>
+
+                                    <div class="12u">
+                                        <textarea type="text" name="extra" id="name" value="<?php echo $row['extra']; ?>" rows="5"></textarea>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row 50%">
+                                    <br>Lease Term<br>
+
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="radio" name="lease" value="monthly" checked> Monthly<br>
+                                    </div>
+
+                                    <div class="9u 12u(mobilep)">
+                                        <input type="radio" name="lease" value="annually"> Annually<br>
+                                    </div>
+                                </div>
+
+                                <div class="row 50%">
+
+                                    <br>Price<br>               
+
+                                    <div class="10u 12u(mobilep)">
+                                        <input type="number" name="price" id="name" value="<?php echo $row['price']; ?>" placeholder="Price Per Month" required/>
 
                                     </div>
-                                    
-                                    
-                           <div class="row 50%">
-                                              <br>Lease Term<br>
-                                           
-                                      <div class="9u 12u(mobilep)">
-                                    <input type="radio" name="lease" value="monthly" checked> Monthly<br>
-                                                                     </div>
-                               
-                                                                     <div class="9u 12u(mobilep)">
-                                    <input type="radio" name="lease" value="annually"> Annually<br>
-                                                                     </div>
+
+                                </div>
+
+
+                                <div class="row 50%">
+                                    <br>Availability<br>   
+
+
+
+                                    <div class="10u 12u(mobilep)">
+                                        <input type="data" name="availability" id="date" value="<?php echo $row['availability']; ?>" placeholder="YYYYMMDD"/>                                            
+
                                     </div>
-                                    
-                            <div class="row 50%">
-                                 
-                                              <br>Price<br>               
-                                        
-                                        <div class="10u 12u(mobilep)">
-											<input type="number" name="price" id="name" value="<?php echo $row['price']; ?>" placeholder="Price Per Month" required/>
-                      
-										</div>
-                                        
-                                           </div>
 
-                                            
-                            <div class="row 50%">
-                                              <br>Availability<br>   
- 
-                                
-                                        
-                                        <div class="10u 12u(mobilep)">
-											<input type="data" name="availability" id="date" value="<?php echo $row['availability']; ?>" placeholder="YYYYMMDD"/>                                            
-                                            
-										</div>
-                                        
-                                           </div>
-                                    
-                <div class="row 50%">
-                                 
-                                              <br>Contraction<br>               
-                                        
-                                        <div class="10u 12u(mobilep)">
-											<input type="data" name="contraction" id="date" value="<?php echo $row['contraction']; ?>" placeholder="YYYY"  />
-										</div>
-                                        
-                    										<div class="12u">
-											<textarea type="text" name="problem" id="name" value="<?php echo $row['problem']; ?>" placeholder="Problems if there is any" rows="2"></textarea>
-										</div>
-                    
-                    
-                                           </div>
-                                    
-                                    
-                                    
-                     
-                                        
-									
-									<div class="row 50%">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" class="button" value="Update" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-                            
-                            
-                            
-                            <br><br>
+                                </div>
 
-						</div>
-					</div>
-				</section>
-            
-            
-            
-			<!-- Footer -->
-				<div id="footer">
-					<div class="container">
-						<div class="row">
-							<section class="3u 6u(narrower) 12u$(mobilep)">
-								<h3>Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Mattis et quis rutrum</a></li>
-									<li><a href="#">Suspendisse amet varius</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan dolor</a></li>
-									<li><a href="#">Mattis rutrum accumsan</a></li>
-									<li><a href="#">Suspendisse varius nibh</a></li>
-									<li><a href="#">Sed et dapibus mattis</a></li>
-								</ul>
-							</section>
-							<section class="3u 6u$(narrower) 12u$(mobilep)">
-								<h3>More Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Duis neque nisi dapibus</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan sed</a></li>
-									<li><a href="#">Mattis et sed accumsan</a></li>
-									<li><a href="#">Duis neque nisi sed</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum amet varius</a></li>
-								</ul>
-							</section>
-							<section class="6u 12u(narrower)">
-								<h3>Get In Touch</h3>
-								<form>
-									<div class="row 50%">
-										<div class="6u 12u(mobilep)">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="6u 12u(mobilep)">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-										</div>
-									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" class="button alt" value="Send Message" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-						</div>
-					</div>
+                                <div class="row 50%">
 
-					<!-- Icons -->
-						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-						</ul>
+                                    <br>Contraction<br>               
 
-					<!-- Copyright -->
-						<div class="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
+                                    <div class="10u 12u(mobilep)">
+                                        <input type="data" name="contraction" id="date" value="<?php echo $row['construction']; ?>" placeholder="YYYY"  />
+                                    </div>
 
-				</div>
+                                    <div class="12u">
+                                        <textarea type="text" name="problem" id="name" value="<?php echo $row['problem']; ?>" placeholder="Problems if there is any" rows="2"></textarea>
+                                    </div>
 
-		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+                                </div>
 
-	</body>
+
+
+
+
+
+                                <div class="row 50%">
+                                    <div class="12u">
+                                        <ul class="actions">
+                                            <li><input type="submit" class="button" value="Update" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+
+
+
+                        <br><br>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Footer -->
+            <div id="footer">
+                <div class="container">
+                    <div class="row">
+                        <section class="3u 6u(narrower) 12u$(mobilep)">
+                            <h3>Links to Stuff</h3>
+                            <ul class="links">
+                                <li><a href="#">Mattis et quis rutrum</a></li>
+                                <li><a href="#">Suspendisse amet varius</a></li>
+                                <li><a href="#">Sed et dapibus quis</a></li>
+                                <li><a href="#">Rutrum accumsan dolor</a></li>
+                                <li><a href="#">Mattis rutrum accumsan</a></li>
+                                <li><a href="#">Suspendisse varius nibh</a></li>
+                                <li><a href="#">Sed et dapibus mattis</a></li>
+                            </ul>
+                        </section>
+                        <section class="3u 6u$(narrower) 12u$(mobilep)">
+                            <h3>More Links to Stuff</h3>
+                            <ul class="links">
+                                <li><a href="#">Duis neque nisi dapibus</a></li>
+                                <li><a href="#">Sed et dapibus quis</a></li>
+                                <li><a href="#">Rutrum accumsan sed</a></li>
+                                <li><a href="#">Mattis et sed accumsan</a></li>
+                                <li><a href="#">Duis neque nisi sed</a></li>
+                                <li><a href="#">Sed et dapibus quis</a></li>
+                                <li><a href="#">Rutrum amet varius</a></li>
+                            </ul>
+                        </section>
+                        <section class="6u 12u(narrower)">
+                            <h3>Get In Touch</h3>
+                            <form>
+                                <div class="row 50%">
+                                    <div class="6u 12u(mobilep)">
+                                        <input type="text" name="name" id="name" placeholder="Name" />
+                                    </div>
+                                    <div class="6u 12u(mobilep)">
+                                        <input type="email" name="email" id="email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="row 50%">
+                                    <div class="12u">
+                                        <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row 50%">
+                                    <div class="12u">
+                                        <ul class="actions">
+                                            <li><input type="submit" class="button alt" value="Send Message" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Icons -->
+                <ul class="icons">
+                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+                </ul>
+
+                <!-- Copyright -->
+                <div class="copyright">
+                    <ul class="menu">
+                        <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+    </body>
 </html>
