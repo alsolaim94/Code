@@ -75,74 +75,6 @@ else {
 
 							<!-- Content -->
                                 <header>
-                                    <h2 style="text-align: center;">
-                                        <?php
-                                            echo "Welcome " . $firstName . " " . $lastName."!";
-                                        ?>
-
-                                    </h2><br>
-                                </header>
-                            	<!-- Content -->
-                                <div class="8u  12u(narrower) important(narrower)">
-                                    <div id="content">
-                                        <!-- Content -->
-                                            <article>
-                                                <header>
-                                                    <div>
-                                                        <h2 style="display: inline; margin-right: 2em;">Your Listed of Properites</h2>
-                                                        <a href="addProperty.php" class="button" style="display: inline; padding: 8px;">Add new Property</a>
-                                                    </div>
-                                                </header>
-                                                <!-- PHP to generate the viewing of properties posted-->
-                                                <?php
-                                                    $connection = getMySQLConnection();
-                                                    $sql = "SELECT * FROM property WHERE userID = '$id'";
-                                                    $propertyInfo = $connection -> query($sql);
-                                                    $propertyList = "
-                                                                <section class='wrapper style1'>
-                                                                    <div class='container'>
-                                                                        <div class='row'>";
-                                                    if($propertyInfo -> num_rows > 0) {
-                                                        while($row = $propertyInfo -> fetch_assoc()) {
-                                                            $propertyList .= "
-                                                                        <section class='6u 12u(narrower)'>
-                                                                            <div class='box post'>
-                                                                                <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
-                                                                                <div class='inner'>
-                                                                                    <strong>$".$row['price'] . "</strong></br>
-                                                                                    ".$row['bedroom']." Bedrooms</br>
-                                                                                    ".$row['address']."</br>
-                                                                                    ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
-                                                                                </div>
-                                                                            </div>
-                                                                        </section>";
-
-                                                        }
-                                                        $propertyList .= "
-                                                                        </div>
-                                                                    </div>
-                                                                </section>";
-                                                    } else {
-                                                        $propertyList .= "<h3>There are no properties to be seen</h3>";
-                                                    }
-                                                    // show the generated list
-                                                    echo $propertyList;
-                                                ?>
-                                            </article>
-                                        <!-- Show User's Notifications -->
-                                        <article>
-                                            <header>
-                                                <h2 style="display: inline; margin-right: 2em;">Your Notifications (<span class='count'></span> Unread)</h2>
-                                            </header>
-                                            <div>
-                                                <ul class='dropdown-menu'></ul>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-
-								
-									<header>
 										<h2>
                                             <?php
                                                 echo "Welcome Back " . $firstName . " " . $lastName. "!";
@@ -198,7 +130,7 @@ else {
                                         <?php
                                             
                                             $connection = getMySQLConnection();
-                                            $sql = "SELECT * FROM property WHERE email = '$email'";
+                                            $sql = "SELECT * FROM property WHERE userID = $id";
                                             $propertyInfo = $connection -> query($sql);
                                             $propertyList = "
                                                         
@@ -242,6 +174,20 @@ else {
                                                 
                                             </section>
 										</article>
+                                        <!-- Show User's Notifications -->
+                                        <article>
+                                            <header>
+                                                <h2 style="display: inline; margin-right: 2em;">Your Notifications (<span class='count'></span> Unread)</h2>
+                                            </header>
+                                            <div>
+                                                <ul class='dropdown-menu'></ul>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+
+								
+									
 
 								</div>
 							</div>
