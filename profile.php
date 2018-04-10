@@ -168,27 +168,27 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <div class="container">
                     <div class="row">
                         <section class="3u 6u(narrower) 12u$(mobilep)">
-                            <h3>Links to Stuff</h3>
+                             <h3>Featured Locations</h3>
                             <ul class="links">
-                                <li><a href="#">Mattis et quis rutrum</a></li>
-                                <li><a href="#">Suspendisse amet varius</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan dolor</a></li>
-                                <li><a href="#">Mattis rutrum accumsan</a></li>
-                                <li><a href="#">Suspendisse varius nibh</a></li>
-                                <li><a href="#">Sed et dapibus mattis</a></li>
+                                <li><a href="#">Bowling Green, KY</a></li>
+                                <li><a href="#">Lexington, KY</a></li>
+                                <li><a href="#">Frankfort, KY</a></li>
+                                <li><a href="#">Louisville, KY</a></li>
+                                <li><a href="#">Nashville, TN</a></li>
+                                <li><a href="#">Knoxville, TN</a></li>
+                                <li><a href="#">Memphis, TN</a></li>
                             </ul>
                         </section>
                         <section class="3u 6u$(narrower) 12u$(mobilep)">
-                            <h3>More Links to Stuff</h3>
+                            <h3>About Us</h3>
                             <ul class="links">
-                                <li><a href="#">Duis neque nisi dapibus</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan sed</a></li>
-                                <li><a href="#">Mattis et sed accumsan</a></li>
-                                <li><a href="#">Duis neque nisi sed</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum amet varius</a></li>
+                                <li><a href="#">Who We Are</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Privacy Statement</a></li>
+                                <li><a href="#">Avoiding Scams</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Social Media</a></li>
                             </ul>
                         </section>
                         <section class="6u 12u(narrower)">

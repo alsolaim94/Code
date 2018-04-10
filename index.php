@@ -71,22 +71,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <section class="4u 12u(narrower)">
                             <div class="box highlight">
                                 <i class="icon major fa-paper-plane"></i>
-                                <h3>This Is Important</h3>
-                                <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                <h3>Property Posting</h3>
+                                <p>Make sure when posting a property that all important information is correct and listed with the property.</p>
                             </div>
                         </section>
                         <section class="4u 12u(narrower)">
                             <div class="box highlight">
                                 <i class="icon major fa-pencil"></i>
-                                <h3>Also Important</h3>
-                                <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                <h3>Signing a Lease</h3>
+                                <p>Make sure to read all of the lease before signing to ensure you are renting what you think you're renting.</p>
                             </div>
                         </section>
                         <section class="4u 12u(narrower)">
                             <div class="box highlight">
                                 <i class="icon major fa-wrench"></i>
-                                <h3>Probably Important</h3>
-                                <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                <h3>Maintenance</h3>
+                                <p>Before repairing anything broken in your rented apartment/home it is important to contact your landlord and ask about maintenance.</p>
                             </div>
                         </section>
                     </div>
@@ -97,8 +97,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <section class="wrapper style2">
                 <div class="container">
                     <header class="major">
-                        <h2>A gigantic heading you can use for whatever</h2>
-                        <p>With a much smaller subtitle hanging out just below it</p>
+                        <h2>The Best Place to Manage your Properties</h2>
+                        <p>If you own a a place that you would like to rent out and want to rent and manage it easily, you've come to the right place.</p>
                     </header>
                 </div>
             </section>
@@ -111,8 +111,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <div class="box post">
                                 <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
                                 <div class="inner">
-                                    <h3>The First Thing</h3>
-                                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                    <h3>Looking for a place to live?</h3>
+                                    <p>Click here to search through our listings.</p>
                                 </div>
                             </div>
                         </section>
@@ -120,8 +120,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <div class="box post">
                                 <a href="#" class="image left"><img src="images/pic02.jpg" alt="" /></a>
                                 <div class="inner">
-                                    <h3>The Second Thing</h3>
-                                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                    <h3>Looking to post a property?</h3>
+                                    <p>Click here to post your property for everyone to see.</p>
                                 </div>
                             </div>
                         </section>
@@ -131,8 +131,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <div class="box post">
                                 <a href="#" class="image left"><img src="images/pic03.jpg" alt="" /></a>
                                 <div class="inner">
-                                    <h3>The Third Thing</h3>
-                                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                    <h3>Follow our social media</h3>
+                                    <p>Click here to visit our social medias page where you can see all of our social media pages!</p>
                                 </div>
                             </div>
                         </section>
@@ -140,8 +140,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <div class="box post">
                                 <a href="#" class="image left"><img src="images/pic04.jpg" alt="" /></a>
                                 <div class="inner">
-                                    <h3>The Fourth Thing</h3>
-                                    <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                                    <h3>Have any questions for us?</h3>
+                                    <p>Click here to visit FAQ or send us a message with any questions or concerns.</p>
                                 </div>
                             </div>
                         </section>
@@ -164,27 +164,27 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <div class="container">
                     <div class="row">
                         <section class="3u 6u(narrower) 12u$(mobilep)">
-                            <h3>Links to Stuff</h3>
+                            <h3>Featured Locations</h3>
                             <ul class="links">
-                                <li><a href="#">Mattis et quis rutrum</a></li>
-                                <li><a href="#">Suspendisse amet varius</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan dolor</a></li>
-                                <li><a href="#">Mattis rutrum accumsan</a></li>
-                                <li><a href="#">Suspendisse varius nibh</a></li>
-                                <li><a href="#">Sed et dapibus mattis</a></li>
+                                <li><a href="#">Bowling Green, KY</a></li>
+                                <li><a href="#">Lexington, KY</a></li>
+                                <li><a href="#">Frankfort, KY</a></li>
+                                <li><a href="#">Louisville, KY</a></li>
+                                <li><a href="#">Nashville, TN</a></li>
+                                <li><a href="#">Knoxville, TN</a></li>
+                                <li><a href="#">Memphis, TN</a></li>
                             </ul>
                         </section>
                         <section class="3u 6u$(narrower) 12u$(mobilep)">
-                            <h3>More Links to Stuff</h3>
+                            <h3>About Us</h3>
                             <ul class="links">
-                                <li><a href="#">Duis neque nisi dapibus</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan sed</a></li>
-                                <li><a href="#">Mattis et sed accumsan</a></li>
-                                <li><a href="#">Duis neque nisi sed</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum amet varius</a></li>
+                                <li><a href="#">Who We Are</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Privacy Statement</a></li>
+                                <li><a href="#">Avoiding Scams</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Social Media</a></li>
                             </ul>
                         </section>
                         <section class="6u 12u(narrower)">
