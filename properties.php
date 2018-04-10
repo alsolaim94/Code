@@ -18,6 +18,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="stylesheet" href="assets/css/main.css" />
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="assets/js/flag.js"></script>
 
         <style>
             #submitFilter, #resetFilter{
@@ -29,6 +31,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             input[type=number]::-webkit-outer-spin-button { 
                 -webkit-appearance: none; 
                 margin: 0; 
+            }
+            
+            .flag:hover {
+                cursor: pointer;
             }
         </style>
     </head>
@@ -126,12 +132,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                                               <section class='6u 12u(narrower)'>
                                                                   <div class='box post'>
                                                                       <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
-                                                                      <div class='inner'>
+                                                                      <div class='right' style='float: right;'>
+                                                                        <span class='flag' value=".$row['propertyID']."><img src='images/flag.png' alt='Flag'></span>
+                                                                      </div>
+                                                                      <div class='inner' style = 'float: left; margin-left: 5%;'>
                                                                           <strong>$".$row['price'] . "</strong></br>
                                                                           ".$row['bedroom']." Bedrooms</br>
                                                                           ".$row['address']."</br>
                                                                           ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
                                                                       </div>
+                                                                      
                                                                   </div>
                                                               </section>";
 

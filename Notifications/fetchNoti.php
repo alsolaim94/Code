@@ -8,7 +8,9 @@ $connection = getMySQLConnection();
 if(isset($_POST['view'])){
 
     if($_POST["view"] != '') {
-        $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_status=0 AND comment_to='".$_SESSION['id']."'";
+        $element = $_POST["view"];
+        $int = (int)$element;
+        $updateSQL = "UPDATE comments SET comment_status = 1 WHERE comment_id=".$int." AND comment_to='".$_SESSION['id']."'";
         $connection -> query($updateSQL);
     }
 
@@ -24,7 +26,7 @@ if(isset($_POST['view'])){
             $contactRow = $contactInfoQuery -> fetch_assoc();
             if($row['comment_status'] == 0) {
                 $output .= "
-                      <li class='notiElement dropdown-toggle' style='background-color: #e6e6e6; overflow: hidden'>
+                      <li class='notiElement dropdown-toggle' style='background-color: #e6e6e6; overflow: hidden' value=".$row['comment_id'].">
                           <div style='width: 50%; float: left'>
                               <strong>Subject: ".$row['comment_subject']."</strong><br />
                               <small>Body: <em>".$row['comment_text']."</em></small><br />
@@ -40,7 +42,7 @@ if(isset($_POST['view'])){
                 "; 
             } else {
                 $output .= "
-                      <li class='notiElement dropdown-toggle' style='overflow: hidden'>
+                      <li class='notiElement dropdown-toggle' style='overflow: hidden' value=".$row['comment_id'].">
                           <div style='width: 50%; float: left'>
                               <strong>Subject: ".$row['comment_subject']."</strong><br />
                               <small>Body: <em>".$row['comment_text']."</em></small><br />

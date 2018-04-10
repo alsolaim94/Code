@@ -38,10 +38,11 @@ $(document).ready(function(){
          }
     });
 
-    // load new notifications
+    // when list element is clicked, get value attribue (holds comment ID)
+    // and pass it to the load_unseen_notification function
     $(document).on('click', '.dropdown-toggle', function(){
-        $('.count').html("'" + parseInt($('.count').html(), 10)-1 + "'");
-        load_unseen_notification('yes');
+        var id = $(this).attr("value");
+        load_unseen_notification(id);
     });
 
     setInterval(function(){

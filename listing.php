@@ -20,6 +20,7 @@ $row = $results -> fetch_assoc();
         <link rel="stylesheet" href="assets/css/main.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="assets/js/notification.js"></script>
+        
     </head>
     <body>
         <div id="page-wrapper">
