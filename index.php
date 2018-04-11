@@ -58,10 +58,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             <!-- Banner -->
             <section id="banner">
-                <header>
-                    <h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2>
-                    <a href="#" class="button">Learn More</a>
-                </header>
+
             </section>
 
             <!-- Highlights -->
@@ -151,12 +148,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             <!-- CTA -->
             <section id="cta" class="wrapper style3">
-                <div class="container">
-                    <header>
-                        <h2>Are you ready to continue your quest?</h2>
-                        <a href="#" class="button">Insert Coin</a>
-                    </header>
-                </div>
+
             </section>
 
             <!-- Footer -->
