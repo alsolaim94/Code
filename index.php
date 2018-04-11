@@ -98,7 +98,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <div class="container">
                     <header class="major">
                         <h2>The Best Place to Manage your Properties</h2>
-                        <p>If you own a a place that you would like to rent out and want to rent and manage it easily, you've come to the right place.</p>
+                        <p>If you own a property that you would like to rent out and want to rent and manage it easily, you've come to the right place.</p>
                     </header>
                 </div>
             </section>
@@ -109,7 +109,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <div class="row">
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
+                                <a href="#" class="image left"><img src="images/house2.jpg" alt="" /></a>
                                 <div class="inner">
                                     <h3>Looking for a place to live?</h3>
                                     <p>Click here to search through our listings.</p>
@@ -118,7 +118,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </section>
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/pic02.jpg" alt="" /></a>
+                                <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
                                 <div class="inner">
                                     <h3>Looking to post a property?</h3>
                                     <p>Click here to post your property for everyone to see.</p>
@@ -129,7 +129,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <div class="row">
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/pic03.jpg" alt="" /></a>
+                                <a href="#" class="image left"><img src="images/socialmedia.jpg" alt="" /></a>
                                 <div class="inner">
                                     <h3>Follow our social media</h3>
                                     <p>Click here to visit our social medias page where you can see all of our social media pages!</p>
@@ -138,7 +138,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </section>
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/pic04.jpg" alt="" /></a>
+                                <a href="#" class="image left"><img src="images/faq1.png" alt="" /></a>
                                 <div class="inner">
                                     <h3>Have any questions for us?</h3>
                                     <p>Click here to visit FAQ or send us a message with any questions or concerns.</p>
