@@ -213,62 +213,62 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     </div>
                                 </div>
                             </form>
-								<div class="row 50%">
-								<br>Add an Image<br>
-								
-                                    <div class="10u 12u(mobilep)">
-									
-								<form method="post" enctype="multipart/form-data">
-								Select image to upload:
-								<input type="file" name="file">
-								<input type="submit" value="Upload Image" name="submit">
-								</form>
-								<?php
-								$name;
-								$size;
-								$type;
-								$tmp_name;
-								$userID="userID";
-								$propertyid="propertyid";
+                            <div class="row 50%">
+                                <br>Add an Image<br>
+
+                                <div class="10u 12u(mobilep)">
+
+                                    <form method="post" enctype="multipart/form-data">
+                                        Select image to upload:
+                                        <input type="file" name="file">
+                                        <input type="submit" value="Upload Image" name="submit">
+                                    </form>
+                                    <?php
+                                    $name;
+                                    $size;
+                                    $type;
+                                    $tmp_name;
+                                    $userID="userID";
+                                    $propertyid="propertyid";
 
 
-								if(isset($_FILES["file"]["name"])){
-									$name = $_FILES ['file']['name'];
-									$size = $_FILES ['file']['size'];
-									$type = $_FILES ['file']['type'];
-									$tmp_name = $_FILES ['file']['tmp_name'];
-									if(!empty($name)&&$size<300000){
-										if(!file_exists($userID)){
-											$folder = "uploads/".$userID."/".$propertyid."/";
-											mkdir ("uploads/".$userID);
-											mkdir ( "uploads/".$userID."/".$propertyid);
-										}
-										else if( !file_exists( "uploads/".$userID."/".$propertyid)){
-											mkdir ( "uploads/".$userID."/".$propertyid);
-											$folder = "uploads/".$userID."/".$propertyid."/";
-										}
-										else{
-											$folder = "uploads/".$userID."/".$propertyid."/";
-										}
-									  }
-									
-									if(move_uploaded_file($tmp_name, $folder.$name)){
-										echo 'Your image was uploaded';
-									}
-									else{
-										echo 'There was an error uploading your image';
-									 }
-									}
-								else{
-									echo 'Please select an image';
-									}
+                                    if(isset($_FILES["file"]["name"])){
+                                        $name = $_FILES ['file']['name'];
+                                        $size = $_FILES ['file']['size'];
+                                        $type = $_FILES ['file']['type'];
+                                        $tmp_name = $_FILES ['file']['tmp_name'];
+                                        if(!empty($name)&&$size<300000){
+                                            if(!file_exists("uploads/".$userID)){
+                                                $folder = "uploads/".$userID."/".$propertyid."/";
+                                                mkdir ("uploads/".$userID);
+                                                mkdir ( "uploads/".$userID."/".$propertyid);
+                                            }
+                                            else if( !file_exists( "uploads/".$userID."/".$propertyid)){
+                                                mkdir ( "uploads/".$userID."/".$propertyid);
+                                                $folder = "uploads/".$userID."/".$propertyid."/";
+                                            }
+                                            else{
+                                                $folder = "uploads/".$userID."/".$propertyid."/";
+                                            }
+                                        }
 
-								?>
-                        
-                                    </div>
-								
-								
-								</div>
+                                        if(move_uploaded_file($tmp_name, $folder.$name)){
+                                            echo 'Your image was uploaded';
+                                        }
+                                        else{
+                                            echo 'There was an error uploading your image';
+                                        }
+                                    }
+                                    else{
+                                        echo 'Please select an image';
+                                    }
+
+                                    ?>
+
+                                </div>
+
+
+                            </div>
 
                         </section>
 
@@ -290,7 +290,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <div class="container">
                     <div class="row">
                         <section class="3u 6u(narrower) 12u$(mobilep)">
-                             <h3>Featured Locations</h3>
+                            <h3>Featured Locations</h3>
                             <ul class="links">
                                 <li><a href="#">Bowling Green, KY</a></li>
                                 <li><a href="#">Lexington, KY</a></li>
