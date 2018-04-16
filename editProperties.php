@@ -179,7 +179,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
                                     <div class="10u 12u(mobilep)">
-                                        <input type="data" name="availability" id="date" value="<?php echo $row['availability']; ?>" placeholder="YYYYMMDD"/>                                            
+                                        <input type="date" name="availability" id="date" value="<?php echo $row['availability']; ?>" placeholder="YYYYMMDD"/>                                            
 
                                     </div>
 
@@ -190,7 +190,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <br>Contraction<br>               
 
                                     <div class="10u 12u(mobilep)">
-                                        <input type="data" name="contraction" id="date" value="<?php echo $row['construction']; ?>" placeholder="YYYY"  />
+                                        <input type="date" name="contraction" id="date" value="<?php echo $row['construction']; ?>" placeholder="YYYY"  />
                                     </div>
 
                                     <div class="12u">
