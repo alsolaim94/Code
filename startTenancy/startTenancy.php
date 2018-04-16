@@ -10,15 +10,13 @@ if ( $_SESSION['logged_in'] != 1 ) {
 }
 else{
     $propertyID = mysqli_real_escape_string($connection, $_POST['propertyID']);
+    $emailOfRenter = mysqli_real_escape_string($connection, $_POST['emailOfRenter']);
+    $dataOfTenancy = mysqli_real_escape_string($connection, $_POST['dataOfTenancy']);
 
 }
 
 
 ?>
-
-
-
-
 
 
 <!DOCTYPE HTML>
@@ -66,7 +64,15 @@ else{
 							<!-- Content -->
                         
                         
-                        <?php  echo $propertyID;   ?>
+                        <?php  
+                        echo "the id is".$propertyID;
+                        
+                        echo "the email is".$emailOfRenter;
+                        echo "the date is".$dataOfTenancy;
+                        
+                        
+                        
+                        ?>
 
 
                             
