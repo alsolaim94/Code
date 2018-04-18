@@ -89,18 +89,7 @@ elseif(isset($_POST["emailOfRenter"])) {
 					<div class="container">
 						
 
-							<!-- Content -->
-                        <?php  
-//                        echo "the id is ".$propertyID;
-//                        echo "the email is ".$emailOfRenter;
-//                        echo "the date is ".$dataOfTenancy;
-                        
-                        echo "the property id ".$propertyID;
-//                        echo "the address is ".$property['address'];
-                        echo " the fname is ".$renter['firstName'];
-                        echo " the lname is ".$renter['lastName'];
-                        
-                        ?>
+
 
 
                             
