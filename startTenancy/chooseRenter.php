@@ -76,8 +76,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     $sql = "SELECT * FROM property WHERE userID = ".$id;
                     $propertyInfo = $connection -> query($sql);
                     ?>
-
-
+                        
 
                     <form action="startTenancy.php" method="post">
 
@@ -111,7 +110,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             
                             else { echo "<h3 style= 'color:red'>There are no properties to be seen</h3>"; 
                                   echo "<a href='../addProperty.php' class='button'>Add New Property</a>";}
-
 
                             ?>              
         </div>
