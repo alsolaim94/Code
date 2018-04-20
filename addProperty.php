@@ -3,10 +3,10 @@ session_start();
 include 'MySQL_Functions.php';
 
 // Check if user is logged in using the session variable
-/*if ( $_SESSION['logged_in'] != 1 ) {
+if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before viewing your profile page!";
-    header("location: loginsignup.html");    
-}*/
+    header("location: loginsignup.html");
+}
 
 ?>
 
@@ -43,7 +43,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <!-- if the user is logged in, it will show the profile -->
                         <?php
                         if(isset($_SESSION['email'])) {
-                            echo "<li><a href='profile.php'>Profile</a></li>";                     
+                            echo "<li><a href='profile.php'>Profile</a></li>";
                         }
                         ?>
                         <li>
@@ -120,7 +120,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <input type="radio" name="type" value="commercial"> Commercial<br>
                                     </div>
                                     <div class="9u 12u(mobilep)">
-                                        <input type="radio" name="type" value="other"> Other<br><br>   
+                                        <input type="radio" name="type" value="other"> Other<br><br>
                                     </div>
                                 </div>
 
@@ -128,7 +128,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                 <div class="row 50%">
 
-                                    <br>Features<br>               
+                                    <br>Features<br>
 
                                     <div class="10u 12u(mobilep)">
                                         <input type="number" name="size" id="name" placeholder="Size" required/>
@@ -163,7 +163,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                 <div class="row 50%">
 
-                                    <br>Price<br>               
+                                    <br>Price<br>
 
                                     <div class="10u 12u(mobilep)">
                                         <input type="number" name="price" id="name" placeholder="Price Per Month" required/>
@@ -174,12 +174,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
                                 <div class="row 50%">
-                                    <br>Availability<br>   
+                                    <br>Availability<br>
 
 
 
                                     <div class="10u 12u(mobilep)">
-                                        <input type="date" name="availability" id="date" placeholder="YYYYMMDD"/>                                            
+                                        <input type="date" name="availability" id="date" placeholder="YYYYMMDD"/>
 
                                     </div>
 
@@ -187,7 +187,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                 <div class="row 50%">
 
-                                    <br>Construction<br>               
+                                    <br>Construction<br>
 
                                     <div class="10u 12u(mobilep)">
                                         <input type="date" name="contraction" id="date" placeholder="YYYY"  />
@@ -200,11 +200,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                 </div>
 
-
-
-
-
-
                                 <div class="row 50%">
                                     <div class="12u">
                                         <ul class="actions">
@@ -213,86 +208,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     </div>
                                 </div>
                             </form>
-                            <div class="row 50%">
-                                <br>Add an Image<br>
-
-                                <div class="10u 12u(mobilep)">
-
-                                   		<form method="post" enctype="multipart/form-data">
-								Select images to upload:
-								<input name="files[]" type="file" multiple>
-								<input type="submit" value="Upload Images" name="submit">
-							</form>
-						<?php
-							$files;
-							$total;
-							$name;
-							$size;
-							$type;
-							$tmp_name;
-							$userID="userID";
-							$propertyid="propertyid";
-							$uploaded = 0;
-							// Loop through each file
-							if(isset($_FILES["files"]["name"])){
-								$files = array_filter($_FILES['files']['name']);
-								$total = count($_FILES['files']['name']);
-
-								for($i=0; $i<$total; $i++) {
-								$name = $_FILES ['files']['name'][$i];
-								$size = $_FILES ['files']['size'][$i];
-								$type = $_FILES ['files']['type'][$i];
-								$tmp_name = $_FILES ['files']['tmp_name'][$i];
-								if(!empty($name)&&$size<300000){
-									//check if files exist and upload it to the proper file
-									if(!file_exists("uploads/".$userID)){
-										$folder = "uploads/".$userID."/".$propertyid."/";
-										mkdir ("uploads/".$userID);
-										mkdir ( "uploads/".$userID."/".$propertyid);
-									}
-									else if( !file_exists( "uploads/".$userID."/".$propertyid)){
-										mkdir ( "uploads/".$userID."/".$propertyid);
-										$folder = "uploads/".$userID."/".$propertyid."/";
-									}
-									else{
-										$folder = "uploads/".$userID."/".$propertyid."/";
-									}
-								  }
-								
-								
-								if(move_uploaded_file($tmp_name, $folder.$name)){
-									$uploaded= 1;
-								}
-								else{
-									echo 'There was an error uploading your image';
-								 }
-								}
-								
-								}
-								
-								else{
-									echo 'Please select an image';
-								}
-								if($uploaded == 1){
-									echo 'Your files were uploaded';
-									
-								}
-
-								
-							  
-							
-							?>
-
-                                </div>
-
-
-                            </div>
 
                         </section>
-
-
-
-                        <br><br>
 
                     </div>
                 </div>

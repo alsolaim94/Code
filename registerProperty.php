@@ -31,40 +31,28 @@ else{
     $contraction = mysqli_real_escape_string($connection, $_POST['contraction']);
     $problem = mysqli_real_escape_string($connection, $_POST['problem']);
 
-
-    
-    //use to check type $type = $_FILES ['file']['type'];
-
-/*
-    if(isset($_POST['submit'])) {
-        $name = $_FILES['file']['name'];
-        $size = $_FILES['file']['size'];
-        $tmp_name = $_FILES['file']['tmp_name'];
-        if(isset($name)){
-            if(!empty($name)&&$size<300000){
-                $folder = 'uploads/';
-                if(move_uploaded_file($tmp_name, $folder.$name)){
-                    echo 'Your image was uploaded';
-                }
-                else{
-                    echo 'There was an error uploading your image';
-                }
-            }
-            else{
-                echo 'Please select an image';
-            }
-        }
-    }
-
-*/
-   $sql = "INSERT INTO `property`(`userID`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `construction`, `problem`, `rented`, `flagCount`) VALUES ('$userID','$propertyName','$country','$address','$city','$state','$zipcode','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem', 0, 0)";
-    
+    $sql = "INSERT INTO `property`(`userID`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `construction`, `problem`, `rented`, `flagCount`) VALUES ('$userID','$propertyName','$country','$address','$city','$state','$zipcode','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem', 0, 0)";
 
     //add to the database
     $connection -> query($sql);
 
+    // make directory for images for this specific property
+    $sql = "SELECT max(propertyID) FROM property WHERE userID = " . $_SESSION['id'];
+    $result = $connection -> query($sql);
+    $row = $result -> fetch_assoc();
+    $propertyid = $row['max(propertyID)'];
 
-header("Location: profile.php");
+    if(!file_exists("uploads/".$userID)){
+        mkdir ("uploads/".$userID);
+    } else if( !file_exists( "uploads/".$userID."/".$propertyid)){
+        mkdir ( "uploads/".$userID."/".$propertyid);
+    }
+
+
+
+
+
+    header("Location: uploadImage.php");
     
 }
 

@@ -20,6 +20,7 @@ $row = $results -> fetch_assoc();
         <link rel="stylesheet" href="assets/css/main.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="assets/js/notification.js"></script>
+
         
     </head>
     <body>
@@ -71,24 +72,26 @@ $row = $results -> fetch_assoc();
                                     <!-- Need to dynamically add pictures once we know how they will be stored for each property -->
                                     <div style="font-size:14px;">
                                         <span class="image featured">
-                                            <!-- This PHP is commented out. This will be used when we figure out how the images are going to be stored
-Change the query and then change the column name for the $row array
-<?php
-$images = "";
-$imagesQuery = $connection -> query("SELECT * FROM whatever the table is WHERE however they will be stored");
-if($imagesQuery -> num_rows > 0) {
-    while($row = $imagesQuery -> fetch_assoc()) {
-        $images .= "<img class='slides' src='" . $row['columnName'] . "' alt='' />";
-    }
-} else {
-    $images .= "<img class='slides' src'imgaes/noImage.jpg' alt='' />";
-}
-echo $images;
-?>-->
-                                            <img class="slides" src="images/house.jpg" alt="" />
-                                            <img class="slides" src="images/house2.jpg" alt=""/>
-                                            <img class="slides" src="images/house3.jpg" alt=""/>
-                                            <img class="slides" src="images/house4.jpg" alt=""/>
+                                            <?php
+                                                $propertyid = $row['propertyID'];
+                                                $userID = $row['userID'];
+                                                $folder = "uploads/".$userID."/".$propertyid."/";
+
+                                                $pics = scandir($folder);
+                                                $imgHTML = "";
+
+                                                if(sizeof($pics) == 2) {
+                                                   $imgHTML .= "<img class='slides' src='images/noImage.jpg' alt='' />";
+                                                } else {
+                                                    for ($i = 2; $i < sizeof($pics); $i++) {
+                                                        $image = $folder . $pics[$i];
+                                                        $imgHTML .= "<img class='slides' src='" . $image . "' alt='' />";
+                                                    }
+                                                }
+
+                                                echo $imgHTML;
+
+                                            ?>
                                         </span>
                                         <em>Click arrows to cycle through the pictures</em><br>
                                         <button onclick="plusDivs(-1)">&#10094;</button>
