@@ -1,10 +1,10 @@
 <?php 
 
     // create connection local machine
-    $con = mysqli_connect("localhost","root","","akari");
+    //$con = mysqli_connect("localhost","root","","akari");
 
     // create connection akari server
-    //$con = mysqli_connect("localhost", "alsolaim_akari", "akari12345", "alsolaim_akari");
+    $con = mysqli_connect("localhost", "alsolaim_akari", "akari12345", "alsolaim_akari");
 
 
     if (mysqli_connect_errno($con)) {

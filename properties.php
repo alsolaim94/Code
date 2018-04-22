@@ -128,10 +128,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                                               <div class='row'>";
                                     if($propertyInfo -> num_rows > 0) {
                                         while($row = $propertyInfo -> fetch_assoc()) {
+                                            $userID = $row['userID'];
+                                            $propertyID = $row['propertyID'];
+                                            $directory = "uploads/".$userID."/".$propertyID."/";
+                                            $pictures = scandir($directory);
+
+                                            if(sizeof($pictures) == 2) {
+                                                $html = "<img src='images/noImage.jpg' alt='' />";
+                                            } else {
+                                                $path = $directory . $pictures[2];
+                                                $html = "<img src='" . $path . "' alt='' />";
+                                            }
+
                                             $propertyList .= "
                                                               <section class='6u 12u(narrower)'>
                                                                   <div class='box post'>
-                                                                      <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'><img src='images/house.jpg' alt='' /></a>
+                                                                      <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'>".$html."</a>
                                                                       <div class='right' style='float: right;'>
                                                                         <span class='flag' value=".$row['propertyID']."><img src='images/flag.png' alt='Flag'></span>
                                                                       </div>
