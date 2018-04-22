@@ -13,12 +13,13 @@ if(isset($_POST["subject"])) {
     $comment = mysqli_real_escape_string($connection, $_POST["comment"]);
 
     $toID = $_POST['toID'];
+    $interestedProperty = $_POST['property'];
     $fromEmail = $_SESSION['email'];
 
     date_default_timezone_set('America/Chicago');
-    $date = date('Y-m-d h:i:s');
+    $date = date('Y-m-d H:i:s');
 
-    $sql = "INSERT INTO comments(comment_subject, comment_text, comment_to, comment_from, time)VALUES ('$subject', '$comment', '$toID', '$fromEmail', '$date')";
+    $sql = "INSERT INTO comments(comment_subject, comment_text, comment_to, comment_from, time, propertyID)VALUES ('$subject', '$comment', '$toID', '$fromEmail', '$date', '$interestedProperty')";
 
     $connection -> query($sql);
 

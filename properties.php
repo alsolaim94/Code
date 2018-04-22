@@ -20,6 +20,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="assets/js/flag.js"></script>
+        <script src="assets/js/filters.js"></script>
 
         <style>
             #submitFilter, #resetFilter{
@@ -83,45 +84,25 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <div id="content">
 
                                 <!-- Content -->
-                                <article>
+                                <article id = "propertyArticle">
                                     <header>
                                         <h2>Search Through Listed Properites</h2>
-                                        <form action="#" method="get" id="filterForm">
-                                            <div id = "inputContainer">
-                                                Min Price:
-                                                <input type="number" name="minPrice" style= "width: 10%;" value="">
-                                                Max Price:
-                                                <input type="number" name="maxPrice" style= "width: 10%;" value="">
-                                                <br>
-                                                <input type="submit" name="submitFilter" value="Filter" id = "submitFilter">
-                                                <input type="submit" name="resetFilter" value = "Reset" id = "resetFilter">
-                                            </div>
-                                        </form>
+                                        <div id = "inputContainer">
+                                            Min Price:
+                                            <input type="number" name="minPrice" style= "width: 10%;" value="" id="minPrice">
+                                            Max Price:
+                                            <input type="number" name="maxPrice" style= "width: 10%;" value="" id="maxPrice">
+                                            <br>
+                                            <input type="submit" name="submitFilter" value="Filter" id = "submitFilter">
+                                            <input type="submit" name="resetFilter" value = "Reset" id = "resetFilter">
+                                        </div>
                                     </header>
+                                    <div id = "propertyContainer">
                                     <!-- PHP to generate the viewing of properties posted-->
                                     <?php
                                     $connection = getMySQLConnection();
-
-                                    if(isset($_GET["submitFilter"])) {
-                                        if($_GET["minPrice"] != "") {
-                                            $min = $_GET["minPrice"];
-                                        } else {
-                                            $min = 0;
-                                        }
-
-                                        if($_GET["maxPrice"] != "") {
-                                            $max = $_GET["maxPrice"];
-                                        } else {
-                                            $max = 100000000;
-                                        }
-
-                                        $sql = "SELECT * FROM property WHERE price >= '$min' AND price <= '$max'";
-                                        $propertyInfo = $connection -> query($sql);
-
-                                    } elseif(isset($_GET["resetFilter"]) || !isset($_GET['resetFilter'])) {
-                                        $sql = "SELECT * FROM property";
-                                        $propertyInfo = $connection -> query($sql);
-                                    }
+                                    $sql = "SELECT * FROM property";
+                                    $propertyInfo = $connection -> query($sql);
                                     $propertyList = "
                                                       <section class='wrapper style1'>
                                                           <div class='container'>
@@ -181,6 +162,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     // show the generated list
                                     echo $propertyList;
                                     ?>
+                                    </div>
                                 </article>
                             </div>
                         </div>
