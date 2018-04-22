@@ -8,6 +8,13 @@ if ( $_SESSION['logged_in'] != 1 ) {
   echo "You must log in before viewing your profile page!";
   header("location: ../loginsignup.html");    
 }
+
+// doesnt allow user to type this page in address bar
+if(!isset($_SERVER['HTTP_REFERER'])) {
+    header("Location: ../profile.php");
+    exit;
+}
+
 elseif(isset($_POST["emailOfRenter"])) {
                             $emailOfRenter = mysqli_real_escape_string($connection, $_POST['emailOfRenter']);
                             $userExists = $connection -> query("SELECT * FROM users WHERE email = '$emailOfRenter'");

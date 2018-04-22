@@ -3,12 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="244e2ebd-a678-4304-bf2f-a1765b4e204e" name="Default" comment="">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/Mobile_App_Scripts/getListingDetailsMobile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mobile_App_Scripts/getPropertiesMobile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Mobile_App_Scripts/getPropertiesMobile.php" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/startTenancy/chooseRenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/startTenancy/chooseRenter.php" afterDir="false" />
+>>>>>>> 207a951de2fd33278f273d7094e5ae926bca2596
       <change beforePath="$PROJECT_DIR$/startTenancy/startTenancy.php" beforeDir="false" afterPath="$PROJECT_DIR$/startTenancy/startTenancy.php" afterDir="false" />
 >>>>>>> 1191fc9df9ac95dfb9df8e89960766dd3dc5868e
 =======
@@ -39,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/properties.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="279">
-              <caret line="140" column="45" lean-forward="true" selection-start-line="130" selection-start-column="44" selection-end-line="140" selection-end-column="45" />
+              <caret line="140" column="45" selection-start-line="130" selection-start-column="44" selection-end-line="140" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -56,9 +59,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="startTenancy.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="startTenancy.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startTenancy/startTenancy.php">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-50">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chooseRenter.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/startTenancy/chooseRenter.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="1" />
+              <folding>
+                <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="registerProperty.php" pinned="false" current-in-tab="false">
@@ -70,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadImage.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="uploadImage.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uploadImage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="113" column="81" selection-start-line="113" selection-start-column="81" selection-end-line="113" selection-end-column="81" />
+            <state relative-caret-position="-1170">
+              <caret line="10" selection-start-line="10" selection-end-line="14" selection-end-column="1" />
               <folding>
                 <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
               </folding>
@@ -149,9 +168,13 @@
         <option value="$PROJECT_DIR$/uploadImage.php" />
         <option value="$PROJECT_DIR$/profile.php" />
 <<<<<<< HEAD
+        <option value="$PROJECT_DIR$/startTenancy/startTenancy.php" />
+=======
+<<<<<<< HEAD
 >>>>>>> 1191fc9df9ac95dfb9df8e89960766dd3dc5868e
 =======
 >>>>>>> 1191fc9df9ac95dfb9df8e89960766dd3dc5868e
+>>>>>>> 207a951de2fd33278f273d7094e5ae926bca2596
       </list>
     </option>
   </component>
@@ -289,12 +312,19 @@
 =======
       <workItem from="1523897092408" duration="1452000" />
       <workItem from="1523911265739" duration="498000" />
+<<<<<<< HEAD
+      <workItem from="1524237925324" duration="2225000" />
+=======
       <workItem from="1524237925324" duration="1713000" />
 >>>>>>> 1191fc9df9ac95dfb9df8e89960766dd3dc5868e
+>>>>>>> 207a951de2fd33278f273d7094e5ae926bca2596
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="10209000" />
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="1933000" />
@@ -308,10 +338,10 @@
 =======
 >>>>>>> 1191fc9df9ac95dfb9df8e89960766dd3dc5868e
     <option name="totallyTimeSpent" value="9697000" />
+>>>>>>> 207a951de2fd33278f273d7094e5ae926bca2596
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16738197" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -556,6 +586,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/uploadImage.php">
       <provider selected="true" editor-type-id="text-editor">
 >>>>>>> 1191fc9df9ac95dfb9df8e89960766dd3dc5868e
@@ -567,6 +599,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 207a951de2fd33278f273d7094e5ae926bca2596
     <entry file="file://$PROJECT_DIR$/registerProperty.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -584,7 +617,7 @@
     <entry file="file://$PROJECT_DIR$/properties.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
-          <caret line="140" column="45" lean-forward="true" selection-start-line="130" selection-start-column="44" selection-end-line="140" selection-end-column="45" />
+          <caret line="140" column="45" selection-start-line="130" selection-start-column="44" selection-end-line="140" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -599,8 +632,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/startTenancy/chooseRenter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="1" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/startTenancy/startTenancy.php">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uploadImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1170">
+          <caret line="10" selection-start-line="10" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
