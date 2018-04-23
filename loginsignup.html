@@ -71,25 +71,25 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <form action='register.php' method='post' onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }">
                                 <div class="row 50%">
                                     <div class="6u 12u(mobilep)">
-                                        <input type="text" name="firstName" id="name" placeholder="First Name" required/>
+                                        <input type="text" name="firstName" id="name" placeholder="First Name" maxlength="15" minlength="2" required/>
                                     </div>
                                     <div class="6u 12u(mobilep)">
-                                        <input type="text" name="lastName" id="email" placeholder="Last Name" required/>
-                                    </div>
-                                    <br>
-                                    <div class="6u 12u(mobilep)">
-                                        <input type="email" name="email" id="email" placeholder="Email" required/>
+                                        <input type="text" name="lastName" id="email" placeholder="Last Name" maxlength="15" minlength="2"  required/>
                                     </div>
                                     <br>
                                     <div class="6u 12u(mobilep)">
-                                        <input type="tel" name="phone" id="phone" placeholder="Phone Number" required/>
+                                        <input type="email" name="email" id="email" placeholder="Email" maxlength="30" minlength="5" required/>
                                     </div>
                                     <br>
                                     <div class="6u 12u(mobilep)">
-                                        <input type="password" name="password" id="password" placeholder="Password" required/>
+                                        <input type="tel" name="phone" id="phone" placeholder="Phone Number" maxlength="15" minlength="6" required/>
+                                    </div>
+                                    <br>
+                                    <div class="6u 12u(mobilep)">
+                                        <input type="password" name="password" id="password" placeholder="Password" maxlength="20" minlength="5" required/>
                                     </div>
                                     <div class="6u 12u(mobilep)">
-                                        <input type="password" name="passwordConfirm" id="passConfirm" placeholder="Confirm Password" required/>
+                                        <input type="password" name="passwordConfirm" id="passConfirm" placeholder="Confirm Password"  maxlength="20" minlength="5" required/>
 
                                     </div>
 
