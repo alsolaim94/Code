@@ -111,17 +111,23 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 $size = $_FILES ['files']['size'][$i];
                                 $type = $_FILES ['files']['type'][$i];
                                 $tmp_name = $_FILES ['files']['tmp_name'][$i];
+                               if(!empty($name)&&$size<300000&& getimagesize($tmp_name)!=0){
                                 $folder = "uploads/".$userID."/".$propertyid."/";
-
+								
                                 if(move_uploaded_file($tmp_name, $folder.$name)){
                                     $uploaded= 1;
                                 }
-                                else{
-                                    echo "<h3 style = 'color: red;'>Please Select an Image</h3>";
-                                }
                             }
-
-                        }
+							else{
+								
+								echo "<h3 style = 'color: red;'>File too large or not an image</h3>";
+								break;
+							}
+						  }
+						}
+						 else{
+                            echo "<h3 style = 'color: red;'>Please Select an Image</h3>";
+                          }
                         if($uploaded == 1){
                             echo 'Your files were uploaded';
                             header("Location: profile.php");
