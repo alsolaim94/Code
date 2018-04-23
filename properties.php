@@ -27,6 +27,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 -webkit-appearance: none; 
                 margin: 0; 
             }
+
+            #minPrice, #maxPrice {
+                font-size: .75em;
+            }
             
             .flag:hover {
                 cursor: pointer;
@@ -43,6 +47,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 font-size: 16px;
                 border: none;
                 cursor: pointer;
+                margin-right: 15px;
             }
 
             .dropbtn:hover, .dropbtn:focus {
@@ -77,6 +82,24 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 background-color: grey;
                 margin-top: -6px;
                 margin-bottom: 10px;
+            }
+
+            .filterLabel {
+                float: left;
+                font-weight: bold;
+            }
+
+            #inputContainer input[type=number],
+            #inputContainer select {
+                float: right;
+            }
+
+            .filterOption {
+                margin: 10px;
+            }
+
+            #submitFilter {
+                margin-left: 25%;
             }
 
 
@@ -133,30 +156,44 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h2>Search Through Listed Properites</h2>
                                         <div class = "dropdown">
                                             <button onclick="filterDropdown()" class="dropbtn">Filter</button>
+                                            <button class="dropbtn" id = "resetFilter">Reset</button>
                                             <div id = "inputContainer" class = "dropdown-content">
-                                                Min Price:
-                                                <input type="number" name="minPrice"  value="" id="minPrice">
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">Min Price:</span>
+                                                    <input type="number" name="minPrice"  value="" id="minPrice">
+                                                </div>
                                                 <br>
-                                                Max Price:
-                                                <input type="number" name="maxPrice"  value="" id="maxPrice">
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">Max Price:</span>
+                                                    <input type="number" name="maxPrice"  value="" id="maxPrice">
+                                                </div>
                                                 <br>
-                                                State:
-                                                <?php echo getStateFilter(); ?>
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">State:</span>
+                                                    <?php echo getStateFilter(); ?>
+                                                </div>
                                                 <br>
-                                                City:
-                                                <?php echo getCitiesFilter(); ?>
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">City:</span>
+                                                    <?php echo getCitiesFilter(); ?>
+                                                </div>
                                                 <br>
-                                                Type:
-                                                <?php echo getTypeFilter(); ?>
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">Type:</span>
+                                                    <?php echo getTypeFilter(); ?>
+                                                </div>
                                                 <br>
-                                                Bedrooms:
-                                                <?php echo getBedroomFilter(); ?>
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">Bedrooms:</span>
+                                                    <?php echo getBedroomFilter(); ?>
+                                                </div>
                                                 <br>
-                                                Bathrooms:
-                                                <?php echo getBathroomFilter(); ?>
+                                                <div class="filterOption">
+                                                    <span class="filterLabel">Bathrooms:</span>
+                                                    <?php echo getBathroomFilter(); ?>
+                                                </div>
                                                 <br>
-                                                <input type="submit" name="submitFilter" value="Filter" id = "submitFilter" class="dropbtn">
-                                                <input type="submit" name="resetFilter" value = "Reset" id = "resetFilter" class="dropbtn">
+                                                <input type="submit" name="submitFilter" value="Filter" id = "submitFilter" class="dropbtn" onclick="filterDropdown()">
                                             </div>
                                         </div>
                                     </header>
@@ -327,34 +364,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             toggle between hiding and showing the dropdown content */
             function filterDropdown() {
                 document.getElementById("inputContainer").classList.toggle("show");
-            }
-
-            // Close the dropdown if the user clicks filter or reset
-            document.getElementById("submitFilter").onclick = function(event) {
-                if (!event.target.matches('.dropbtn')) {
-
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
-                    }
-                }
-            }
-            document.getElementById("resetFilter").onclick = function(event) {
-                if (!event.target.matches('.dropbtn')) {
-
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
-                    }
-                }
             }
         </script>
 

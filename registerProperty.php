@@ -44,9 +44,9 @@ else{
 
     if(!file_exists("uploads/".$userID)){
         mkdir ("uploads/".$userID);
-    } else if( !file_exists( "uploads/".$userID."/".$propertyid)){
-        mkdir ( "uploads/".$userID."/".$propertyid);
     }
+
+    mkdir ( "uploads/".$userID."/".$propertyid);
 
 
 
