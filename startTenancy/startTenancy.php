@@ -223,7 +223,15 @@ elseif(isset($_POST["emailOfRenter"])) {
                         </div>
                         	
 				
-                        <button class="button" onclick="myFunction()">Print this Lease</button>
+    <button class="button" onclick="myFunction()">Print this Lease</button>
+                                            
+<form action="./conform.php" method="post">
+<input type="hidden" name="renterID" value="<?php echo $renter['id']; ?> ">
+  <input type="hidden" name="propertyID" value="<?php echo $propertyID; ?> ">
+    <input type="hidden" name="startDate" value="<?php echo $dataOfTenancy; ?> ">
+  <input type="submit" value="Submit">
+</form>
+                        
                         				</div>
 </section>
                             
@@ -308,7 +316,7 @@ elseif(isset($_POST["emailOfRenter"])) {
 		</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
+            <script src="../assets/js/jquery.min.js"></script>
 			<script src="../assets/js/jquery.dropotron.min.js"></script>
 			<script src="../assets/js/skel.min.js"></script>
 			<script src="../assets/js/util.js"></script>

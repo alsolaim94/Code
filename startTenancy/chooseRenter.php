@@ -86,7 +86,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
                         <div >Step 2: Enter Contract Date:
-                            <p><input type="date" name="dataOfTenancy" value="<?php echo date('d/m/Y'); ?>" required></p>
+                            <p><input type="date" name="dataOfTenancy" value="<?php echo date("Y-m-d"); ?>" required></p>
 
                         </div>
 
@@ -205,7 +205,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="../assets/js/jquery.dropotron.min.js"></script>
         <script src="../assets/js/skel.min.js"></script>
         <script src="../assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
         <script src="../assets/js/main.js"></script>
 
     </body>
