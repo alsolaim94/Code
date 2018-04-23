@@ -4,6 +4,13 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+function logout() {
+    if(confirm("Are you sure you want to log out?")) {
+        window.location.href = "logout.php";
+    }
+}
+
+
 (function($) {
 
 	skel.breakpoints({

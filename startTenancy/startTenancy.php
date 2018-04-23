@@ -85,7 +85,7 @@ elseif(isset($_POST["emailOfRenter"])) {
 								<li><a href="../index.php">Home</a></li>
 								<li><a href="../properties.php">Properties</a></li>
                                 <li class="current"><a href="../profile.php">Profile</a></li>
-								<li><a href="../logout.php">Log Out</a></li>
+								<li><a class='logoutButton' onclick='logout()'>Log Out</a></li>
 							</ul>
 						</nav>
 
@@ -308,12 +308,12 @@ elseif(isset($_POST["emailOfRenter"])) {
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../assets/js/main.js"></script>
         <script>
         function myFunction() {
             window.print();

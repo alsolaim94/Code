@@ -32,10 +32,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <title>Your Profile</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <!--[if lte IE 8]><script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="../assets/css/main.css" />
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="../assets/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie9.css" /><![endif]-->
     </head>
 
 
@@ -56,7 +56,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="../properties.php">Properties</a></li>
                         <li class="current"><a href="../profile.php">Profile</a></li>
-                        <li><a href="../logout.php">Log Out</a></li>
+                        <li><a class='logoutButton' onclick='logout()'>Log Out</a></li>
                     </ul>
                 </nav>
 
@@ -201,12 +201,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         </div>
 
         <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.dropotron.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.dropotron.min.js"></script>
+        <script src="../assets/js/skel.min.js"></script>
+        <script src="../assets/js/util.js"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="assets/js/main.js"></script>
+        <script src="../assets/js/main.js"></script>
 
     </body>
 </html>

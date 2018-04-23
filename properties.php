@@ -21,89 +21,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="assets/js/flag.js"></script>
         <script src="assets/js/filters.js"></script>
-        <style>
-            input[type=number]::-webkit-inner-spin-button, 
-            input[type=number]::-webkit-outer-spin-button { 
-                -webkit-appearance: none; 
-                margin: 0; 
-            }
-
-            #minPrice, #maxPrice {
-                font-size: .75em;
-            }
-            
-            .flag:hover {
-                cursor: pointer;
-            }
-
-            #propertyContent {
-                width: 100%;
-            }
-
-            .dropbtn {
-                background-color: #3498DB;
-                color: white;
-                padding: 16px;
-                font-size: 16px;
-                border: none;
-                cursor: pointer;
-                margin-right: 15px;
-            }
-
-            .dropbtn:hover, .dropbtn:focus {
-                background-color: #2980B9;
-            }
-
-            .dropdown {
-                position: relative;
-                display: inline-block;
-            }
-
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: #d9d9d9;
-                width: 300px;
-                overflow: auto;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-            }
-
-            .dropdown a:hover {background-color: #ddd}
-
-            .show {display:block;}
-
-            .customHr {
-                width: 95%
-                font-size: 1px;
-                color: rgba(0, 0, 0, 0);
-                line-height: 1px;
-
-                background-color: grey;
-                margin-top: -6px;
-                margin-bottom: 10px;
-            }
-
-            .filterLabel {
-                float: left;
-                font-weight: bold;
-            }
-
-            #inputContainer input[type=number],
-            #inputContainer select {
-                float: right;
-            }
-
-            .filterOption {
-                margin: 10px;
-            }
-
-            #submitFilter {
-                margin-left: 25%;
-            }
-
-
-        </style>
+        <link rel="stylesheet" href="assets/css/properties.css"/>
 
     </head>
     <body>
@@ -130,7 +48,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <!-- if the user is logged in, it will give them the option to log out -->
                             <?php
                             if(isset($_SESSION['email'])) {
-                                echo "<a href='logout.php'>Log Out</a>";
+                                echo "<a class='logoutButton' onclick='logout()'>Log Out</a>";
                             } else {
                                 echo "<a href='loginsignup.html'>Login/Sign Up</a>";
                             }
@@ -156,7 +74,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h2>Search Through Listed Properites</h2>
                                         <div class = "dropdown">
                                             <button onclick="filterDropdown()" class="dropbtn">Filter</button>
-                                            <button class="dropbtn" id = "resetFilter">Reset</button>
+                                            <button onclick="filterDropdown()" class="dropbtn" id = "resetFilter">Reset</button>
                                             <div id = "inputContainer" class = "dropdown-content">
                                                 <div class="filterOption">
                                                     <span class="filterLabel">Min Price:</span>
@@ -292,6 +210,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             function filterDropdown() {
                 document.getElementById("inputContainer").classList.toggle("show");
             }
+
+
         </script>
 
     </body>

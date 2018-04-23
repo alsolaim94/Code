@@ -3217,3 +3217,8 @@ input.invalid {
 }
 
 	}
+
+
+.logoutButton:hover {
+	cursor: pointer;
+}
