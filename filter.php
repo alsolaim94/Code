@@ -4,19 +4,37 @@
 
     $connection = getMySQLConnection();
 
+    $sql = "SELECT * FROM property WHERE 1=1";
+
+
     if($_GET["min"] != "") {
-        $minPrice = $_GET["min"];
-    } else {
-        $minPrice = 0;
+        $sql .= " AND price >= " . $_GET["min"];
     }
 
     if($_GET["max"] != "") {
-        $maxPrice = $_GET["max"];
-    } else {
-        $maxPrice = 100000000;
+        $sql .= " AND price <= " . $_GET["max"];
     }
 
-    $sql = "SELECT * FROM property WHERE price >= ".$minPrice." AND price <= ".$maxPrice;
+    if($_GET["city"] != "none") {
+        $sql .= " AND city = '".$_GET['city']."'";
+    }
+
+    if($_GET["type"] != "none") {
+        $sql .= " AND type = '".$_GET['type']."'";
+    }
+
+    if($_GET["state"] != "none") {
+        $sql .= " AND state = '".$_GET['state']."'";
+    }
+
+    if($_GET["bedroom"] != "none") {
+        $sql .= " AND bedroom = ".$_GET['bedroom'];
+    }
+
+    if($_GET["bathroom"] != "none") {
+        $sql .= " AND bathroom = ".$_GET['bathroom'];
+    }
+
     $propertyInfo = $connection -> query($sql);
 
 
@@ -33,7 +51,7 @@
             $pictures = scandir($directory);
 
             if (sizeof($pictures) == 2) {
-                $html = "<img src='images/noImage.jpg' alt='' />";
+                $html = "<img src='images/noImage.jpg' alt=''/>";
             } else {
                 $path = $directory . $pictures[2];
                 $html = "<img src='" . $path . "' alt='' />";
