@@ -218,9 +218,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                             <?php
                                                 $html = "";
                                                 if($row['rented'] == 1) {
-                                                    $html .= "<li><span id='rented'>Rented</span><input type='checkbox' name='rented' value='1' checked/></li>";
-                                                } else {
-                                                    $html .= "<li><span id='rented'>Rented</span><input type='checkbox' name='rented' value='0'/></li>";
+                                                    $html .= "<li>
+                                                                <strong style = 'color: red'> Unchecking this box will cancel the rental</strong><br>
+                                                                <span id='rented'>Rented</span><input type='checkbox' name='rented' value='1' checked/>
+                                                              </li>";
                                                 }
                                                 echo $html;
                                             ?>
@@ -243,7 +244,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     </div>
                 </div>
             </section>
-
+        </div>
 
 
             <!-- Footer -->

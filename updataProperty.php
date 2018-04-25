@@ -41,15 +41,16 @@ else{
     $contraction = mysqli_real_escape_string($connection, $_POST['contraction']);
     $problem = mysqli_real_escape_string($connection, $_POST['problem']);
 
-    $rented = $_POST['rented'];
+
+    if(!isset($_POST['rented'])) {
+        $rented = 0;
+    } else {
+        $rented = 1;
+    }
 
 
+    $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`construction`='$contraction', `rented`='$rented' WHERE `propertyID` = '$propertyID'";
 
-
-
-
-
-    $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`contraction`='$contraction', `rented`='$rented' WHERE `propertyID` = '$propertyID'";
 
 
     //add to the database
@@ -58,12 +59,7 @@ else{
 
 
 
-    print $rented;
-
-
-
-
-    //header("Location: profile.php");
+    header("Location: profile.php");
 
 
 }
