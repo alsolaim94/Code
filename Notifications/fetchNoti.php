@@ -29,7 +29,7 @@ if(isset($_POST['view'])){
             if($row['comment_status'] == 0) {
                 $output .= "
                       <li class='notiElement dropdown-toggle' style='background-color: #e6e6e6; overflow: hidden' value=".$row['comment_id'].">
-                          <u><strong>Interested Property: ".$propertyRow['address']."</strong></u><br />
+                          <center><u><strong>Interested Property: ".$propertyRow['address']."</strong></u></center>
                           <div style='width: 50%; float: left'>
                               <strong>Subject: ".$row['comment_subject']."</strong><br />
                               <small>Body: <em>".$row['comment_text']."</em></small><br />
@@ -46,7 +46,7 @@ if(isset($_POST['view'])){
             } else {
                 $output .= "
                       <li class='notiElement dropdown-toggle' style='overflow: hidden' value=".$row['comment_id'].">
-                          <u><strong>Interested Property: ".$propertyRow['address']."</strong></u><br />
+                          <center><u><strong>Interested Property: ".$propertyRow['address']."</strong></u></center>
                           <div style='width: 50%; float: left'>
                               <strong>Subject: ".$row['comment_subject']."</strong><br />
                               <small>Body: <em>".$row['comment_text']."</em></small><br />

@@ -102,16 +102,71 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <!-- Content -->
 
                                 <article>
-
                                     <section class="wrapper style1">
                                         <header>
-                                            <h2>Your Listed of Properites</h2>
+                                            <h2>Your Rented Properites</h2>
                                         </header>
                                         <!-- PHP to generate the viewing of properties posted-->
                                         <?php
 
                                         $connection = getMySQLConnection();
-                                        $sql = "SELECT * FROM property WHERE userID = $id";
+                                        $sql = "SELECT * FROM property WHERE rented = 1 AND userID = $id";
+                                        $propertyInfo = $connection -> query($sql);
+                                        $propertyList = "
+                                        <div class='container'>
+                                            <div class='row'>";
+                                        if($propertyInfo -> num_rows > 0) {
+                                            while($row = $propertyInfo -> fetch_assoc()) {
+                                                $userID = $row['userID'];
+                                                $propertyID = $row['propertyID'];
+                                                $directory = "uploads/".$userID."/".$propertyID."/";
+                                                $pictures = scandir($directory);
+                                                if(sizeof($pictures) == 2) {
+                                                    $html = "<img src='images/noImage.jpg' style ='max-width: 200px; height: auto;' alt='' />";
+                                                } else {
+                                                    $path = $directory . $pictures[2];
+                                                    $html = "<img src='" . $path . "' style ='max-width: 200px; height: auto;' alt='' />";
+                                                }
+
+                                                $propertyList .= "
+                                                <section class='6u 12u(narrower)'>
+                                                    <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'>".$html."</a>
+
+                                                    <a href='editProperties.php?address=".$row['address']."&propertyID=".$row['propertyID']."'class='button alt' >Edit </a>
+
+                                                    <div class='inner'>
+                                                        <strong>$".$row['price'] . "</strong></br>
+                                                        ".$row['bedroom']." Bedrooms</br>
+                                                        ".$row['address']."</br>
+                                                        ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                    </div>
+                                                </section>";
+
+                                            }
+
+                                        } else {
+                                            $propertyList .= "
+                                            <h3>You have no rented properties</h3>
+                                                ";
+                                        }
+                                        // show the generated list
+                                        echo $propertyList."
+                                            </div>
+                                        </div>
+                                    ";
+                                        ;
+                                        ?>
+                                    </section>
+
+                                    <section class="wrapper style1">
+                                        <header>
+                                            <h2>Your Unrented Properties</h2>
+                                        </header>
+                                        <!-- PHP to generate the viewing of properties posted-->
+                                        <?php
+
+                                        $connection = getMySQLConnection();
+                                        $sql = "SELECT * FROM property WHERE rented = 0 AND userID = $id";
                                         $propertyInfo = $connection -> query($sql);
                                         $propertyList = "
                                         <div class='container'>
@@ -147,7 +202,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                         } else {
                                             $propertyList .= "
-                                            <h3>There are no properties to be seen</h3>
+                                            <h3>You have no unrented properties.</h3>
                                                 ";
                                         }
                                         // show the generated list

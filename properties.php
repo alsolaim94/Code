@@ -120,7 +120,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <!-- PHP to generate the viewing of properties posted-->
                                     <?php
                                     $connection = getMySQLConnection();
-                                    $sql = "SELECT * FROM property";
+                                    $sql = "SELECT * FROM property WHERE rented = 0";
                                     $propertyInfo = $connection -> query($sql);
                                     $propertyList = "
                                                       <section class='wrapper style1'>

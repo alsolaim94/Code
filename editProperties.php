@@ -31,6 +31,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="stylesheet" href="assets/css/main.css" />
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <style>
+
+            #rented {
+                margin-right: 10px;
+            }
+
+        </style>
     </head>
     <body>
         <div id="page-wrapper">
@@ -208,9 +215,23 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <div class="row 50%">
                                     <div class="12u">
                                         <ul class="actions">
+                                            <?php
+                                                $html = "";
+                                                if($row['rented'] == 1) {
+                                                    $html .= "<li><span id='rented'>Rented</span><input type='checkbox' name='rented' value='1' checked/></li>";
+                                                } else {
+                                                    $html .= "<li><span id='rented'>Rented</span><input type='checkbox' name='rented' value='0'/></li>";
+                                                }
+                                                echo $html;
+                                            ?>
+                                        </ul>
+                                    </div>
+                                    <div class="12u">
+                                        <ul class="actions">
                                             <li><input type="submit" class="button" value="Update" /></li>
                                         </ul>
                                     </div>
+
                                 </div>
                             </form>
                         </section>

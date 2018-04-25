@@ -4,7 +4,7 @@
 
     $connection = getMySQLConnection();
 
-    $sql = "SELECT * FROM property WHERE 1=1";
+    $sql = "SELECT * FROM property WHERE rented = 0";
 
 
     if($_GET["min"] != "") {

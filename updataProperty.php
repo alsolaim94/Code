@@ -30,7 +30,6 @@ else{
     $city = mysqli_real_escape_string($connection, $_POST['city']);
     $state = mysqli_real_escape_string($connection, $_POST['state']);
     $zipcode = mysqli_real_escape_string($connection, $_POST['zipcode']);
-    $phone = mysqli_real_escape_string($connection, $_POST['phone']);
     $type = mysqli_real_escape_string($connection, $_POST['type']);
     $size = mysqli_real_escape_string($connection, $_POST['size']);
     $bedroom = mysqli_real_escape_string($connection, $_POST['bedroom']);
@@ -42,13 +41,15 @@ else{
     $contraction = mysqli_real_escape_string($connection, $_POST['contraction']);
     $problem = mysqli_real_escape_string($connection, $_POST['problem']);
 
+    $rented = $_POST['rented'];
 
 
 
 
 
 
-    $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`phone`='$phone',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`contraction`='$contraction',`problem`='$problem' WHERE `propertyID` = '$propertyID'";
+
+    $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`contraction`='$contraction', `rented`='$rented' WHERE `propertyID` = '$propertyID'";
 
 
     //add to the database
@@ -57,14 +58,12 @@ else{
 
 
 
-    print $price;
-
-    print $propertyID;
+    print $rented;
 
 
 
 
-    header("Location: profile.php");	
+    //header("Location: profile.php");
 
 
 }

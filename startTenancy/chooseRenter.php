@@ -73,7 +73,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <?php
 
                     $connection = getMySQLConnection();
-                    $sql = "SELECT * FROM property WHERE userID = ".$id;
+                    $sql = "SELECT * FROM property WHERE rented = 0 AND userID = ".$id;
                     $propertyInfo = $connection -> query($sql);
                     ?>
                         
