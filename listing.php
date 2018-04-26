@@ -48,7 +48,7 @@ $row = $results -> fetch_assoc();
                         if(isset($_SESSION['email'])) {
                             echo "<li><a class='logoutButton' onclick='logout()'>Log Out</a></li>";
                         } else {
-                            echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
+                            echo "<li><a href='loginsignup.php'>Login/Sign Up</a></li>";
                         }
                         ?>
                     </ul>
@@ -176,7 +176,7 @@ $row = $results -> fetch_assoc();
                                     if(!isset($_SESSION['logged_in'])) {
                                         echo "<p>You Must Be Logged In to Contact the Property Owner<br></p>".
                                             "<footer>
-                                        <a href='loginsignup.html' class='button'>Log In</a>
+                                        <a href='loginsignup.php' class='button'>Log In</a>
                                     </footer>";
                                     }
                                     //if the user view his own property 

@@ -6,7 +6,7 @@ include 'MySQL_Functions.php';
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before viewing your profile page!";
-    header("location: loginsignup.html");    
+    header("location: loginsignup.php");
 }
 else {
     $email = $_SESSION['email'];

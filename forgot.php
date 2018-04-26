@@ -38,7 +38,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="properties.php">Properties</a></li>
-                        <li class="current"><a href="loginsignup.html">Login/Sign Up</a></li>
+                        <li class="current"><a href="loginsignup.php">Login/Sign Up</a></li>
                     </ul>
                 </nav>
             </div>
@@ -91,7 +91,7 @@ http://localhost/code/reset.php?email=".$email."&hashValue=".$hashValue;
                                 // if the email does not send
                                 if(!$mail -> send()) {
                                     echo "
-                                                <a href='loginsignup.html'>
+                                                <a href='loginsignup.php'>
                                                     <h4>There was a problem sending an email to the provided address. Please Try Again</h4>
                                                 </a>";
 
@@ -99,9 +99,9 @@ http://localhost/code/reset.php?email=".$email."&hashValue=".$hashValue;
                                 } else {
                                     echo "
                                                 <header>
-                                                    <h2>An Email Has Been Sent To ". $email ."</h2>
+                                                    <h2>An Email Has Been Sent To ". $email . "</h2>
                                                     <p>Please Follow the Instructions to Reset Your Passsord</p>
-                                                    <a href='loginsignup.html'>Return to Login</a>
+                                                    <a href='loginsignup.php'>Return to Login</a>
                                                 </header>";
                                 }
                             }

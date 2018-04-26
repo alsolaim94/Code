@@ -18,13 +18,14 @@
         // escape input
         $firstName = mysqli_real_escape_string($con, $_POST['firstName']);
         $lastName = mysqli_real_escape_string($con, $_POST['lastName']);
+        $phone = mysqli_real_escape_string($con, $_POST['phone']);
         $password = mysqli_real_escape_string($con, (password_hash($_POST['password'], PASSWORD_BCRYPT)));
         
         // hash value is unique and will be used to reset password
         $hashValue = mysqli_real_escape_string($con, md5(rand(0,1000)));
         
-        $sql = "INSERT INTO users (firstName, lastName, email, password, hashValue) "
-                ."VALUES ('$firstName','$lastName','$email','$password', '$hashValue')";
+        $sql = "INSERT INTO users (firstName, lastName, email, phone, password, hashValue) "
+                ."VALUES ('$firstName','$lastName','$email', '$phone', '$password', '$hashValue')";
         
         // add to database
         $con -> query($sql);

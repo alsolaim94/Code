@@ -1,9 +1,9 @@
 <?php
 
 // create connection akari server
-//$con = mysqli_connect("localhost", "alsolaim_akari", "akari12345", "alsolaim_akari");
+$con = mysqli_connect("localhost", "alsolaim_akari", "akari12345", "alsolaim_akari");
 
-$con = mysqli_connect("localhost", "root", "", "akari");
+//$con = mysqli_connect("localhost", "root", "", "akari");
 
 $id = $_POST['propertyID'];
 

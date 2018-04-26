@@ -1,3 +1,13 @@
+<?php
+
+// doesnt allow user to type this page in address bar
+if(!isset($_SERVER['HTTP_REFERER'])) {
+    header("Location: profile.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE HTML>
 <!--
 Arcana by HTML5 UP
@@ -28,7 +38,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="properties.php">Properties</a></li>
-                        <li class="current"><a href="loginsignup.html">Login/Sign Up</a></li>
+                        <li class="current"><a href="loginsignup.php">Login/Sign Up</a></li>
                     </ul>
                 </nav>
             </div>
@@ -94,7 +104,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     </div>
 
                                     <!-- Script to make sure the confirm password is the same as the password -->
-                                    <script> 
+                                    <script>
                                         var password = document.getElementById('password')
                                         , confirm_password = document.getElementById('passConfirm');
 

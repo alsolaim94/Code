@@ -5,7 +5,7 @@ include 'MySQL_Functions.php';
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before viewing your profile page!";
-    header("location: loginsignup.html");
+    header("location: loginsignup.php");
 }
 
 ?>
@@ -52,7 +52,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             if(isset($_SESSION['email'])) {
                                 echo "<a class='logoutButton' onclick='logout()'>Log Out</a>";;
                             } else {
-                                echo "<a href='loginsignup.html'>Login/Sign Up</a>";
+                                echo "<a href='loginsignup.php'>Login/Sign Up</a>";
                             }
                             ?>
                         </li>

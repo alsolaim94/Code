@@ -6,9 +6,9 @@ include '../MySQL_Functions.php';
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before viewing your profile page!";
-    header("location: ../loginsignup.html");    
+    header("location: ../loginsignup.php");
 }
-else{                 
+else{
     $email = $_SESSION['email'];
     $firstName = $_SESSION['firstName'];
     $lastName = $_SESSION['lastName'];
@@ -36,11 +36,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <link rel="stylesheet" href="../assets/css/main.css" />
         <!--[if lte IE 8]><link rel="stylesheet" href="../assets/css/ie8.css" /><![endif]-->
         <!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie9.css" /><![endif]-->
+
     </head>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <body>
         <div id="page-wrapper">
 
@@ -76,7 +77,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     $sql = "SELECT * FROM property WHERE rented = 0 AND userID = ".$id;
                     $propertyInfo = $connection -> query($sql);
                     ?>
-                        
+
 
                     <form action="startTenancy.php" method="post">
 
@@ -90,115 +91,47 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                         </div>
 
-                        <div>Step 3: choose the property want to rent: 
+                        <div>Step 3: Choose the Property That Is Being Rented:
                             <br><br>
+
                             <?php
+                            $html = "";
                             if($propertyInfo -> num_rows > 0) {
                                 while($row = $propertyInfo -> fetch_assoc()) {
-                            ?>
+                                    $html .= "<div style='overflow: hidden; width: 50%;'>
+                                                  <div style='width: 20%; float: left;'>
+                                                      <input type='radio' name='propertyID' value= ". $row['propertyID'] ." required>     
+                                                  </div>
+                                                  <div style='width: 80%; float: right;'>
+                                                      <p><strong>Property Name: </strong>".$row['propertyName']." <br> <strong>Property Address:</strong> ".$row['address'] ."</p>
+                                                  </div>
+                                              </div>";
+                                }
+                                $html .= "<input type='submit' class='button' value='Submit' />";
 
-                            <p><input type="radio" name="propertyID" value="<?php echo $row['propertyID']; ?>" required></p> 
-
-                            <p><?php echo "Property Name: ".$row['propertyName']." Property Address: ".$row['address'];  ?></p>
-
-
-                            <?php }
-                            
-                           ?> <input type="submit" class="button" value="Submit" /> 
-                            <?php
+                            } else {
+                                $html .= "<h3 style= 'color:red'>There are no properties to be seen</h3>
+                                          <a href='../addProperty.php' class='button'>Add New Property</a>";
                             }
-                            
-                            else { echo "<h3 style= 'color:red'>There are no properties to be seen</h3>"; 
-                                  echo "<a href='../addProperty.php' class='button'>Add New Property</a>";}
 
-                            ?>              
-        </div>
-</form>
+                            echo $html;
 
-                        
-             
+                            ?>
+                        </div>
+
+                    </form>
+
+
+
 
 
                     </div>
-
                 </div>
             </section>
 
             <!-- Footer -->
-            <div id="footer">
-                <div class="container">
-                    <div class="row">
-                        <section class="3u 6u(narrower) 12u$(mobilep)">
-                            <h3>Links to Stuff</h3>
-                            <ul class="links">
-                                <li><a href="#">Mattis et quis rutrum</a></li>
-                                <li><a href="#">Suspendisse amet varius</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan dolor</a></li>
-                                <li><a href="#">Mattis rutrum accumsan</a></li>
-                                <li><a href="#">Suspendisse varius nibh</a></li>
-                                <li><a href="#">Sed et dapibus mattis</a></li>
-                            </ul>
-                        </section>
-                        <section class="3u 6u$(narrower) 12u$(mobilep)">
-                            <h3>More Links to Stuff</h3>
-                            <ul class="links">
-                                <li><a href="#">Duis neque nisi dapibus</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum accumsan sed</a></li>
-                                <li><a href="#">Mattis et sed accumsan</a></li>
-                                <li><a href="#">Duis neque nisi sed</a></li>
-                                <li><a href="#">Sed et dapibus quis</a></li>
-                                <li><a href="#">Rutrum amet varius</a></li>
-                            </ul>
-                        </section>
-                        <section class="6u 12u(narrower)">
-                            <h3>Get In Touch</h3>
-                            <form>
-                                <div class="row 50%">
-                                    <div class="6u 12u(mobilep)">
-                                        <input type="text" name="name" id="name" placeholder="Name" />
-                                    </div>
-                                    <div class="6u 12u(mobilep)">
-                                        <input type="email" name="email" id="email" placeholder="Email" />
-                                    </div>
-                                </div>
-                                <div class="row 50%">
-                                    <div class="12u">
-                                        <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="row 50%">
-                                    <div class="12u">
-                                        <ul class="actions">
-                                            <li><input type="submit" class="button alt" value="Send Message" /></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </form>
-                        </section>
-                    </div>
-                </div>
 
-                <!-- Icons -->
-                <ul class="icons">
-                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-                </ul>
-
-                <!-- Copyright -->
-                <div class="copyright">
-                    <ul class="menu">
-                        <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-        </div>
+            <?php include '../bottom.html'; ?>
 
         <!-- Scripts -->
         <script src="../assets/js/jquery.min.js"></script>

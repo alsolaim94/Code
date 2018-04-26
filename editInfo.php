@@ -100,7 +100,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <div class="row 50%">
 
                                     <div class="9u 12u(mobilep)">
-                                        //property would not change the email
                                         <br>Email<br>
                                         <input type="text" name="email" id="name" value="<?php echo $row['email']; ?>" placeholder="email" required/>
                                     </div>

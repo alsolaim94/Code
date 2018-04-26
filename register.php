@@ -50,7 +50,7 @@ if($userExists -> num_rows === 0) {
 } else {
     echo "<script>
             alert('Username already Exists');
-            window.location.href='loginsignup.html';
+            window.location.href=loginsignup.php
           </script>";
 }
 

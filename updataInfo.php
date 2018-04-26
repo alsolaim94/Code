@@ -15,7 +15,7 @@ if($connection->connect_error){
 
 if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before editing your Info!";
-    header("location: loginsignup.html");    
+    header("location: loginsignup.php");
 }
 else{
 

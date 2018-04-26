@@ -57,7 +57,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         if(isset($_SESSION['email'])) {
                             echo "<li><a class='logoutButton' onclick='logout()'>Log Out</a></li>";
                         } else {
-                            echo "<li><a href='loginsignup.html'>Login/Sign Up</a></li>";
+                            echo "<li><a href='loginsignup.php'>Login/Sign Up</a></li>";
                         }
                         ?>
                     </ul>

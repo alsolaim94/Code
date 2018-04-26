@@ -69,7 +69,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="properties.php">Properties</a></li>
-                        <li class="current"><a href="loginsignup.html">Login/Sign Up</a></li>
+                        <li class="current"><a href="loginsignup.php">Login/Sign Up</a></li>
                     </ul>
                 </nav>
             </div>
@@ -101,7 +101,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             echo "
                                     <header>
 				                        <h2>Password Reset Was Successful</h2>
-					                    <a href='loginsignup.html'><p>Please Log In Again</p></a>
+					                    <a href='loginsignup.php'><p>Please Log In Again</p></a>
                                      </header>
                                 ";
 
