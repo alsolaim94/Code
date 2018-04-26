@@ -45,6 +45,17 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             .notiElement:hover {
                 cursor: pointer;
             }
+
+            .customHr {
+                width: 100%;
+                font-size: 1px;
+                color: rgba(0, 0, 0, 0);
+                line-height: 1px;
+
+                background-color: grey;
+                margin-top: -6px;
+                margin-bottom: 10px;
+            }
         </style>
     </head>
     <body>
@@ -82,13 +93,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             </h2>
                             <ul class="actions">
                                 <li>
-                                    <a href="editInfo.php?id=<?php echo $id; ?>" class="button"> Updata Your Info</a>
+                                    <a href="editInfo.php?id=<?php echo $id; ?>" class="button"> Update Your Info</a>
                                 </li>
                                 <li>
                                     <a href="addProperty.php" class="button">Add New Property</a>
                                 </li>
                                 <li>
-                                    <a href="payment.php" class="button">Payment</a>
+                                    <a href="payment.php" class="button">Make Payment</a>
                                 </li>
                                 <li>
                                     <a href="startTenancy/chooseRenter.php" class="button">Make New Tenancy</a>
@@ -104,11 +115,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <article>
                                     <section class="wrapper style1">
                                         <header>
-                                            <h2>Your Rented Properites</h2>
+                                            <u><h2>Owned Properties</h2></u>
                                         </header>
                                         <!-- PHP to generate the viewing of properties posted-->
+                                        <h3> Rented </h3>
                                         <?php
-
                                         $connection = getMySQLConnection();
                                         $sql = "SELECT * FROM property WHERE rented = 1 AND userID = $id";
                                         $propertyInfo = $connection -> query($sql);
@@ -119,6 +130,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                             while($row = $propertyInfo -> fetch_assoc()) {
                                                 $userID = $row['userID'];
                                                 $propertyID = $row['propertyID'];
+
+                                                $sql = "SELECT * FROM users WHERE id IN (SELECT renterID FROM rental WHERE propertyID = ".$propertyID.")";
+                                                $renterQuery = $connection -> query($sql);
+                                                $renterInfo = $renterQuery -> fetch_assoc();
+
                                                 $directory = "uploads/".$userID."/".$propertyID."/";
                                                 $pictures = scandir($directory);
                                                 if(sizeof($pictures) == 2) {
@@ -136,9 +152,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                                     <div class='inner'>
                                                         <strong>$".$row['price'] . "</strong></br>
-                                                        ".$row['bedroom']." Bedrooms</br>
                                                         ".$row['address']."</br>
                                                         ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                        <u>Rented By</u>: ".$renterInfo['firstName']." ".$renterInfo['lastName']."<br>
                                                     </div>
                                                 </section>";
 
@@ -146,7 +162,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                         } else {
                                             $propertyList .= "
-                                            <h3>You have no rented properties</h3>
+                                            <h4>No properties are currently rented</h4>
                                                 ";
                                         }
                                         // show the generated list
@@ -156,15 +172,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     ";
                                         ;
                                         ?>
-                                    </section>
-
-                                    <section class="wrapper style1">
-                                        <header>
-                                            <h2>Your Unrented Properties</h2>
-                                        </header>
-                                        <!-- PHP to generate the viewing of properties posted-->
+                                        <br><br>
+                                        <h3>Unrented Properties</h3>
                                         <?php
-
                                         $connection = getMySQLConnection();
                                         $sql = "SELECT * FROM property WHERE rented = 0 AND userID = $id";
                                         $propertyInfo = $connection -> query($sql);
@@ -197,12 +207,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                                         ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
                                                     </div>
                                                 </section>";
-                                                                
+
                                             }
 
                                         } else {
                                             $propertyList .= "
-                                            <h3>You have no unrented properties.</h3>
+                                            <h4>No properties are waiting to be rented</h4>
                                                 ";
                                         }
                                         // show the generated list
@@ -210,10 +220,65 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                             </div>
                                         </div>
                                     ";
-;
+                                        ;
+                                        ?>
+                                    </section>
+                                    <div class="customHr">.</div>
+                                    <section class="wrapper style1">
+                                        <header>
+                                            <u><h2>Rented Properties</h2></u>
+                                        </header>
+                                        <!-- PHP to generate the viewing of properties posted-->
+                                        <?php
+                                        $connection = getMySQLConnection();
+                                        $sql = "SELECT * FROM property WHERE rented = 1 AND propertyID IN (SELECT propertyID FROM rental WHERE renterID = ".$id.")";
+                                        $propertyInfo = $connection -> query($sql);
+                                        $propertyList = "
+                                        <div class='container'>
+                                            <div class='row'>";
+                                        if($propertyInfo -> num_rows > 0) {
+                                            while($row = $propertyInfo -> fetch_assoc()) {
+                                                $userID = $row['userID'];
+                                                $propertyID = $row['propertyID'];
+                                                $directory = "uploads/".$userID."/".$propertyID."/";
+                                                $pictures = scandir($directory);
+                                                if(sizeof($pictures) == 2) {
+                                                    $html = "<img src='images/noImage.jpg' style ='max-width: 200px; height: auto;' alt='' />";
+                                                } else {
+                                                    $path = $directory . $pictures[2];
+                                                    $html = "<img src='" . $path . "' style ='max-width: 200px; height: auto;' alt='' />";
+                                                }
+
+                                                $propertyList .= "
+                                                <section class='6u 12u(narrower)'>
+                                                    <a href='listing.php?address=".$row['address']."&propertyID=".$row['propertyID']."' class='image left'>".$html."</a>
+
+                                                    <div class='inner'>
+                                                        <strong>$".$row['price'] . "</strong></br>
+                                                        ".$row['bedroom']." Bedrooms</br>
+                                                        ".$row['address']."</br>
+                                                        ".$row['city'].", ".$row['state']." ".$row['zipcode']."</br>
+                                                    </div>
+                                                </section>";
+
+                                            }
+
+                                        } else {
+                                            $propertyList .= "
+                                            <h4>You are not renting any properties</h4>
+                                                ";
+                                        }
+                                        // show the generated list
+                                        echo $propertyList."
+                                            </div>
+                                        </div>
+                                    ";
+                                        ;
                                         ?>
                                     </section>
                                 </article>
+                                <div class="customHr">.</div>
+                                <br>
                                 <!-- Show User's Notifications -->
                                 <article>
                                     <header>
