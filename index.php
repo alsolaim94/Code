@@ -106,7 +106,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <div class="row">
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/house2.jpg" alt="" /></a>
+                                <a href="properties.php" class="image left"><img src="images/house2.jpg" alt="" /></a>
                                 <div class="inner">
                                     <h3>Looking for a place to live?</h3>
                                     <p>Click here to search through our listings.</p>
@@ -115,7 +115,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </section>
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/house.jpg" alt="" /></a>
+                                <a href="addproperty.php" class="image left"><img src="images/house.jpg" alt="" /></a>
                                 <div class="inner">
                                     <h3>Looking to post a property?</h3>
                                     <p>Click here to post your property for everyone to see.</p>
@@ -135,7 +135,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </section>
                         <section class="6u 12u(narrower)">
                             <div class="box post">
-                                <a href="#" class="image left"><img src="images/faq1.png" alt="" /></a>
+                                <a href="faq.php" class="image left"><img src="images/faq1.png" alt="" /></a>
                                 <div class="inner">
                                     <h3>Have any questions for us?</h3>
                                     <p>Click here to visit FAQ or send us a message with any questions or concerns.</p>
