@@ -51,10 +51,10 @@
             $pictures = scandir($directory);
 
             if (sizeof($pictures) == 2) {
-                $html = "<img src='images/noImage.jpg' alt=''/>";
+                $html = "<img style='max-height: 6em; width: auto; max-width: 190px;' src='images/noImage.jpg' alt=''/>";
             } else {
                 $path = $directory . $pictures[2];
-                $html = "<img src='" . $path . "' alt='' />";
+                $html = "<img style='max-height: 6em; width: auto; max-width: 190px;' src='" . $path . "' alt='' />";
             }
 
             $propertyList .= "

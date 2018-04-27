@@ -134,10 +134,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                             $pictures = scandir($directory);
 
                                             if(sizeof($pictures) == 2) {
-                                                $html = "<img src='images/noImage.jpg' alt=''/>";
+                                                $html = "<img style='max-height: 6em; width: auto; max-width: 190px;' src='images/noImage.jpg' alt=''/>";
                                             } else {
                                                 $path = $directory . $pictures[2];
-                                                $html = "<img src='" . $path . "' alt=''/>";
+                                                $html = "<img style='max-height: 6em; width: auto; max-width: 190px;' src='" . $path . "' alt=''/>";
                                             }
 
                                             $propertyList .= "
@@ -147,7 +147,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                                                       <div class='right' style='float: right;'>
                                                                         <span class='flag' value=".$row['propertyID']."><img src='images/flag.png' alt='Flag'></span>
                                                                       </div>
-                                                                      <div class='inner' style = 'float: left; margin-left: 5%;'>
+                                                                      <div class='inner' style = 'float: left; margin-left:3em;'>
                                                                           <strong>$".$row['price'] . "</strong></br>
                                                                           ".$row['bedroom']." Bedrooms</br>
                                                                           ".$row['address']."</br>
