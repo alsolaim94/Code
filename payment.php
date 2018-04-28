@@ -67,53 +67,34 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     ?>
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <input type="hidden" name="cmd" value="_xclick">
-                        <br> Pay To The Order Of<br>
-                        <input type="email" name="business" value="y.alsudiriy@gmail.com">
+                        <h2>Pay To The Order Of</h2>
+                        <input type="email" name="business" placeholder="Email Address" required>
                         <input type="hidden" name="item_name" value="rent">
                         <input type="hidden" name="item_number" value="123">
                         <br> Price<br>
-                        <input type="number" name="amount" value="15.00">
+                        <input type="number" name="amount" placeholder=" Amount" required>
                         <br> <br>
-                        <h1>Billing </h1>
-                        <input type="text" name="first_name" value="<?php echo $firstName; ?>">  
-                        <input type="text" name="last_name" value="<?php echo $lastName; ?>">
-
-
-                        <input type="text" name="address1" value="2618 Oriole st">
-                        <input type="text" name="address2" value="">
-                        <input type="text" name="city" value="Bowling Green">
-                        <input type="text" name="state" value="Ky">
-                        <input type="text" pattern="[0-9]{5}" name="zip" value="42101">
-                        <input type="hidden" name="night_phone_a" value="270">
-                        <input type="hidden" name="night_phone_b" value="996">
-                        <input type="hidden" name="night_phone_c" value="2274">
-                        <input type="hidden" name="email" value="f.alsolaim@gmail.com">
+                        <h2>Billing</h2>
+                        <h1>Name</h1>
+                        <input type="text" name="first_name" placeholder="First Name" value="<?php echo $firstName; ?>" required>  
+                        <input type="text" name="last_name" placeholder="Last Name" value="<?php echo $lastName; ?>" required>
+                        <h1>Street Address</h1>
+                        <input type="text" name="address1" placeholder="Street and number p.o. box c/o" required>
+                        <input type="text" name="address2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                        <input type="text" name="city" placeholder="city">
+                        <input type="text" name="state" placeholder="Ky">
+                        <input type="text" pattern="[0-9]{5}" name="zip" placeholder="zip Code">
+                       <br>
                         <input type="image" name="submit"
                                src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
                                alt="PayPal - The safer, easier way to pay online">
                     </form>  
 
-                    <form action="your-server-side-code" method="POST">
-                        <script
-                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                                data-amount="999"
-                                data-name="Stripe.com"
-                                data-description="Example charge"
-                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                data-locale="auto"
-                                data-zip-code="true">
-                        </script>
-                    </form>                     
-
-
-
-
-
 
                 </div>
             </section>
 
+        </div>
             <!-- Footer -->
                      <?php include 'bottom.html';?>
 
