@@ -71,6 +71,9 @@ $row = $results -> fetch_assoc();
                                     </header>
                                     <!-- Need to dynamically add pictures once we know how they will be stored for each property -->
                                     <div style="font-size:14px;">
+                                        <button onclick="plusDivs(-1)">&#10094;</button>
+                                        <button onclick="plusDivs(1)">&#10095;</button><br>
+                                        <em>Click arrows to cycle through the pictures</em><br>
                                         <span class="image featured">
                                             <?php
                                                 $propertyid = $row['propertyID'];
@@ -93,9 +96,6 @@ $row = $results -> fetch_assoc();
 
                                             ?>
                                         </span>
-                                        <em>Click arrows to cycle through the pictures</em><br>
-                                        <button onclick="plusDivs(-1)">&#10094;</button>
-                                        <button onclick="plusDivs(1)">&#10095;</button>
                                     </div>
                                     <!-- method used at w3 schools -->
                                     <script>

@@ -15,57 +15,70 @@ if(!isset($_SESSION['id'])) {
 } else {
     if(isset($_POST['view'])){
         $propertyID = $_POST['view'];
-        $sql = "SELECT * FROM property WHERE propertyID = ".$propertyID;
+
+        // check if user has already flagged this property
+        $sql = "SELECT * FROM flag WHERE userID = ".$_SESSION['id']." AND propertyID = ".$propertyID;
         $result = $connection -> query($sql);
-        $propertyRow = $result -> fetch_assoc();
+        if($result -> num_rows > 0) {
+            $data = array(
+                'alert' => 'You have already provided feedback for this property. Thank you.'
+            );
+            echo json_encode($data);
+        } else {
 
-        $newCount = $propertyRow['flagCount'] + 1;
+            // store that the user has flagged this property
+            $sql = "INSERT INTO flag (userID, propertyID) VALUES (".$_SESSION['id'].", ".$propertyID.")";
+            $connection -> query($sql);
 
-        if($newCount > 5) {
+            $sql = "SELECT * FROM property WHERE propertyID = " . $propertyID;
+            $result = $connection->query($sql);
+            $propertyRow = $result->fetch_assoc();
 
-            $userResult = $connection -> query("SELECT * FROM users WHERE id = ".$propertyRow['userID']);
-            $userRow = $userResult -> fetch_assoc();
+            $newCount = $propertyRow['flagCount'] + 1;
+
+            if ($newCount > 5) {
+
+                $userResult = $connection->query("SELECT * FROM users WHERE id = " . $propertyRow['userID']);
+                $userRow = $userResult->fetch_assoc();
 
 
-            $to = "akari.test496@gmail.com";
-            $subject = "A property has recieved more than the limit of flag counts";
-            $body = 
-                "ALERT:
+                $to = "akari.test496@gmail.com";
+                $subject = "A property has recieved more than the limit of flag counts";
+                $body =
+                    "ALERT:
     A property has recieved more than five flags. Here are the details.
-    PropertyID: ".$propertyID."
-    Address: ". $propertyRow['address']."
-    Owner's Email: ".$userRow['email']."
-    Owner's Phone Number: ".$userRow['phone']."
+    PropertyID: " . $propertyID . "
+    Address: " . $propertyRow['address'] . "
+    Owner's Email: " . $userRow['email'] . "
+    Owner's Phone Number: " . $userRow['phone'] . "
 
-    Current Flag Count: ".$newCount."
+    Current Flag Count: " . $newCount . "
 
     Please contact owner and check legitimacy of the property";
 
-            $mail = getMailObject();
-            $mail -> addAddress($to);
-            $mail -> Subject = $subject;
-            $mail -> Body = $body;
+                $mail = getMailObject();
+                $mail->addAddress($to);
+                $mail->Subject = $subject;
+                $mail->Body = $body;
 
-            $mail -> send();
+                $mail->send();
 
-            $sql2 = "UPDATE `property` SET flagCount = ".$newCount." WHERE propertyID = ".$propertyID;
-            $connection -> query($sql2);
+                $sql2 = "UPDATE `property` SET flagCount = " . $newCount . " WHERE propertyID = " . $propertyID;
+                $connection->query($sql2);
 
-            $data = array(
-                'alert' => 'Thank you for providing feedback'    
-            );
-        } else {
-            $sql2 = "UPDATE `property` SET flagCount = ".$newCount." WHERE propertyID = ".$propertyID;
-            $connection -> query($sql2);
-            $data = array(
-                'alert' => 'Thank you for providing feedback'    
-            );
+                $data = array(
+                    'alert' => 'Thank you for providing feedback'
+                );
+
+            } else {
+                $sql2 = "UPDATE `property` SET flagCount = " . $newCount . " WHERE propertyID = " . $propertyID;
+                $connection->query($sql2);
+                $data = array(
+                    'alert' => 'Thank you for providing feedback'
+                );
+            }
+            echo json_encode($data);
         }
-
-        echo json_encode($data);
-
-
-
     }
 }
 
