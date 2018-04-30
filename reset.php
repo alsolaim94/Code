@@ -8,8 +8,8 @@ $connection = getMySQLConnection();
 // check to see if the link is valid before showing the form to reset the password
 if(isset($_GET['hashValue']) && isset($_GET['email'])) {
 
-    $hashValue = mysqli_real_escape_string($connection, $_GET['hashValue']);
-    $email = mysqli_real_escape_string($connection, $_GET['email']);
+    $hashValue = htmlspecialchars(mysqli_real_escape_string($connection, $_GET['hashValue']));
+    $email = htmlspecialchars(mysqli_real_escape_string($connection, $_GET['email']));
 
     $sql = "SELECT * FROM users WHERE email = '$email' AND hashValue = '$hashValue'";
     $result = $connection -> query($sql);
@@ -87,11 +87,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         if(isset($_POST['password']) && isset($_POST['passConfirm'])) {
 
                             //escape strings for security
-                            $newPassword = mysqli_real_escape_string($connection, (password_hash($_POST['password'], PASSWORD_BCRYPT)));
-                            $email = mysqli_real_escape_string($connection, $_POST['email']);
+                            $newPassword = htmlspecialchars(mysqli_real_escape_string($connection, (password_hash($_POST['password'], PASSWORD_BCRYPT))));
+                            $email = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['email']));
 
                             // new hash value is used so that link in the email is not longer valid
-                            $newHashValue = mysqli_real_escape_string($connection, md5(rand(0,1000)));
+                            $newHashValue = htmlspecialchars(mysqli_real_escape_string($connection, md5(rand(0,1000))));
 
                             // query to update the table
                             $sql = "UPDATE users SET password = '$newPassword', hashValue = '$newHashValue' WHERE email = '$email'";

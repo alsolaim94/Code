@@ -14,7 +14,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     header("Location: ../profile.php");
     exit;
 } elseif (isset($_POST["emailOfRenter"])) {
-    $emailOfRenter = mysqli_real_escape_string($connection, $_POST['emailOfRenter']);
+    $emailOfRenter = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['emailOfRenter']));
     $userExists = $connection->query("SELECT * FROM users WHERE email = '$emailOfRenter'");
 
     // if the user does not exists
@@ -24,7 +24,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                                     window.location.href='chooseRenter.php';
                                                  </script>";
     } else {
-        $propertyID = mysqli_real_escape_string($connection, $_POST['propertyID']);
+        $propertyID = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['propertyID']));
         $dataOfTenancy = $_POST['dataOfTenancy'];
         $endDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($dataOfTenancy)) . " + 365 day"));
 

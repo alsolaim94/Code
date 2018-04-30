@@ -18,12 +18,23 @@ if($userExists -> num_rows === 0) {
 
     // strip input to increase security
     $firstName = mysqli_real_escape_string($connection, $_POST['firstName']);
+    $firstName = htmlspecialchars($firstName);
+
     $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
+    $lastName = htmlspecialchars($lastName);
+
     $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $email = htmlspecialchars($email);
+
     $phone = mysqli_real_escape_string($connection, $_POST['phone']);
+    $phone = htmlspecialchars($phone);
+
     $password = mysqli_real_escape_string($connection, (password_hash($_POST['password'], PASSWORD_BCRYPT)));
+    $password = htmlspecialchars($password);
+
     // hash value is unique and will be used to reset password
     $hashValue = mysqli_real_escape_string($connection, md5(rand(0,1000)));
+    $hashValue = htmlspecialchars($hashValue);
 
     $sql = "INSERT INTO users (firstName, lastName, phone, email, password, hashValue) "
         ."VALUES ('$firstName','$lastName',$phone,'$email','$password', '$hashValue')";

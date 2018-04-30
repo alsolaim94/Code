@@ -5,6 +5,7 @@ include "MySQL_Functions.php";
 $connection = getMySQLConnection();
 
 $email = mysqli_real_escape_string($connection, $_POST['email']);
+$email = htmlspecialchars($email);
 
 $userExists = $connection -> query("SELECT * FROM users WHERE email = '$email'");
 
@@ -38,7 +39,7 @@ if($userExists -> num_rows == 0) {
     } else {
         echo "<script>
                 alert('Password is Incorrect');
-                window.location.href='loginsignup.html';
+                window.location.href='loginsignup.php';
              </script>";
     }
 

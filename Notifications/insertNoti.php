@@ -8,9 +8,9 @@ $connection = getMySQLConnection();
 // if form from listing has been submitted
 if(isset($_POST["subject"])) {
 
-    $subject = mysqli_real_escape_string($connection, $_POST["subject"]);
+    $subject = htmlspecialchars(mysqli_real_escape_string($connection, $_POST["subject"]));
 
-    $comment = mysqli_real_escape_string($connection, $_POST["comment"]);
+    $comment = htmlspecialchars(mysqli_real_escape_string($connection, $_POST["comment"]));
 
     $toID = $_POST['toID'];
     $interestedProperty = $_POST['property'];

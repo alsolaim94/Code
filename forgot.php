@@ -53,7 +53,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <?php
                         // if the forgot password form has been submitted
                         if(isset($_POST["email"])) {
-                            $email = mysqli_real_escape_string($connection, $_POST['email']);
+                            $email = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['email']));
                             $userExists = $connection -> query("SELECT * FROM users WHERE email = '$email'");
                             // if the user does not exists
                             if($userExists -> num_rows === 0) {
