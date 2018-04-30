@@ -26,7 +26,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     } else {
         $propertyID = mysqli_real_escape_string($connection, $_POST['propertyID']);
         $dataOfTenancy = $_POST['dataOfTenancy'];
-
+        $endDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($dataOfTenancy)) . " + 365 day"));
 
         $userSql = "SELECT * FROM users WHERE email = '$emailOfRenter'";
         $propertySql = "SELECT * FROM property WHERE propertyID = '$propertyID'";
@@ -40,6 +40,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
     }
 }
+
 
 ?>
 
@@ -138,7 +139,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     </li>
                     <li value="6">
                         <div><span style="font-style:normal;font-weight:bold;">Term. </span>The Lease begins at 12:00
-                            noon on April 7, 2018 and lasts until 12:00 noon on April 7, 2018 (that period, the "Term").<br>
+                            noon on <b> <?php echo $dataOfTenancy; ?></b> and lasts until 12:00 noon on <b> <?php echo $endDate; ?></b> (that period, the "Term").<br>
                         </div>
                     </li>
                     <li value="7">
@@ -260,6 +261,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
     <!-- Footer -->
     <?php include '../bottom.html'; ?>
+    </div>
 
     <!-- Scripts -->
     <script src="../assets/js/jquery.min.js"></script>
