@@ -12,7 +12,7 @@ $userExists = $connection -> query("SELECT * FROM users WHERE email = '$email'")
 if($userExists -> num_rows == 0) {
     echo "<script>
             alert('Email is not Registered');
-            window.location.href=loginsignup.php;
+            window.location.href='loginsignup.php';
           </script>";
 
     // user does exists, continue log in    
