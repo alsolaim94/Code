@@ -68,7 +68,26 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <input type="hidden" name="cmd" value="_xclick">
                         <h2>Pay To The Order Of</h2>
-                        <input type="email" name="business" placeholder="Email Address" required>
+                        Email<br>
+                        <select name="business" required>
+                            <?php
+                                $connection = getMySQLConnection();
+                                $sql = "SELECT email FROM users WHERE id IN (SELECT landlordID FROM rental WHERE renterID = ".$id.")";
+                                $result = $connection -> query($sql);
+                                $html = "";
+                                echo $sql;
+                                if($result -> num_rows > 0) {
+                                    while($row = $result -> fetch_assoc()) {
+                                        $html .= "<option value='".$row['email']."'>".$row['email']."</option>";
+                                    }
+                                } else {
+                                    $html = "<option value=''>You have not rented a property</option>";
+                                }
+
+                                echo $html;
+                            ?>
+                        </select>
+                        <br>
                         <input type="hidden" name="item_name" value="rent">
                         <input type="hidden" name="item_number" value="123">
                         <br> Price<br>
@@ -79,11 +98,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <input type="text" name="first_name" placeholder="First Name" value="<?php echo $firstName; ?>" required>  
                         <input type="text" name="last_name" placeholder="Last Name" value="<?php echo $lastName; ?>" required>
                         <h1>Street Address</h1>
-                        <input type="text" name="address1" placeholder="Street and number p.o. box c/o" required>
-                        <input type="text" name="address2" placeholder="Apartment, suite, unit, building, floor, etc.">
-                        <input type="text" name="city" placeholder="city">
-                        <input type="text" name="state" placeholder="Ky">
-                        <input type="text" pattern="[0-9]{5}" name="zip" placeholder="zip Code">
+                        <input type="text" name="address1" placeholder="Street and Number P.O. Box C/O" required>
+                        <input type="text" name="address2" placeholder="Apartment, Suite, Unit, Building, Floor, etc.">
+                        <input type="text" name="city" placeholder="City">
+                        <input type="text" name="state" placeholder="State">
+                        <input type="text" pattern="[0-9]{5}" name="zip" placeholder="Zip Code">
                        <br>
                         <input type="image" name="submit"
                                src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"

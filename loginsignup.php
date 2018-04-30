@@ -88,7 +88,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     </div>
                                     <br>
                                     <div class="6u 12u(mobilep)">
-                                        <input type="email" name="email" id="email" placeholder="Email" maxlength="30" minlength="5" required/>
+                                        <input type="email" name="email" id="email" placeholder="Email" maxlength="50" minlength="5" required/>
                                     </div>
                                     <br>
                                     <div class="6u 12u(mobilep)">

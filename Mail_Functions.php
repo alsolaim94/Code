@@ -1,4 +1,4 @@
- <?php
+<?php
 
 require "PHPMailer-master/PHPMailerAutoload.php";
 
