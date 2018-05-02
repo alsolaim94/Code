@@ -7,7 +7,7 @@ include 'MySQL_Functions.php';
 if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before viewing your profile page!";
     
-header("location: loginsignup.php");
+    header("Location: index.php");
     
 }
 else {
