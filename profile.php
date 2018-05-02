@@ -6,7 +6,9 @@ include 'MySQL_Functions.php';
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
     echo "You must log in before viewing your profile page!";
-    header("location: loginsignup.php");
+    
+header("location: loginsignup.php");
+    
 }
 else {
     $email = $_SESSION['email'];
@@ -88,7 +90,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <header>
                             <h2>
                                 <?php
-                                echo "Welcome Back " . $firstName . " " . $lastName. "!";
+                                echo "Welcome Back " . $firstName . " " . $lastName . "!";
                                 ?>
                             </h2>
                             <ul class="actions">

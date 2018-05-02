@@ -2,7 +2,7 @@
 
 // doesnt allow user to type this page in address bar
 if(!isset($_SERVER['HTTP_REFERER'])) {
-    header("Location: profile.php");
+    header("Location: index.php");
     exit;
 }
 
