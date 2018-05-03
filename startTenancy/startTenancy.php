@@ -80,7 +80,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="../properties.php">Properties</a></li>
                 <li class="current"><a href="../profile.php">Profile</a></li>
-                <li><a class='logoutButton' onclick='logout()'>Log Out</a></li>
+                <li><a class='logoutButton' onclick='logout2()'>Log Out</a></li>
             </ul>
         </nav>
 
