@@ -3,12 +3,12 @@ session_start();
 include "MySQL_Functions.php";
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
-    echo "You must log in before viewing your profile page!";
     header("location: loginsignup.php");
 }
 
 else {
     $connection = getMySQLConnection();
+    // query to get user information for user that is being edited
     $sql = "SELECT * FROM users WHERE id = ".$_GET["id"];
     $results = $connection -> query($sql);
 
@@ -130,7 +130,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
             <!-- Footer -->
-                     <?php include 'bottom.html';?>
+                     <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

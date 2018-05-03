@@ -120,6 +120,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <!-- PHP to generate the viewing of properties posted-->
                                     <?php
                                     $connection = getMySQLConnection();
+                                    // query database for properties that arent rented
+                                    // output to page
                                     $sql = "SELECT * FROM property WHERE rented = 0";
                                     $propertyInfo = $connection -> query($sql);
                                     $propertyList = "
@@ -195,7 +197,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
             <!-- Footer -->
-                     <?php include 'bottom.html';?>
+                     <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

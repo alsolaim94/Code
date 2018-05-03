@@ -16,6 +16,7 @@ if ($connection->connect_error) {
     $propertyID = $_SESSION['propertyID'];
 
 
+    // strip all user input
     $email = $_SESSION['email'];
     $propertyName = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['propertyName']));
     $country = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['country']));
@@ -35,6 +36,8 @@ if ($connection->connect_error) {
     $problem = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['problem']));
 
 
+    // if the checkbox is not checked (cancelling rental), rental is 0
+    // else it is still rented, rental is 1
     if (!isset($_POST['rented'])) {
         $rented = 0;
     } else {
@@ -42,12 +45,14 @@ if ($connection->connect_error) {
     }
 
 
+    // update row
     $sql = "UPDATE `property` SET `propertyName`='$propertyName',`country`='$country',`address`= '$address',`city`='$city',`state`='$state',`zipcode`='$zipcode',`type`='$type',`size`='$size',`bedroom`='$bedroom',`bathroom`='$bathroom',`extra`='$extra',`lease`='$lease',`price`='$price',`availability`='$availability',`construction`='$contraction', `rented`='$rented' WHERE `propertyID` = '$propertyID'";
 
 
     //add to the database
     $connection->query($sql);
 
+    $connection -> close();
 
     header("Location: profile.php");
 

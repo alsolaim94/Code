@@ -18,15 +18,14 @@ if ($connection->connect_error) {
 
 } else {
 
-
-    //rentalID all ready difin
+    // get information to insert in to rental table
     $landlordID = $_SESSION['id'];
     $renterID = $_POST['renterID'];
     $propertyID = $_POST['propertyID'];
     $startDate = $_POST['startDate'];
     $endDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($startDate)) . " + 365 day"));
 
-
+    // insert info to rental
     $sql = "INSERT INTO `rental`(`landlordID`, `renterID`, `propertyID`, `startDate`, `endDate`) VALUES ('$landlordID','$renterID','$propertyID','$startDate','$endDate')";
 
     //add to the database
@@ -155,7 +154,7 @@ Akari Team";
 
 
 
-
+    $connection -> close();
     header("Location: ../profile.php");
 
 

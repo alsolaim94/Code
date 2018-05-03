@@ -36,14 +36,15 @@ if($userExists -> num_rows === 0) {
     $hashValue = mysqli_real_escape_string($connection, md5(rand(0,1000)));
     $hashValue = htmlspecialchars($hashValue);
 
+    // insert user to databse
     $sql = "INSERT INTO users (firstName, lastName, phone, email, password, hashValue) "
         ."VALUES ('$firstName','$lastName',$phone,'$email','$password', '$hashValue')";
 
     //add to the database
     $connection -> query($sql);
 
+    // id that was last autoincremented
     $id = mysqli_insert_id($connection);
-
 
     session_start();
     $_SESSION['id'] = $id;
@@ -65,6 +66,7 @@ if($userExists -> num_rows === 0) {
           </script>";
 }
 
+$connection -> close();
 
 
 

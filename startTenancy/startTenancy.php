@@ -5,19 +5,19 @@ $connection = getMySQLConnection();
 
 // Check if user is logged in using the session variable
 if ($_SESSION['logged_in'] != 1) {
-    echo "You must log in before viewing your profile page!";
     header("location: ../loginsignup.php");
 }
 
 // doesnt allow user to type this page in address bar
 if (!isset($_SERVER['HTTP_REFERER'])) {
     header("Location: ../profile.php");
-    exit;
+    exit();
 } elseif (isset($_POST["emailOfRenter"])) {
     $emailOfRenter = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['emailOfRenter']));
+    // query for the user info for the types in email to rent to
     $userExists = $connection->query("SELECT * FROM users WHERE email = '$emailOfRenter'");
 
-    // if the user does not exists
+    // if the user does not exists, its the wrong email
     if ($userExists->num_rows === 0) {
         echo "   <script>
                                                     alert('ATTENTION : Wrong Email Address');
@@ -28,6 +28,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         $dataOfTenancy = $_POST['dataOfTenancy'];
         $endDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($dataOfTenancy)) . " + 365 day"));
 
+        // query information for the renter and the property they are going to rent
         $userSql = "SELECT * FROM users WHERE email = '$emailOfRenter'";
         $propertySql = "SELECT * FROM property WHERE propertyID = '$propertyID'";
 
@@ -260,7 +261,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
 
     <!-- Footer -->
-    <?php include '../bottom.html'; ?>
+    <?php
+        include '../bottom.html';
+        $connection -> close();
+    ?>
     </div>
 
     <!-- Scripts -->

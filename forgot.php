@@ -137,7 +137,10 @@ http://localhost/code/reset.php?email=".$email."&hashValue=".$hashValue;
             </section>
 
             <!-- Footer -->
-                    <?php include 'bottom.html';?>
+                    <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

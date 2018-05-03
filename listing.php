@@ -3,6 +3,8 @@ session_start();
 include "MySQL_Functions.php";
 
 $connection = getMySQLConnection();
+
+// get property info for property that was clicked on
 $sql = "SELECT * FROM property WHERE propertyID = ".$_GET["propertyID"];
 $results = $connection -> query($sql);
 
@@ -69,20 +71,22 @@ $row = $results -> fetch_assoc();
                                         <h2><?php echo $row['address']; ?></h2>
                                         <p> <?php echo "$".$row['price']; ?></p>
                                     </header>
-                                    <!-- Need to dynamically add pictures once we know how they will be stored for each property -->
                                     <div style="font-size:14px;">
                                         <button onclick="plusDivs(-1)">&#10094;</button>
                                         <button onclick="plusDivs(1)">&#10095;</button><br>
                                         <em>Click arrows to cycle through the pictures</em><br>
                                         <span class="image featured">
                                             <?php
+                                                // get path of images for this property
                                                 $propertyid = $row['propertyID'];
                                                 $userID = $row['userID'];
                                                 $folder = "uploads/".$userID."/".$propertyid."/";
 
+                                                // holds all pics in the directory
                                                 $pics = scandir($folder);
                                                 $imgHTML = "";
-
+                                                // if size is 2, it is empty and no pictures, show default
+                                                // else, generate image tags for each image
                                                 if(sizeof($pics) == 2) {
                                                    $imgHTML .= "<img class='slides' src='images/noImage.jpg' alt='' />";
                                                 } else {
@@ -98,6 +102,7 @@ $row = $results -> fetch_assoc();
                                         </span>
                                     </div>
                                     <!-- method used at w3 schools -->
+                                    <!-- script to show only one picture at a time, but cycle through all of them-->
                                     <script>
                                         var slideIndex = 1;
                                         showDivs(slideIndex);
@@ -118,6 +123,7 @@ $row = $results -> fetch_assoc();
                                         }
                                     </script>
 
+                                    <!-- fill in all info on page with info from the database-->
                                     <h3>Description</h3>
                                     <p>
                                         <?php
@@ -211,7 +217,10 @@ $row = $results -> fetch_assoc();
                 </div>
             </section>
             <!-- Footer -->
-                     <?php include 'bottom.html';?>
+                     <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>

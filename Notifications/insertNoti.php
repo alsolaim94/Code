@@ -8,8 +8,8 @@ $connection = getMySQLConnection();
 // if form from listing has been submitted
 if(isset($_POST["subject"])) {
 
+    // escape input
     $subject = htmlspecialchars(mysqli_real_escape_string($connection, $_POST["subject"]));
-
     $comment = htmlspecialchars(mysqli_real_escape_string($connection, $_POST["comment"]));
 
     $toID = $_POST['toID'];
@@ -19,10 +19,12 @@ if(isset($_POST["subject"])) {
     date_default_timezone_set('America/Chicago');
     $date = date('Y-m-d H:i:s');
 
+    // insert comment to database
     $sql = "INSERT INTO comments(comment_subject, comment_text, comment_to, comment_from, time, propertyID)VALUES ('$subject', '$comment', '$toID', '$fromEmail', '$date', '$interestedProperty')";
 
     $connection -> query($sql);
 
+    $connection -> close();
 }
 
 ?>

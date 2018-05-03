@@ -3,6 +3,8 @@ session_start();
 include "MySQL_Functions.php";
 
 $connection = getMySQLConnection();
+
+// query information about the property that is being edited
 $sql = "SELECT * FROM property WHERE propertyID = ".$_GET["propertyID"]." AND address = '".$_GET["address"]."'";
 $results = $connection -> query($sql);
 
@@ -230,7 +232,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
             <!-- Footer -->
-                    <?php include 'bottom.html';?>
+                    <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>

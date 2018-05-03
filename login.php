@@ -4,9 +4,11 @@ include "MySQL_Functions.php";
 
 $connection = getMySQLConnection();
 
+// escape input
 $email = mysqli_real_escape_string($connection, $_POST['email']);
 $email = htmlspecialchars($email);
 
+// query to see if user exists
 $userExists = $connection -> query("SELECT * FROM users WHERE email = '$email'");
 
 // user does not exists
@@ -43,15 +45,9 @@ if($userExists -> num_rows == 0) {
              </script>";
     }
 
-
-
-
-
-
-
 }
 
-
+$connection -> close();
 
 
 

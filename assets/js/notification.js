@@ -10,7 +10,9 @@ $(document).ready(function(){
             data:{view:view},
             dataType:"json",
             success:function(data) {
+                // set notifications returned from PHP
                $('.dropdown-menu').html(data.notification);
+               // set count returned from PHP
                $('.count').html(data.unseen_notification);
             }
         });

@@ -5,7 +5,6 @@ include '../MySQL_Functions.php';
 
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
-    echo "You must log in before viewing your profile page!";
     header("location: ../loginsignup.php");
 }
 else{
@@ -67,13 +66,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <section class="wrapper style1">
                 <div class="container">
                     <div class="9u 12u(mobilep)">
-
-
-
-                    <!-- PHP to generate the viewing of properties posted-->
                     <?php
 
                     $connection = getMySQLConnection();
+
+                    // query database for properties that are not rented and belong to the logged in user
                     $sql = "SELECT * FROM property WHERE rented = 0 AND userID = ".$id;
                     $propertyInfo = $connection -> query($sql);
                     ?>
@@ -95,6 +92,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <br><br>
 
                             <?php
+                            // generate radio buttons to choose a property from query
                             $html = "";
                             if($propertyInfo -> num_rows > 0) {
                                 while($row = $propertyInfo -> fetch_assoc()) {
@@ -131,7 +129,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             <!-- Footer -->
 
-            <?php include '../bottom.html'; ?>
+            <?php
+                include '../bottom.html';
+                $connection -> close();
+            ?>
         </div>
         <!-- Scripts -->
         <script src="../assets/js/jquery.min.js"></script>

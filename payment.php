@@ -3,7 +3,6 @@ session_start();
 include "MySQL_Functions.php";
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
-    echo "You must log in before viewing your profile page!";
     header("location: loginsignup.php");
 }
 
@@ -72,10 +71,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <select name="business" required>
                             <?php
                                 $connection = getMySQLConnection();
+                                // query database for emails of property owners of properties the user is renting
                                 $sql = "SELECT email FROM users WHERE id IN (SELECT landlordID FROM rental WHERE renterID = ".$id.")";
                                 $result = $connection -> query($sql);
                                 $html = "";
-                                echo $sql;
+                                // if the user is renting a property, show options to pick an email to pay
+                                // else, they have not rented a property
                                 if($result -> num_rows > 0) {
                                     while($row = $result -> fetch_assoc()) {
                                         $html .= "<option value='".$row['email']."'>".$row['email']."</option>";
@@ -115,7 +116,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
         </div>
             <!-- Footer -->
-                     <?php include 'bottom.html';?>
+                     <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

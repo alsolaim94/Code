@@ -4,14 +4,13 @@ include 'MySQL_Functions.php';
 
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
-    echo "You must log in before viewing your profile page!";
     header("location: loginsignup.php");
 }
 
 // doesnt allow user to type this page in address bar
 if(!isset($_SERVER['HTTP_REFERER'])) {
     header("Location: profile.php");
-    exit;
+    exit();
 }
 
 ?>
@@ -93,6 +92,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
                         $connection = getMySQLConnection();
+                        // get latest property id from the database
                         $sql = "SELECT max(propertyID) FROM property WHERE userID = " . $_SESSION['id'];
                         $result = $connection -> query($sql);
                         $row = $result -> fetch_assoc();
@@ -111,25 +111,29 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 $size = $_FILES ['files']['size'][$i];
                                 $type = $_FILES ['files']['type'][$i];
                                 $tmp_name = $_FILES ['files']['tmp_name'][$i];
-                               if(!empty($name)&&$size<300000&& getimagesize($tmp_name)!=0){
-                                $folder = "uploads/".$userID."/".$propertyid."/";
-								
-                                if(move_uploaded_file($tmp_name, $folder.$name)){
-                                    $uploaded= 1;
+
+                                // the file matches our restrictions
+                                // is not empty
+                                // less than 300000 bytes
+                                // is an image
+                                if(!empty($name) && $size < 300000 && getimagesize($tmp_name)!= 0){
+                                    // upload file to directory
+                                    $folder = "uploads/".$userID."/".$propertyid."/";
+                                    if(move_uploaded_file($tmp_name, $folder.$name)){
+                                        $uploaded= 1;
+                                    }
                                 }
-                            }
-							else{
-								
-								echo "<h3 style = 'color: red;'>File too large or not an image</h3>";
-								break;
-							}
-						  }
+							    else{
+								    echo "<h3 style = 'color: red;'>File too large or not an image</h3>";
+								    break;
+							    }
+						    }
 						}
-						 else{
+						else{
                             echo "<h3 style = 'color: red;'>Please Select an Image</h3>";
-                          }
+                        }
+
                         if($uploaded == 1){
-                            echo 'Your files were uploaded';
                             header("Location: profile.php");
                         }
 
@@ -146,7 +150,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
     <!-- Footer -->
-             <?php include 'bottom.html';?>
+             <?php
+                include 'bottom.html';
+                $connection -> close();
+            ?>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>

@@ -14,7 +14,7 @@ if(isset($_GET['hashValue']) && isset($_GET['email'])) {
     $sql = "SELECT * FROM users WHERE email = '$email' AND hashValue = '$hashValue'";
     $result = $connection -> query($sql);
 
-    // if there is not a user with matchin email and hash, an invalid link was provided
+    // if there is not a user with matching email and hash, an invalid link was provided
     if($result -> num_rows === 0) {
         echo "   <script>
                      alert('Reset Password Link is Invalid');
@@ -31,7 +31,7 @@ if(isset($_GET['hashValue']) && isset($_GET['email'])) {
                  window.location.href='forgot.php';
                </script>";
     } 
-    // if the reset passwrod form has been submitted, this has already been verified and need to ignore the case
+    // if the reset password form has been submitted, this has already been verified and need to ignore the case
     // get values will be gone when that form is submitted.
 }
 
@@ -159,7 +159,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </section>
 
             <!-- Footer -->
-                     <?php include 'bottom.html';?>
+                     <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>

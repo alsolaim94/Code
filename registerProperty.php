@@ -14,6 +14,8 @@ if($connection->connect_error){
 else{
     
     $userID = $_SESSION['id'];
+
+    // strip all input from the form
     $propertyName = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['propertyName']));
     $country = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['country']));
     $address = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['address']));
@@ -31,6 +33,7 @@ else{
     $contraction = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['contraction']));
     $problem = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['problem']));
 
+    // insert into database
     $sql = "INSERT INTO `property`(`userID`, `propertyName`, `country`, `address`, `city`, `state`, `zipcode`, `type`, `size`, `bedroom`, `bathroom`, `extra`, `lease`, `price`, `availability`, `construction`, `problem`, `rented`, `flagCount`) VALUES ('$userID','$propertyName','$country','$address','$city','$state','$zipcode','$type',$size,$bedroom,$bathroom,'$extra','$lease',$price,$availability,$contraction, '$problem', 0, 0)";
 
     //add to the database
@@ -48,14 +51,11 @@ else{
 
     mkdir ( "uploads/".$userID."/".$propertyid);
 
-
-
-
-
     header("Location: uploadImage.php");
     
 }
 
+$connection -> close();
 
 
 

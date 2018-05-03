@@ -13,18 +13,19 @@ if ($connection->connect_error) {
 
 }
 
+// if you are not logged in you cannot see this page
 if ($_SESSION['logged_in'] != 1) {
-    echo "You must log in before editing your Info!";
     header("location: loginsignup.php");
 } else {
 
     $id = $_SESSION['id'];
 
+    // strip all input
     $firstName = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['firstName']));
     $lastName = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['lastName']));
     $email = htmlspecialchars(mysqli_real_escape_string($connection, $_POST['email']));
 
-
+    // update row in database
     $sql = "UPDATE `users` SET `firstName`='" . $firstName . "',`lastName`='" . $lastName . "',`email`='" . $email . "' WHERE `id` = $id ";
 
 
@@ -35,6 +36,7 @@ if ($_SESSION['logged_in'] != 1) {
     $_SESSION["lastName"] = $lastName;
     $_SESSION["email"] = $email;
 
+    $connection -> close();
 
     header("Location: profile.php");
 

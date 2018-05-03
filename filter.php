@@ -4,9 +4,12 @@
 
     $connection = getMySQLConnection();
 
+    // start of query for a filer that includes properties that arent rented
     $sql = "SELECT * FROM property WHERE rented = 0";
 
 
+    // if any of the inputs are set, set restrictions on columns in the table
+    // and add it to the query
     if($_GET["min"] != "") {
         $sql .= " AND price >= " . $_GET["min"];
     }
@@ -35,6 +38,7 @@
         $sql .= " AND bathroom = ".$_GET['bathroom'];
     }
 
+    // query database with all the filters
     $propertyInfo = $connection -> query($sql);
 
 
@@ -43,13 +47,16 @@
               <section class='wrapper style1'>
                   <div class='container'>
                       <div class='row'>";
+    // if there are properties returned, show properties that match filters
+    // else, there are no properties that match the filter
     if($propertyInfo -> num_rows > 0) {
         while($row = $propertyInfo -> fetch_assoc()) {
+
+            // get path of images for the property and create the img tag with the path
             $userID = $row['userID'];
             $propertyID = $row['propertyID'];
             $directory = "uploads/" . $userID . "/" . $propertyID . "/";
             $pictures = scandir($directory);
-
             if (sizeof($pictures) == 2) {
                 $html = "<img style='max-height: 6em; width: auto; max-width: 190px;' src='images/noImage.jpg' alt=''/>";
             } else {
@@ -57,6 +64,7 @@
                 $html = "<img style='max-height: 6em; width: auto; max-width: 190px;' src='" . $path . "' alt='' />";
             }
 
+            // html for showing the properties on the page
             $propertyList .= "
                           <section class='6u 12u(narrower)'>
                               <div class='box post'>
@@ -99,8 +107,10 @@
             </div>";
     }
 
+    // returned to the ajax call
     $data = array('html' => $propertyList);
 
+    $connection -> close();
     echo json_encode($data);
 
 

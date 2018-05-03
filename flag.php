@@ -7,6 +7,8 @@ include "Mail_Functions.php";
 
 $connection = getMySQLConnection();
 
+// if the user is not logged in, they cannot flag property
+// else, continue flagging process
 if(!isset($_SESSION['id'])) {
     $data = array(
                 'alert' => 'You must be logged in to provide feedback'    
@@ -30,12 +32,15 @@ if(!isset($_SESSION['id'])) {
             $sql = "INSERT INTO flag (userID, propertyID) VALUES (".$_SESSION['id'].", ".$propertyID.")";
             $connection -> query($sql);
 
+            // query to get flag count
             $sql = "SELECT * FROM property WHERE propertyID = " . $propertyID;
             $result = $connection->query($sql);
             $propertyRow = $result->fetch_assoc();
 
             $newCount = $propertyRow['flagCount'] + 1;
 
+            // if new flag count is over 5, send admins an email
+            // else, update the flag count with the new count
             if ($newCount > 5) {
 
                 $userResult = $connection->query("SELECT * FROM users WHERE id = " . $propertyRow['userID']);
@@ -77,10 +82,13 @@ if(!isset($_SESSION['id'])) {
                     'alert' => 'Thank you for providing feedback'
                 );
             }
+            // return to ajax call
             echo json_encode($data);
         }
     }
 }
+
+$connection -> close();
 
 
 ?>

@@ -121,6 +121,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h3> Rented </h3>
                                         <?php
                                         $connection = getMySQLConnection();
+
+                                        // query database for owned properties that are rented out
+                                        // output to profile page
                                         $sql = "SELECT * FROM property WHERE rented = 1 AND userID = $id";
                                         $propertyInfo = $connection -> query($sql);
                                         $propertyList = "
@@ -176,6 +179,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h3>Unrented Properties</h3>
                                         <?php
                                         $connection = getMySQLConnection();
+                                        // query database for owned properties that arent rented
+                                        // output to profile page
                                         $sql = "SELECT * FROM property WHERE rented = 0 AND userID = $id";
                                         $propertyInfo = $connection -> query($sql);
                                         $propertyList = "
@@ -231,6 +236,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <!-- PHP to generate the viewing of properties posted-->
                                         <?php
                                         $connection = getMySQLConnection();
+                                        // query database for properties that the user is renting from someone
+                                        // output to profile page
                                         $sql = "SELECT * FROM property WHERE rented = 1 AND propertyID IN (SELECT propertyID FROM rental WHERE renterID = ".$id.")";
                                         $propertyInfo = $connection -> query($sql);
                                         $propertyList = "
@@ -285,6 +292,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                         <h2 style="display: inline; margin-right: 2em;">Your Notifications (<span class='count'></span> Unread)</h2>
                                     </header>
                                     <div>
+                                        <!-- Drop down menu that will be filled through the ajax function -->
                                         <ul class='dropdown-menu'></ul>
                                     </div>
                                 </article>
@@ -296,7 +304,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         </div>
 
             <!-- Footer -->
-                     <?php include 'bottom.html';?>
+                     <?php
+                        include 'bottom.html';
+                        $connection -> close();
+                    ?>
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>
